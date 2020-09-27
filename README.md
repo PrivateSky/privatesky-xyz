@@ -2,7 +2,6 @@
 This repository contains all the documentation for PrivateSky project. You can see it in action at https://privatesky.xyz
 
 
-
 # B. How to make it run on your side
 ### Prerequirements
 In order to follow next steps you need to have the following software installed on your machine:
