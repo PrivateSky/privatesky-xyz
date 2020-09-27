@@ -47,12 +47,23 @@ class MobileController extends ContainerController {
 
     constructor(element) {
         super(element);
+
         this.model = this.setModel(this.getModel());
 
         this.on("needMenuItems", e => {
             e.stopImmediatePropagation();
             const callback = e.detail;
             callback(null, this.model.sidebar);
+        });
+
+        this.on("toggleSidebar", e => {
+            e.stopImmediatePropagation();
+            document.dispatchEvent(new Event('psk-mobile:toggle-sidebar'));
+        });
+
+        this.on("showOptions", e => {
+            e.stopImmediatePropagation();
+            document.dispatchEvent(new CustomEvent('psk-mobile:toggle-options', { detail: true }))
         });
     }
 }

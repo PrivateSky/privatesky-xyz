@@ -10,14 +10,22 @@
         <psk-mobile data-define-props="true"></psk-mobile>
     </psk-property-descriptor>
 
-    <psk-chapter title="HTML Children">
+    <psk-chapter title="Listeners">
+        <p>This component listens for two events attached to the <strong>document</strong>.</p>
+
+        <p>One of them is called <code>psk-mobile:toggle-sidebar</code> and with this event you can control the appearance of the sidebar from another place, for example a certain button.</p>
+        <p>If you want to control the options menu there is another event <code>psk-mobile:toggle-options</code>.</p>
+        <p>Both events can be forced to show or hide the sidebar (respectively options menu) via a boolean value transmitted by CustomEvent detail. All of those are captured in the examples below.</p>
+    </psk-chapter>
+
+    <psk-chapter title="Slots">
         <p>There are four slots available for this component named "title", "footer", "options" and "content".</p>
 
         <psk-chapter title="Title">
             <p>The developer has the possibility to use a custom title.</p>
             <p>If a slot name "title" is given, the title property from component is ignored.</p>
 
-            <psk-example class="mobile-example">
+            <psk-example>
                 <psk-mobile mode="demo" id="demo-title" disable-sidebar>
                     <section slot="title">
                         <psk-icon icon="cloud" color="#FFFFFF"></psk-icon>
@@ -26,7 +34,7 @@
                 </psk-mobile>
             </psk-example>
 
-            <psk-code language="HTML">
+            <psk-code language="markup">
                 <psk-mobile id="demo-title" disable-sidebar>
                     <section slot="title">
                         <psk-icon icon="cloud" color="#FFFFFF"></psk-icon>
@@ -51,7 +59,7 @@
                 </psk-mobile>
             </psk-example>
 
-            <psk-code language="HTML">
+            <psk-code language="markup">
                 <psk-mobile title="Footer">
                     <div slot="footer">
                         <psk-button-link name="Cloud" icon="cloud" page="pages/cloud"></psk-button-link>
@@ -76,7 +84,7 @@
                 </psk-mobile>
             </psk-example>
 
-            <psk-code language="HTML">
+            <psk-code language="markup">
                 <psk-mobile title="Options" disable-sidebar>
                     <div slot="options">
                         <psk-link page="page/option-1">Option 1</psk-link>
@@ -110,7 +118,7 @@
                 </psk-container>
             </psk-example>
 
-            <psk-code language="HTML">
+            <psk-code language="markup">
                 <psk-mobile title="Content">
                     <div slot="content">
                         <psk-card title="Hello World! 👋">
@@ -132,6 +140,11 @@
                         <h6>This phone.</h6>
                         <psk-img src="/assets/images/mobile/ibm-simon.jpeg"></psk-img>
                     </psk-description>
+
+                    <psk-button-group>
+                        <psk-button event-name="toggleSidebar">Toggle sidebar</psk-button>
+                        <psk-button event-name="showOptions">Show options</psk-button>
+                    </psk-button-group>
                 </div>
 
                 <psk-for-each slot="options" data-view-model="options">
@@ -171,6 +184,7 @@
 
             constructor(element) {
                 super(element);
+
                 this.model = this.setModel(this.getModel());
 
                 this.on("needMenuItems", e => {
@@ -178,13 +192,23 @@
                     const callback = e.detail;
                     callback(null, this.model.sidebar);
                 });
+
+                this.on("toggleSidebar", e => {
+                    e.stopImmediatePropagation();
+                    document.dispatchEvent(new Event('psk-mobile:toggle-sidebar'));
+                });
+
+                this.on("showOptions", e => {
+                    e.stopImmediatePropagation();
+                    document.dispatchEvent(new CustomEvent('psk-mobile:toggle-options', { detail: true }))
+                });
             }
         }
 
         export default MobileController;
         </psk-code>
 
-        <psk-code title="HTML code" language="HTML">
+        <psk-code title="HTML code" language="markup">
             <!-- File: pages/<your-mobile-demo.html> -->
             <psk-mobile title="Demo" controller-name="MobileController">
                 <div slot="content">
@@ -192,6 +216,11 @@
                         <h6>This phone.</h6>
                         <psk-img src="/assets/images/mobile/ibm-simon.jpeg"></psk-img>
                     </psk-description>
+
+                    <psk-button-group>
+                        <psk-button event-name="toggleSidebar">Toggle sidebar</psk-button>
+                        <psk-button event-name="showOptions">Show options</psk-button>
+                    </psk-button-group>
                 </div>
 
                 <psk-for-each slot="options" data-view-model="options">
