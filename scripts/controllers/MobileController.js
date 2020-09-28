@@ -46,6 +46,7 @@ class MobileController extends ContainerController {
     }
 
     constructor(element) {
+        // element === psk-mobile web component
         super(element);
 
         this.model = this.setModel(this.getModel());
@@ -56,14 +57,14 @@ class MobileController extends ContainerController {
             callback(null, this.model.sidebar);
         });
 
-        this.on("toggleSidebar", e => {
+        this.on("showSidebar", async e => {
             e.stopImmediatePropagation();
-            document.dispatchEvent(new Event('psk-mobile:toggle-sidebar'));
+            await element.toggleSidebar(true);
         });
 
-        this.on("showOptions", e => {
+        this.on("toggleOptions", async e => {
             e.stopImmediatePropagation();
-            document.dispatchEvent(new CustomEvent('psk-mobile:toggle-options', { detail: true }))
+            await element.toggleOptions();
         });
     }
 }
