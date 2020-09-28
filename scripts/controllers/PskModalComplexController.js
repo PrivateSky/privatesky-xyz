@@ -31,7 +31,7 @@ export default class PskModalComplexController extends ModalController {
         this.model = this.setModel(this.getModel());
 
         this.on('showModal', _ => {
-            this.showModal('complex-modal', this.model.modal, (err, preferences) => {
+            this.showModal('complex-modal', this.model, (err, preferences) => {
                 if (err) {
                     console.error(err);
                     return;
