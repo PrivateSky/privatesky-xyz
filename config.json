@@ -5,5 +5,8 @@
         "username": "PrivateSky",
         "email": "privatesky@axiologic.net",
         "avatar": "https://privatesky.xyz/assets/images/privatesky.png"
+    },
+    "modals": {
+        "complex-modal": "Cardinal/web-components/demos/modals/modal.html"
     }
 }
