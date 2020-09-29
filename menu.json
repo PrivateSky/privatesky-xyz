@@ -363,6 +363,12 @@
                             "indexed": false
                         },
                         {
+                            "name": "Tabs",
+                            "tags": "psk-tab-navigator",
+                            "path": "/tabs",
+                            "pageSrc": "Cardinal/web-components/tabs.html"
+                        },
+                        {
                             "name": "Toolbar",
                             "tags": "psk-toolbar"
                         },
