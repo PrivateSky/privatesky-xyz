@@ -85,3 +85,7 @@ psk-mobile [slot='footer'] .btn .icon,
 psk-mobile [slot='footer'] .btn span {
     color: #FFFFFF;
 }
+
+psk-button.fullWidth button{
+    width: 100%;
+}
