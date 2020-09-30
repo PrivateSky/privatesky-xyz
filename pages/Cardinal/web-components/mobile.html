@@ -134,16 +134,14 @@
         <p>Your final mobile application will look similar with the one listed bellow.</p>
 
         <psk-example class="mobile-example">
-            <psk-mobile mode="demo" title="Demo" controller-name="MobileController">
+            <psk-mobile mode="demo" title="Demo" controller-name="MobileController" id="demo-overall">
                 <psk-description title="Where did it all come from?">
                     <h6>This phone.</h6>
                     <psk-img src="/assets/images/mobile/ibm-simon.jpeg"></psk-img>
                 </psk-description>
 
-                <psk-button-group>
-                    <psk-button event-name="showSidebar">Show sidebar</psk-button>
-                    <psk-button event-name="toggleOptions">Toggle options</psk-button>
-                </psk-button-group>
+                <psk-button event-name="showSidebar" button-class="btn btn-outline-secondary">Show sidebar</psk-button>
+                <psk-button event-name="toggleOptions" button-class="btn btn-outline-secondary">Toggle options</psk-button>
 
                 <!-- slots -->
                 <psk-for-each slot="options" data-view-model="options">
@@ -156,8 +154,8 @@
             </psk-mobile>
         </psk-example>
 
-        <psk-code title="JavaScript code" language="JavaScript">
-        // File: scripts/controllers/MobileController.js
+        <psk-code title="JavaScript" language="JavaScript">
+        // scripts/controllers/MobileController.js
         import ContainerController from '../../cardinal/controllers/base-controllers/ContainerController.js';
 
         class MobileController extends ContainerController {
@@ -209,9 +207,10 @@
         export default MobileController;
         </psk-code>
 
-        <psk-code title="HTML code" language="markup">
-            <!-- File: pages/<your-mobile-demo.html> -->
+        <psk-code title="HTML" language="markup">
+            <!-- pages/mobile-demo.html -->
             <psk-mobile title="Demo" controller-name="MobileController">
+                <!-- content -->
                 <psk-description title="Where did it all come from?">
                     <h6>This phone.</h6>
                     <psk-img src="/assets/images/mobile/ibm-simon.jpeg"></psk-img>
@@ -233,11 +232,4 @@
             </psk-mobile>
         </psk-code>
     </psk-chapter>
-
-<!--    <psk-chapter title="Another more complex example">-->
-<!--        <psk-link page="Cardinal/web-components/mobile-demo_sign-in">-->
-<!--            <psk-button>Demo application</psk-button>-->
-<!--        </psk-link>-->
-<!--    </psk-chapter>-->
-
 </psk-page>

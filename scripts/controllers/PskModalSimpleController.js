@@ -4,8 +4,7 @@ export default class PskModalSimpleController extends ModalController {
     getModel() {
         return {
             modal: {
-                opened: false,
-                expanded: false
+                opened: false
             }
         }
     }

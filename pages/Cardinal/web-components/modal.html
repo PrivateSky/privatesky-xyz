@@ -32,15 +32,13 @@
             <p>In the case of a modal displayed in such a way, its model is present in the Application Controller.</p>
 
             <psk-code title="JavaScript" language="JavaScript">
+            // scripts/controllers/ModalController.js
             import ModalController from '../../../cardinal/controllers/base-controllers/ModalController.js';
 
-            export default class MyModalController extends ModalController {
+            export default class ApplicationController extends ModalController {
                 getModel() {
                     return {
-                        modal: {
-                            opened: false,
-                            expanded: false
-                        }
+                        modal: { opened: false }
                     }
                 }
 
@@ -55,7 +53,8 @@
             </psk-code>
 
             <psk-code title="HTML" language="markup">
-                <!-- Do not forget your psk-container with the corresponding controller -->
+                <!-- Do not forget your psk-container with the corresponding controller! -->
+                <!-- <psk-container controller-name="ApplicationController.js"> -->
                 <psk-modal opened="@modal.opened">
                     <p>➡️ Content of this modal is here!</p>
 
@@ -64,6 +63,7 @@
                     <psk-button slot="footer" event-name="closeModal">Modal action</psk-button>
                 </psk-modal>
                 <psk-button event-name="openModal">Open modal</psk-button>
+                <!-- </psk-container> -->
             </psk-code>
 
             <p>If you want to trigger other event than <code>closeModal</code> for closing your modal, you can easily add <strong><code>event-name</code></strong> attribute with corresponding value for <code>psk-modal</code> then listen for that event in controller.</p>
@@ -162,7 +162,7 @@
                             this.model = this.setModel(this.getModel());
 
                             this.on('showModalEvent', _ => {
-                                this.showModal('my-named-modal', this.model.modal, (err, preferences) => {
+                                this.showModal('my-named-modal', this.model, (err, preferences) => {
                                     if (err) {
                                         console.error(err);
                                         return;
