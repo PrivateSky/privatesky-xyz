@@ -1,5 +1,5 @@
 {
-    "theme": "clear-sky-theme",
+    "theme": "cardinal-w3c-theme",
     "appVersion": "0.2.0",
     "profile": {
         "username": "PrivateSky",
@@ -7,6 +7,6 @@
         "avatar": "https://privatesky.xyz/assets/images/privatesky.png"
     },
     "modals": {
-        "complex-modal": "Cardinal/web-components/demos/modals/modal.html"
+        "complex-modal": "Cardinal/demos/modals/modal.html"
     }
 }
