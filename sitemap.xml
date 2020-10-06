@@ -71,123 +71,123 @@
                     </url><url>
                         <loc>https://privatesky.xyz/?Cardinal/themes</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/card</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/routing/application-menu</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/chapter</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/routing/application-root</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/code</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/routing/application-router</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/copy-clipboard</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/pages/page</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/description</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/pages/mobile</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/example</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/pages/ssapp</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/highlight</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/business-logic/condition</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/img</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/business-logic/container</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/link</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/business-logic/for-each</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/list</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/using-forms</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/page</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/checkbox</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/property-descriptor</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/date-input</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/table</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/email-input</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/wiki-components/toc</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/form</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/app-menu</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/image-input</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/attachments-list</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/input</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/app-root</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/label</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/app-router</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/number-input</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/barcode-generator</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/password-input</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/barcode-scanner</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/radio</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/button</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/radio-group</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/button-group</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/select</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/condition</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/textarea</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/container</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/forms/text-input</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/feedback-list</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/layout/grid</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/files-chooser</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/layout/row</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/floating-menu</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/attachments-list</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/for-each</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/button</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/grid</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/button-group</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/icon</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/card</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/icon-chooser</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/chapter</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/live-code</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/code</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/modal</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/copy-clipboard</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/mobile</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/description</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/page-not-found</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/feedback-list</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/pin-popup</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/files-chooser</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/slideshow</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/floating-menu</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/switch-button</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/highlight</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/tabs</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/icon</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/toolbar</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/icon-chooser</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/ui-loader</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/image</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/user-profile</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/link</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/web-components/wizard</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/list</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/using-forms</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/live-code</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/checkbox</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/modal</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/date-input</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/page-not-found</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/email-input</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/pin-popup</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/form</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/slideshow</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/form-row</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/switch-button</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/image-input</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/table</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/input</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/tabs</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/label</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/toc</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/number-input</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/toolbar</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/password-input</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/ui-loader</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/radio</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/user-profile</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/radio-group</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/wizard</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/select</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/others/barcode-generator</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/textarea</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/others/barcode-scanner</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/forms/text-input</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/cheatsheet</loc>
                     </url><url>
                         <loc>https://privatesky.xyz/?Howto/a-site-with-cardinal</loc>
                     </url><url>
@@ -197,9 +197,9 @@
                     </url><url>
                         <loc>https://privatesky.xyz/?Howto/a-web-site-with-swarms</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Start/installation</loc>
+                        <loc>https://privatesky.xyz/?start/installation</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Start/build</loc>
+                        <loc>https://privatesky.xyz/?start/build</loc>
                     </url><url>
                         <loc>https://privatesky.xyz/?glossary</loc>
                     </url><url>
