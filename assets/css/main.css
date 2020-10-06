@@ -249,9 +249,9 @@ Example of css code usable when using layout like
    <psk-app-root>
         <div class="global_container">
         <aside>
-            <app-menu item-renderer = "sidebar-renderer">
+            <psk-app-menu item-renderer="sidebar-renderer">
                 <psk-user-profile slot="before"></psk-user-profile>
-            </app-menu>
+            </psk-app-menu>
         </aside>
         <section>
             <psk-app-router></psk-app-router>
