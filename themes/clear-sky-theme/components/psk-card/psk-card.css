@@ -198,3 +198,24 @@ ol>li::before {
         font-size: 1rem;
     }
 }
+
+/* page: Cardinal/cheatsheet */
+
+.cheatsheet-item {
+    margin-bottom: 1.5em;
+}
+
+.cheatsheet-item .card.psk-card,
+.cheatsheet-item .card.psk-card .card-header,
+.cheatsheet-item .card.psk-card .card-body ul {
+    padding: 0; margin: 0;
+}
+
+.cheatsheet-item .card.psk-card .card-header h5 {
+    padding: 0.25em 0;
+    border-bottom: 3px solid #5E7FE1;
+}
+
+.cheatsheet-item .card.psk-card .card-body ul {
+    list-style-position: inside;
+}
