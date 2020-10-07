@@ -235,6 +235,10 @@
                                     "pageSrc": "Cardinal/components/psk-container.html"
                                 },
                                 {
+                                    "name": "Echo",
+                                    "pageSrc": "Cardinal/components/psk-echo.html"
+                                },
+                                {
                                     "name": "For each",
                                     "pageSrc": "Cardinal/components/psk-for-each.html"
                                 }
@@ -551,6 +555,11 @@
                             "indexed": false,
                             "name": "psk-description",
                             "tags": "psk-description"
+                        },
+                        {
+                            "indexed": false,
+                            "name": "psk-echo",
+                            "tags": "psk-echo"
                         },
                         {
                             "indexed": false,
