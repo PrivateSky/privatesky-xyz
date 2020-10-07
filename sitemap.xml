@@ -87,6 +87,8 @@
                     </url><url>
                         <loc>https://privatesky.xyz/?Cardinal/components/business-logic/container</loc>
                     </url><url>
+                        <loc>https://privatesky.xyz/?Cardinal/components/business-logic/echo</loc>
+                    </url><url>
                         <loc>https://privatesky.xyz/?Cardinal/components/business-logic/for-each</loc>
                     </url><url>
                         <loc>https://privatesky.xyz/?Cardinal/components/forms/using-forms</loc>
