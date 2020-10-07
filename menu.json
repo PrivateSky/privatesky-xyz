@@ -358,6 +358,10 @@
                                     "pageSrc": "Cardinal/components/psk-description.html"
                                 },
                                 {
+                                    "name": "Details",
+                                    "pageSrc": "Cardinal/components/psk-details.html"
+                                },
+                                {
                                     "name": "Feedback List",
                                     "pageSrc": "Cardinal/components/psk-list-feedbacks.html"
                                 },
@@ -555,6 +559,11 @@
                             "indexed": false,
                             "name": "psk-description",
                             "tags": "psk-description"
+                        },
+                        {
+                            "indexed": false,
+                            "name": "psk-details",
+                            "tags": "psk-details"
                         },
                         {
                             "indexed": false,
