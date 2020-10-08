@@ -804,7 +804,7 @@
         },
         {
             "name": "Quick Start",
-            "path": "/start",
+            "path": "/Start",
             "children": [
                 {
                     "name": "Installation",
@@ -817,7 +817,7 @@
         },
         {
             "name": "Glossary",
-            "path": "/glossary",
+            "path": "/Glossary",
             "pageSrc": "About/glossary.html"
         },
         {
