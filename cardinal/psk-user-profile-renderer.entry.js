@@ -22,14 +22,15 @@ const PskUserProfileRenderer = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h("div", { class: "profile" }, h("div", { class: "card-body text-center" }, h("p", null, h("img", { src: this.userInfo.avatar, alt: "card image" })), h("h5", { class: "card-title" }, this.userInfo.username), h("p", { class: "card-text" }, this.userInfo.email))));
+        const { avatar, username, email } = this.userInfo;
+        return (h("div", { class: "profile" }, h("div", { class: "card-body text-center" }, h("p", null, h("img", { src: avatar, alt: "card image" })), h("h5", { class: "card-title" }, username), h("p", { class: "card-text" }, email))));
     }
 };
 __decorate([
+    CustomTheme(),
     BindModel()
 ], PskUserProfileRenderer.prototype, "modelHandler", void 0);
 __decorate([
-    CustomTheme(),
     TableOfContentProperty({
         description: `This property is the user information that needs to be rendered for the user.`,
         isMandatory: false,
