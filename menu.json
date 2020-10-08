@@ -807,7 +807,8 @@
             "path": "/start",
             "children": [
                 {
-                    "name": "Installation"
+                    "name": "Installation",
+                    "tags": "installation"
                 },
                 {
                     "name": "Build"
