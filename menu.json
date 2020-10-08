@@ -186,7 +186,7 @@
                     "tags": "themes"
                 },
                 {
-                    "name": "Your application",
+                    "name": "Components",
                     "path": "/components",
                     "children": [
                         {
@@ -325,6 +325,10 @@
                         {
                             "name": "Interface",
                             "children": [
+                                {
+                                    "name": "Accordion",
+                                    "pageSrc": "Cardinal/components/psk-accordion.html"
+                                },
                                 {
                                     "name": "Attachments List",
                                     "pageSrc": "Cardinal/components/psk-attachments-list.html"
@@ -465,6 +469,11 @@
                             ]
                         },
 
+                        {
+                            "indexed": false,
+                            "name": "psk-accordion",
+                            "tags": "psk-accordion"
+                        },
                         {
                             "indexed": false,
                             "name": "psk-app-menu",
