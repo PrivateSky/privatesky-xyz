@@ -8,8 +8,7 @@
         "pagePrefix": "?",
         "historyType": "query"
     },
-    "pages": [
-        {
+    "pages": [{
             "name": "Home",
             "path": "/home",
             "pageSrc": "index.html"
@@ -17,8 +16,7 @@
         {
             "name": "Overview",
             "path": "/Overview",
-            "children": [
-                {
+            "children": [{
                     "name": "Why",
                     "tags": "why"
                 },
@@ -33,12 +31,10 @@
                 {
                     "name": "Blockchain",
                     "path": "Blockchain",
-                    "children": [
-                        {
-                            "name": "Secret Smart Contracts",
-                            "tags": "secret-smart-contracts"
-                        }
-                    ]
+                    "children": [{
+                        "name": "Secret Smart Contracts",
+                        "tags": "secret-smart-contracts"
+                    }]
                 },
                 {
                     "indexed": false,
@@ -58,8 +54,7 @@
         {
             "name": "APIs",
             "path": "/API",
-            "children": [
-                {
+            "children": [{
                     "name": "PrivateSky APIs",
                     "tags": "privatesky-apis"
                 },
@@ -73,8 +68,7 @@
                 },
                 {
                     "name": "Blockchain",
-                    "children": [
-                        {
+                    "children": [{
                             "name": "Overview",
                             "tags": "overview"
                         },
@@ -86,8 +80,7 @@
                 },
                 {
                     "name": "EDFS",
-                    "children": [
-                        {
+                    "children": [{
                             "name": "Overview"
                         },
                         {
@@ -103,8 +96,7 @@
                 },
                 {
                     "name": "API HUB",
-                    "children": [
-                        {
+                    "children": [{
                             "name": "Overview"
                         },
                         {
@@ -126,8 +118,7 @@
                 },
                 {
                     "name": "SSApps",
-                    "children": [
-                        {
+                    "children": [{
                             "name": "Overview",
                             "tags": "ss-app-overview"
                         },
@@ -144,8 +135,7 @@
                 },
                 {
                     "name": "Classes",
-                    "children": [
-                        {
+                    "children": [{
                             "name": "Seed"
                         },
                         {
@@ -162,8 +152,7 @@
         {
             "name": "Cardinal",
             "path": "/Cardinal",
-            "children": [
-                {
+            "children": [{
                     "name": "Web Components MVC",
                     "tags": "cardinal-mvc",
                     "path": "cardinal-web-components"
@@ -188,11 +177,9 @@
                 {
                     "name": "Components",
                     "path": "/components",
-                    "children": [
-                        {
+                    "children": [{
                             "name": "Routing",
-                            "children": [
-                                {
+                            "children": [{
                                     "name": "Application menu",
                                     "pageSrc": "Cardinal/components/psk-app-menu.html"
                                 },
@@ -208,8 +195,7 @@
                         },
                         {
                             "name": "Pages",
-                            "children": [
-                                {
+                            "children": [{
                                     "name": "Page",
                                     "pageSrc": "Cardinal/components/psk-page.html"
                                 },
@@ -225,8 +211,7 @@
                         },
                         {
                             "name": "Business logic",
-                            "children": [
-                                {
+                            "children": [{
                                     "name": "Condition",
                                     "pageSrc": "Cardinal/components/psk-condition.html"
                                 },
@@ -246,8 +231,7 @@
                         },
                         {
                             "name": "Forms",
-                            "children": [
-                                {
+                            "children": [{
                                     "name": "Using Forms",
                                     "pageSrc": "Cardinal/forms.html"
                                 },
@@ -311,8 +295,7 @@
                         },
                         {
                             "name": "Layout",
-                            "children": [
-                                {
+                            "children": [{
                                     "name": "Grid",
                                     "pageSrc": "Cardinal/components/psk-grid.html"
                                 },
@@ -324,14 +307,18 @@
                         },
                         {
                             "name": "Interface",
-                            "children": [
-                                {
+                            "children": [{
                                     "name": "Accordion",
                                     "pageSrc": "Cardinal/components/psk-accordion.html"
                                 },
                                 {
                                     "name": "Attachments List",
                                     "pageSrc": "Cardinal/components/psk-attachments-list.html"
+                                },
+                                {
+                                    "name": "Breadcrumb Navigator",
+                                    "pageSrc": "Cardinal/components/psk-breadcrumb-navigator.html",
+                                    "tag": "psk-breadcrumb-navigator"
                                 },
                                 {
                                     "name": "Button",
@@ -457,8 +444,7 @@
                         },
                         {
                             "name": "Others",
-                            "children": [
-                                {
+                            "children": [{
                                     "name": "Barcode Generator",
                                     "pageSrc": "Cardinal/components/psk-barcode-generator.html"
                                 },
@@ -785,8 +771,7 @@
             "name": "How to create",
             "path": "/Howto",
             "icon": "fa-cog",
-            "children": [
-                {
+            "children": [{
                     "name": "A site with Cardinal"
                 },
                 {
@@ -805,8 +790,7 @@
         {
             "name": "Quick Start",
             "path": "/Start",
-            "children": [
-                {
+            "children": [{
                     "name": "Installation",
                     "tags": "installation"
                 },
@@ -830,8 +814,7 @@
             "name": "Tools",
             "path": "/Tools",
             "icon": "fa-cog",
-            "children": [
-                {
+            "children": [{
                     "name": "Octopus",
                     "tags": "octopus"
                 },
@@ -864,8 +847,7 @@
             "name": "Development",
             "path": "/Development",
             "icon": "fa-cog",
-            "children": [
-                {
+            "children": [{
                     "name": "For PrivateSky Contributors"
                 },
                 {
@@ -909,8 +891,7 @@
                     "name": "EDFS",
                     "path": "/EDFS",
                     "icon": "fa-cog",
-                    "children": [
-                        {
+                    "children": [{
                             "name": "Brick Archives"
                         },
                         {
