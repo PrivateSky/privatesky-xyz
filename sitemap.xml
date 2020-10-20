@@ -129,6 +129,8 @@
                     </url><url>
                         <loc>https://privatesky.xyz/?Cardinal/components/interface/attachments-list</loc>
                     </url><url>
+                        <loc>https://privatesky.xyz/?Cardinal/components/interface/breadcrumb-navigator</loc>
+                    </url><url>
                         <loc>https://privatesky.xyz/?Cardinal/components/interface/button</loc>
                     </url><url>
                         <loc>https://privatesky.xyz/?Cardinal/components/interface/button-group</loc>
