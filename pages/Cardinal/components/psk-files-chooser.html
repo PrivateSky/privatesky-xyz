@@ -15,27 +15,80 @@
         <p>This component has no HTML children.</p>
     </psk-chapter>
 
-    <psk-chapter title="Code Examples">
-        <psk-code language="markup">
-            <psk-files-chooser label="Select files" accept="png">
-            </psk-files-chooser>
+    <psk-chapter title="Controller Source Code">
+        <psk-code language="Javascript">
+            import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+
+            const model = {
+                filesChooser: {
+                    label: "Select files",
+                    accept: "png",
+                    listFiles: true,
+                    filesAppend: true,
+                    files: []
+                }
+            }
+
+            export default class FilesChooserExampleController extends ContainerController {
+                constructor(element) {
+                    super(element);
+                    this.model = this.setModel(model);
+                    this.model.onChange('filesChooser', () => {
+                        let filesArray = this.model.filesChooser.files || [];
+                    });
+                    this.on('add-file-folder', (event) => {
+                        let filesArray = event.data || [];
+                    });
+                };
+            }
         </psk-code>
     </psk-chapter>
+
+    <psk-chapter title="HTML Source Code">
+        <p>Inline model:</p>
+        <psk-code language="markup">
+            <psk-container controller-name="FilesChooserExampleController">
+                <psk-files-chooser label="Select files" accept="png" list-files="true" files-append="true">
+                </psk-files-chooser>
+            </psk-container>
+        </psk-code>
+
+        <p>View model:</p>
+        <psk-code language="markup">
+            <psk-container controller-name="FilesChooserExampleController">
+                <psk-files-chooser view-model="filesChooser">
+                </psk-files-chooser>
+            </psk-container>
+        </psk-code>
+
+        <p>Event name:</p>
+        <psk-code language="markup">
+            <psk-container controller-name="FilesChooserExampleController">
+                <psk-files-chooser event-name="add-file-folder">
+                </psk-files-chooser>
+            </psk-container>
+        </psk-code>
+    </psk-chapter>
+
     <psk-chapter title="Live Example">
         <psk-example class="app-example">
             <p>In case the controller isn't set up then the component will be rendered in this fashion :</p>
             <psk-files-chooser label="Select files" accept="png">
             </psk-files-chooser>
-            <psk-container>
-                <script>
-                    console.log(controller);
-                    controller.onFilesSelect = function() {
-                        console.log('10');
-                    }
-                </script><br>
-                <p>But in case a controller with the onFilesSelect function exists and the 
-                    psk-files-chooser sends an event, then the component will be rendered like this:</p>
-                <psk-files-chooser label="Select files" accept="png" event-name="privatesky_example">
+        </psk-example>
+
+        <psk-example class="app-example">
+            <p>But in case a controller with the view-model exists then the model with stay in sync with the component files:</p>
+            <psk-container controller-name="FilesChooserExampleController">
+                <psk-files-chooser view-model="filesChooser">
+                </psk-files-chooser>
+            </psk-container>
+        </psk-example>
+
+        <psk-example class="app-example">
+            <p>But in case a controller with the event-name exists and the psk-files-chooser sends an event, then the component will be rendered like this:</p>
+            <psk-container controller-name="FilesChooserExampleController">
+                <psk-files-chooser list-files="true" files-append="true" event-name="add-file-folder">
                 </psk-files-chooser>
             </psk-container>
         </psk-example>
