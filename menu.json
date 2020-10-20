@@ -294,7 +294,7 @@
                             ]
                         },
                         {
-                            "name": "Layout",
+                            "name": "Layouting",
                             "children": [{
                                     "name": "Grid",
                                     "pageSrc": "Cardinal/components/psk-grid.html"
@@ -302,6 +302,10 @@
                                 {
                                     "name": "Row",
                                     "pageSrc": "Cardinal/components/psk-form-row.html"
+                                },
+                                {
+                                    "name": "Layout",
+                                    "pageSrc": "Cardinal/components/psk-layout.html"
                                 }
                             ]
                         },
@@ -634,6 +638,11 @@
                             "indexed": false,
                             "name": "psk-label",
                             "tags": "psk-label"
+                        },
+                        {
+                            "indexed": false,
+                            "name": "psk-layout",
+                            "tags": "psk-layout"
                         },
                         {
                             "indexed": false,
