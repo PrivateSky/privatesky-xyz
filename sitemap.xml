@@ -121,9 +121,11 @@
                     </url><url>
                         <loc>https://privatesky.xyz/?Cardinal/components/forms/text-input</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/components/layout/grid</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/layouting/grid</loc>
                     </url><url>
-                        <loc>https://privatesky.xyz/?Cardinal/components/layout/row</loc>
+                        <loc>https://privatesky.xyz/?Cardinal/components/layouting/row</loc>
+                    </url><url>
+                        <loc>https://privatesky.xyz/?Cardinal/components/layouting/layout</loc>
                     </url><url>
                         <loc>https://privatesky.xyz/?Cardinal/components/interface/accordion</loc>
                     </url><url>
