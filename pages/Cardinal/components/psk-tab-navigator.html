@@ -1,7 +1,8 @@
 <psk-page title="psk-tab-navigator">
+
     <psk-toc title="Table of contents"></psk-toc>
 
-    <psk-description>
+    <psk-description title="Summary">
         <p>This web component is an UI element. Navigation is done through TABs similar to those in the browser.</p>
         <p>Each tab is a component called <code>psk-tab</code> and the wrapper component is the present one, named <code>psk-tab-navigator</code>.</p>
         <p>It should be noted that the tab visibility control area is re-rendered when changing tabs. The actual tab which is visible uses a slot mechanism.</p>
@@ -9,15 +10,13 @@
     </psk-description>
 
     <psk-chapter title="Supported properties">
-        <psk-property-descriptor title="psk-tab-navigator properties">
-            <psk-tab-navigator data-define-props="true"></psk-tab-navigator>
+        <psk-property-descriptor title="For psk-tab-navigator">
+            <psk-tab-navigator></psk-tab-navigator>
         </psk-property-descriptor>
 
-        <!-- BEGIN -->
-        <!-- psk-property-descriptor works with only one component -->
-        <!-- this code must be generated and then copied manually -->
-        <psk-chapter title="psk-tab properties"><!----><psk-card><!----><div class="card psk-card" id="title"><div class="card-header"><h5>title<psk-copy-clipboard><!----><div class="tooltip_container"><a class="mark" href="#title">#</a><span class="copy-tooltip">Copy to clipboard</span></div></psk-copy-clipboard></h5></div><div class="card-body"><div class="sub-card"><p class="subtitle"><i>title: string (mandatory)</i></p><p>This property is used as the tab title.</p><p>psk-tab-navigator will use this title in order to generate the control area.</p></div></div></div></psk-card></psk-chapter>
-        <!-- END -->
+        <psk-property-descriptor title="For psk-tab">
+            <psk-tab></psk-tab>
+        </psk-property-descriptor>
     </psk-chapter>
 
     <psk-chapter title="Examples">
@@ -105,4 +104,5 @@
             </psk-example>
         </psk-chapter>
     </psk-chapter>
+
 </psk-page>

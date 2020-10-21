@@ -506,6 +506,11 @@
                         },
                         {
                             "indexed": false,
+                            "name": "psk-breadcrumb-navigator",
+                            "tags": "psk-breadcrumb-navigator"
+                        },
+                        {
+                            "indexed": false,
                             "name": "psk-button",
                             "tags": "psk-button"
                         },

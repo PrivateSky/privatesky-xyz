@@ -1,20 +1,16 @@
 <psk-page title="psk-list-feedbacks">
+
     <psk-container controller-name="FeedbackListController">
 
         <psk-toc title="Table of contents"></psk-toc>
 
-        <psk-description>
-            <p>This componentent is intended to be used as a notification pool in order to keep the user experince more to
-                his liking.</p>
+        <psk-description title="Summary">
+            <p>This component is intended to be used as a notification pool in order to keep the user experience more to his liking.</p>
             <p>In order for everything to work smoothly this component uses a pool of
                 <code><span class="nt">&lt;psk-ui-toast/&gt;</span></code> and
                 <code><span class="nt">&lt;psk-ui-alert/&gt;</span></code>.</p>
-            <p>For beggining you could send a <code>message</code> or an array of <code>message</code> which are separated
-                in distinctive notifications(the <code>message</code> is not mandatory) and a <code>name</code> for each
-                message(again,this is not mandatory)
-                and the type of feedback you want to show.</p>
-            <p>To display messages using this component a controller must listen for the <code>openFeedback</code> event triggered by the <code>psk-list-feedbacks</code>
-            in order to receive the callback used to send the messages:</p>
+            <p>For beginning you could send a <code>message</code> or an array of <code>message</code> which are separated in distinctive notifications(the <code>message</code> is not mandatory) and a <code>name</code> for each message(again,this is not mandatory) and the type of feedback you want to show.</p>
+            <p>To display messages using this component a controller must listen for the <code>openFeedback</code> event triggered by the <code>psk-list-feedbacks</code> in order to receive the callback used to send the messages:</p>
             <psk-chapter title="Controller Source Code">
                 <psk-code language="Javascript">
                     import ContainerController from "../../../cardinal/controllers/base-controllers/ContainerController.js";
@@ -110,9 +106,9 @@
             <p>The toast alert has a timer component that tells the user when that alert was created (Right now, 1 minute ago, 10 minutes ago,etc.) 
                 and since the alerts can be created but not seen(if the toast pool is full(<code><span class="nt">messages-to-display</span></code> property).).</p>
         </psk-description>
+
         <psk-property-descriptor title="Supported properties">
-            <psk-list-feedbacks data-define-props="true">
-            </psk-list-feedbacks>
+            <psk-list-feedbacks></psk-list-feedbacks>
         </psk-property-descriptor>
 
         <psk-controller-descriptor title="Events that supports Controller">
@@ -145,6 +141,7 @@
                 </psk-list-feedbacks>
             </psk-code>
         </psk-chapter>
+
         <psk-chapter  title="Double Alert Example">
             <psk-example class="app-example">
                 <psk-button event-name="alerts-pool-test", event-data="toast,alert-danger">Show a pool of alerts</psk-button>
@@ -165,5 +162,7 @@
                     <code><span class="nt">toast</span></code> to explain exactly what the problem is.</p>
             </psk-example>
         </psk-chapter>
+
     </psk-container>
+
 </psk-page>

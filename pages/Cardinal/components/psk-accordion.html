@@ -1,20 +1,19 @@
 <psk-page title="psk-accordion">
+
     <psk-toc title="Table of contents"></psk-toc>
 
-    <psk-description title="Description">
+    <psk-description title="Summary">
         <p>This web component is an UI element. The component was created to simulate an accordion of collapsible cards.</p>
     </psk-description>
 
     <psk-chapter title="Supported properties">
-        <psk-property-descriptor title="psk-accordion">
-            <psk-accordion data-define-props="true" hidden></psk-accordion>
+        <psk-property-descriptor title="For psk-accordion">
+            <psk-accordion></psk-accordion>
         </psk-property-descriptor>
 
-        <!-- BEGIN -->
-        <!-- psk-property-descriptor works with only one component -->
-        <!-- this code must be generated and then copied manually -->
-        <psk-chapter title="psk-accordion-item"> <div class="card psk-card" id="title"> <div class="card-header"> <h5> title <psk-copy-clipboard class="hydrated"> <div class="tooltip_container"><a class="mark" href="#title">#</a><span class="copy-tooltip">Copy to clipboard</span></div></psk-copy-clipboard> </h5> </div><div class="card-body"> <div class="sub-card"> <p class="subtitle"><i>title: string (mandatory)</i></p><p>This property is used as title or summary for collapsable section.</p></div></div></div><div class="card psk-card" id="opened"> <div class="card-header"> <h5> opened <psk-copy-clipboard class="hydrated"> <div class="tooltip_container"><a class="mark" href="#opened">#</a><span class="copy-tooltip">Copy to clipboard</span></div></psk-copy-clipboard> </h5> </div><div class="card-body"> <div class="sub-card"> <p class="subtitle"><i>opened?: boolean (optional)</i></p><p>This property decides if the content of the component is visible / hidden.</p><p><i>Default value: false</i></p></div></div></div></psk-chapter>
-        <!-- END -->
+        <psk-property-descriptor title="For psk-accordion-item">
+            <psk-accordion-item></psk-accordion-item>
+        </psk-property-descriptor>
     </psk-chapter>
 
     <psk-chapter title="Examples">
@@ -72,4 +71,5 @@
             </psk-example>
         </psk-chapter>
     </psk-chapter>
+
 </psk-page>

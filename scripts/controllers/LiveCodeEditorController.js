@@ -16,8 +16,7 @@ const model = {
             </psk-description>
 
             <psk-property-descriptor title="Supported properties">
-                <psk-code data-define-props="true">
-                </psk-code>
+                <psk-code></psk-code>
             </psk-property-descriptor>
 
             <psk-chapter title="HTML Children">

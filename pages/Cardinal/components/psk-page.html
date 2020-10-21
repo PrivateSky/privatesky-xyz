@@ -2,13 +2,11 @@
 
     <psk-toc title="Table of contents"></psk-toc>
 
-    <psk-description>
+    <psk-description title="Summary">
         <p>This component is the most important component for documentation as it renders the entire page.</p>
         <p>This component renders everything on UI starting with it's <code>title</code> property.</p>
-        <span>For loading it uses <psk-link tag="ui-loader">psk-ui-loader</psk-link> as a mean to
-            mark the loading process.</span>
-        <span><code>Psk-page</code> listens to all the <code>psk-send-chapter</code> events sent by the <psk-link
-                tag="psk-chapter">psk-chapter</psk-link>.</span>
+        <span>For loading it uses <psk-link tag="ui-loader">psk-ui-loader</psk-link> as a mean to mark the loading process.</span>
+        <span><code>Psk-page</code> listens to all the <code>psk-send-chapter</code> events sent by the <psk-link tag="psk-chapter">psk-chapter</psk-link>.</span>
         <p>For every event sent there are two possible situations that affects the hierarchy of chapters:</p>
         <ul>
             <li>The hierarchy is not instantiated and therefore it will be created.</li>
@@ -17,8 +15,7 @@
     </psk-description>
 
     <psk-property-descriptor title="Supported properties">
-        <psk-page data-define-props="true">
-        </psk-page>
+        <psk-page></psk-page>
     </psk-property-descriptor>
 
     <psk-chapter title="HTML Children">
@@ -30,6 +27,7 @@
             <psk-page title="PSK-page Example"></psk-page>
         </psk-code>
     </psk-chapter>
+
     <psk-chapter  title="Live Example">
         <psk-example class="app-example">
             <psk-page title="PSK-page Example">

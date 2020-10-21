@@ -1,36 +1,28 @@
 <psk-page title="psk-container">
 
-    <psk-toc title="Table of contents">
-    </psk-toc>
+    <psk-toc title="Table of contents"></psk-toc>
 
-    <psk-description>
-        <p>This component uses the controller passed in <code>controllerName</code>(inside the
-            <code>ControllerFactory</code> service) or the default <code>Controller</code>.</p>
+    <psk-description title="Summary">
+        <p>This component uses the controller passed in <code>controllerName</code>(inside the <code>ControllerFactory</code> service) or the default <code>Controller</code>.</p>
         <p>It can also render javascript code inside the component if it is written between the <code>script</code>
             tags:
             <psk-code language="markup">
                 <script>
-                    //Your JavaScript code here
+                    // Your JavaScript code here
                 </script>
             </psk-code>
         </p>
-        <p>Inside a <code>psk-container</code> component any other <code>psk</code> components can be used,even the
-            psk-container itself.</p>
-        <p>In case there is an already created component , and the user wants to provide the HTML context to the
-            container, we implemented a feature that will begin the searching of a controller script from there:
-            <code>parentHost</code>.</p>
-        <span>It also uses <psk-link tag="psk-page-loader">psk-page-loader</psk-link> only if the
-            <code> htmlFilePath</code> property is provided.</span>
+        <p>Inside a <code>psk-container</code> component any other <code>psk</code> components can be used,even the psk-container itself.</p>
+        <p>In case there is an already created component , and the user wants to provide the HTML context to the container, we implemented a feature that will begin the searching of a controller script from there: <code>parentHost</code>.</p>
+        <p>It also uses <psk-link tag="psk-page-loader">psk-page-loader</psk-link> only if the <code> htmlFilePath</code> property is provided.</p>
     </psk-description>
 
     <psk-property-descriptor title="Supported properties">
-        <psk-container data-define-props="true">
-        </psk-container>
+        <psk-container></psk-container>
     </psk-property-descriptor>
 
     <psk-chapter title="HTML Children">
-        <p>This component has a <code>slot</code> tag so the data you enter between the tags can be rendered before the
-            content obtained from the <code>htmlFilePath</code> page (if the property is given).</p>
+        <p>This component has a <code>slot</code> tag so the data you enter between the tags can be rendered before the content obtained from the <code>htmlFilePath</code> page (if the property is given).</p>
     </psk-chapter>
 
     <psk-chapter title="HtmlFilePath Property Code Example">
@@ -39,6 +31,7 @@
             </psk-container>
         </psk-code>
     </psk-chapter>
+
     <psk-chapter title="HtmlFilePath Property Example">
         <psk-example>
             <psk-container html-file-path="pages/404.html">
@@ -139,4 +132,5 @@
             </psk-container>
         </psk-example>
     </psk-chapter>
+
 </psk-page>

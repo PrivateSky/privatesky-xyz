@@ -1,7 +1,8 @@
 <psk-page title="psk-modal">
+
     <psk-toc title="Table of contents"></psk-toc>
 
-    <psk-description>
+    <psk-description title="Summary">
         <p>This component is intended to be used when a modal is needed in the application.</p>
         <p>By default, the modal will be closed and it will have no content.</p>
         <p>There are two mechanisms by which the psk-modal component can be controlled. One of them is through management of an attribute called <code>opened</code> in Application or Page Controller and the other is via <code>showModal</code> method inherited from ContainerController of Cardinal.</p>
@@ -10,8 +11,7 @@
     </psk-description>
 
     <psk-property-descriptor title="Supported properties">
-        <psk-modal data-define-props="true">
-        </psk-modal>
+        <psk-modal></psk-modal>
     </psk-property-descriptor>
 
     <psk-event-descriptor title="Event Description">
@@ -196,4 +196,5 @@
             </psk-example>
         </psk-chapter>
     </psk-chapter>
+
 </psk-page>
