@@ -7,9 +7,15 @@
         <p>It must be used like <psk-link tag="psk-page">psk-page</psk-link> but only for mobile devices.</p>
     </psk-description>
 
-    <psk-property-descriptor title="Supported properties">
-        <psk-mobile></psk-mobile>
-    </psk-property-descriptor>
+    <psk-chapter title="Supported properties">
+        <psk-property-descriptor title="For psk-mobile">
+            <psk-mobile></psk-mobile>
+        </psk-property-descriptor>
+
+        <psk-property-descriptor title="For psk-button-link">
+            <psk-button-link></psk-button-link>
+        </psk-property-descriptor>
+    </psk-chapter>
 
     <psk-chapter title="Methods">
         <p>This component has two <strong>asynchronous</strong> methods called <code>toggleSidebar</code> and <code>toggleOptions</code>.</p>
@@ -56,10 +62,10 @@
             <psk-example class="mobile-example">
                 <psk-mobile mode="demo" id="demo-footer">
                     <div slot="footer">
-                        <psk-button-link name="Cloud" icon="cloud" page="Cardinal/web-components/mobile"></psk-button-link>
-                        <psk-button-link name="Messages" icon="envelope" page="Cardinal/web-components/mobile"></psk-button-link>
-                        <psk-button-link name="Bugs" icon="bug" page="Cardinal/web-components/mobile"></psk-button-link>
-                        <psk-button-link name="Account" icon="user" page="Cardinal/web-components/mobile"></psk-button-link>
+                        <psk-button-link name="Cloud" icon="cloud" page="."></psk-button-link>
+                        <psk-button-link name="Messages" icon="envelope" page="."></psk-button-link>
+                        <psk-button-link name="Bugs" icon="bug" page="."></psk-button-link>
+                        <psk-button-link name="Account" icon="user" page="."></psk-button-link>
                     </div>
                 </psk-mobile>
             </psk-example>
@@ -82,9 +88,9 @@
             <psk-example class="mobile-example">
                 <psk-mobile mode="demo" title="Options" disable-sidebar id="demo-options">
                     <div slot="options">
-                        <psk-link page="Cardinal/web-components/mobile">Option 1</psk-link>
-                        <psk-button-link page="Cardinal/web-components/mobile">Option 2</psk-button-link>
-                        <psk-button-link name="Option 3" page="Cardinal/web-components/mobile"></psk-button-link>
+                        <psk-link page="page/option-1">Option 1</psk-link>
+                        <psk-button-link page="page/option-2">Option 2</psk-button-link>
+                        <psk-button-link name="Option 3" page="page/option-3"></psk-button-link>
                     </div>
                 </psk-mobile>
             </psk-example>
@@ -163,10 +169,10 @@
             getModel() {
                 return {
                     footer: [
-                        { name: 'Home', icon: 'home', page: 'mobile/home' },
-                        { name: 'Tasks', icon: 'tasks', page: 'mobile/tasks' },
-                        { name: 'History', icon: 'history', page: 'mobile/history' },
-                        { name: 'Settings', icon: 'cog', page: 'mobile/settings' }
+                        { name: 'Home', icon: 'home', page: 'pages/home' },
+                        { name: 'Tasks', icon: 'tasks', page: 'pages/tasks' },
+                        { name: 'History', icon: 'history', page: 'pages/history' },
+                        { name: 'Settings', icon: 'cog', page: 'pages/settings' }
                     ],
                     options: [
                         { name: 'About', page: 'about' },

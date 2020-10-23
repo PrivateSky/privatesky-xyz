@@ -4,43 +4,19 @@ class MobileController extends ContainerController {
     getModel() {
         return {
             footer: [
-                {
-                    name: 'Home', icon: 'home',
-                    page: 'mobile/home'
-                },
-                {
-                    name: 'Tasks', icon: 'tasks',
-                    page: 'mobile/tasks'
-                },
-                {
-                    name: 'History', icon: 'history',
-                    page: 'mobile/history'
-                },
-                {
-                    name: 'Settings', icon: 'cog',
-                    page: 'mobile/settings'
-                }
+                { name: 'Home', icon: 'home', page: 'pages/home' },
+                { name: 'Tasks', icon: 'tasks', page: 'pages/tasks' },
+                { name: 'History', icon: 'history', page: 'pages/history' },
+                { name: 'Settings', icon: 'cog', page: 'pages/settings' }
             ],
             options: [
-                {
-                    name: 'About',
-                    page: 'about'
-                },
-                {
-                    name: 'Glossary',
-                    page: 'glossary'
-                }
+                { name: 'About', page: 'about' },
+                { name: 'Glossary', page: 'glossary' }
             ],
             sidebar: [
-                {
-                    name: 'Github',
-                },
-                {
-                    name: 'Android'
-                },
-                {
-                    name: 'iOS'
-                }
+                { name: 'Github' },
+                { name: 'Android' },
+                { name: 'iOS' }
             ]
         }
     }
