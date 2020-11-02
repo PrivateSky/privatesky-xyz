@@ -777,7 +777,8 @@
                     ]
                 },
                 {
-                    "name": "Cheatsheet"
+                    "name": "Cheatsheet",
+                    "tags": "cheatsheet"
                 }
             ]
         },
@@ -787,6 +788,9 @@
             "icon": "fa-cog",
             "children": [{
                     "name": "A site with Cardinal"
+                },
+                {
+                  "name": "A components library with Cardinal"
                 },
                 {
                     "name": "A SSApp",
