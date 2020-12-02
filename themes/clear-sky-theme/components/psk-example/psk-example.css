@@ -25,3 +25,34 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
     }
 }
+
+/* mobile-showcase */
+
+:host(.mobile-showcase) .card.psk-card {
+    padding: 0;
+}
+
+:host(.mobile-showcase) .card-body {
+    background-color: #5E7FE111;
+    width: 100%; height: 100%;
+}
+
+:host(.mobile-showcase) .card.psk-card {
+    height: 100%;
+}
+
+:host(.mobile-showcase) .card-body {
+    padding: 0;
+}
+
+:host(.mobile-showcase) .card-body {
+    overflow: hidden;
+}
+
+:host(.mobile-showcase) .card-body .example-content {
+    margin: 0 auto; padding: 0;
+    width: 100%; height: 100%;
+    max-width: 380px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
