@@ -357,6 +357,10 @@
                                     "pageSrc": "Cardinal/components/psk-details.html"
                                 },
                                 {
+                                    "name": "Draggable List",
+                                    "pageSrc": "Cardinal/components/psk-draggable-list.html"
+                                },
+                                {
                                     "name": "Feedback List",
                                     "pageSrc": "Cardinal/components/psk-list-feedbacks.html"
                                 },
@@ -568,6 +572,11 @@
                             "indexed": false,
                             "name": "psk-details",
                             "tags": "psk-details"
+                        },
+                        {
+                            "indexed": false,
+                            "name": "psk-draggable-list",
+                            "tags": "psk-draggable-list"
                         },
                         {
                             "indexed": false,
