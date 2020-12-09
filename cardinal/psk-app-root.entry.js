@@ -1,5 +1,6 @@
 import { r as registerInstance, h, i as Host, g as getElement } from './index-bb32d9fe.js';
-import { D as DefaultApplicationController } from './DefaultApplicationController-858ff924.js';
+import { D as DefaultApplicationController } from './DefaultApplicationController-36ac5670.js';
+import './fetch-04b04aa3.js';
 import { M as MOBILE_MAX_WIDTH } from './constants-507b64b1.js';
 import './utilFunctions-74de6735.js';
 import { T as TableOfContentProperty } from './TableOfContentProperty-de8188be.js';

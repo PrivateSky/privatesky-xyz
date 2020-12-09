@@ -1,8 +1,9 @@
 import { r as registerInstance, h, g as getElement } from './index-bb32d9fe.js';
+import './fetch-04b04aa3.js';
 import './constants-507b64b1.js';
 import './utilFunctions-74de6735.js';
 import { B as BindModel } from './BindModel-524e1a2c.js';
-import { C as CustomTheme } from './CustomTheme-f57ed858.js';
+import { C as CustomTheme } from './CustomTheme-af95b9a9.js';
 import { T as TableOfContentProperty } from './TableOfContentProperty-de8188be.js';
 import { N as NavigatinTrackerService } from './NavigationTrackerService-e3e04b6b.js';
 
@@ -22,6 +23,11 @@ class SSAppInstancesRegistry {
 
   constructor(){
     this.registry = [];
+    if(window['$$'] && $$.SSAPP_CONTEXT && $$.SSAPP_CONTEXT.BASE_URL && $$.SSAPP_CONTEXT.SEED) {
+        // the app is handled via server to we don't need to initialise the swarms
+        return;
+    }
+
     if(typeof $$.flows === "undefined"){
       require('callflow').initialise();
     }
@@ -150,6 +156,7 @@ const PskSelfSovereignApp = class {
         catch (e) { }
         finally {
             basePath = currentWindow.location.origin + currentWindow.location.pathname;
+            basePath = basePath.replace("index.html", "");
             if (basePath[basePath.length - 1] !== '/') {
                 basePath += '/';
             }
@@ -159,7 +166,10 @@ const PskSelfSovereignApp = class {
                     .map((key) => key + "=" + this.parsedParams[key])
                     .join('&');
             }
-            const iframeSrc = basePath + "iframe/" + this.digestKeySsiHex + (queryParams.length > 1 ? queryParams : "");
+            // we are in a context in which SW are not enabled so the iframe must be identified by the seed
+            const iframeKeySsi = $$.SSAPP_CONTEXT && $$.SSAPP_CONTEXT.BASE_URL && $$.SSAPP_CONTEXT.SEED ? this.seed : this.digestKeySsiHex;
+            const iframeSrc = basePath + "iframe/" + iframeKeySsi + (queryParams.length > 1 ? queryParams : "");
+            console.log("Loading sssap in: " + iframeSrc);
             return (h("iframe", { "landing-page": this.landingPath, frameborder: "0", style: {
                     overflow: "hidden",
                     height: "100%",

@@ -1,7 +1,8 @@
 import { r as registerInstance, f as createEvent, h, g as getElement } from './index-bb32d9fe.js';
+import './fetch-04b04aa3.js';
 import { f as TOOLTIP_COPIED_TEXT, T as TOOLTIP_TEXT } from './constants-507b64b1.js';
 import { s as scrollToElement, a as closestParentElement, g as normalizeElementId } from './utilFunctions-74de6735.js';
-import { C as CustomTheme } from './CustomTheme-f57ed858.js';
+import { C as CustomTheme } from './CustomTheme-af95b9a9.js';
 import { T as TableOfContentEvent } from './TableOfContentEvent-f33bf2c4.js';
 import { T as TableOfContentProperty } from './TableOfContentProperty-de8188be.js';
 

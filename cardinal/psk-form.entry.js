@@ -3,9 +3,10 @@ import './active-router-89a25b91.js';
 import { i as injectHistory } from './index-f0762390.js';
 import './match-path-760e1797.js';
 import './location-utils-fea12957.js';
+import './fetch-04b04aa3.js';
 import './constants-507b64b1.js';
 import './utilFunctions-74de6735.js';
-import { C as CustomTheme } from './CustomTheme-f57ed858.js';
+import { C as CustomTheme } from './CustomTheme-af95b9a9.js';
 import { T as TableOfContentProperty } from './TableOfContentProperty-de8188be.js';
 import { C as ControllerRegistryService } from './ControllerRegistryService-229f368f.js';
 

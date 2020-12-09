@@ -1,8 +1,9 @@
 import { r as registerInstance, h, g as getElement } from './index-bb32d9fe.js';
+import './fetch-04b04aa3.js';
 import './constants-507b64b1.js';
 import { s as scrollToElement, c as createCustomEvent } from './utilFunctions-74de6735.js';
 import { B as BindModel } from './BindModel-524e1a2c.js';
-import { C as CustomTheme } from './CustomTheme-f57ed858.js';
+import { C as CustomTheme } from './CustomTheme-af95b9a9.js';
 import { T as TableOfContentProperty } from './TableOfContentProperty-de8188be.js';
 import { h as highlightChapter } from './highlightChapter-84cd936d.js';
 import { N as NavigatinTrackerService } from './NavigationTrackerService-e3e04b6b.js';

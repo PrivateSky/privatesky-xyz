@@ -1,7 +1,8 @@
 import { r as registerInstance, f as createEvent, h } from './index-bb32d9fe.js';
+import './fetch-04b04aa3.js';
 import './constants-507b64b1.js';
 import './utilFunctions-74de6735.js';
-import { C as CustomTheme } from './CustomTheme-f57ed858.js';
+import { C as CustomTheme } from './CustomTheme-af95b9a9.js';
 import { T as TableOfContentEvent } from './TableOfContentEvent-f33bf2c4.js';
 import { T as TableOfContentProperty } from './TableOfContentProperty-de8188be.js';
 
@@ -93,6 +94,10 @@ const PskAppRouter = class {
             this.notFoundRoute = this.routesItems[0].path;
         }
         let basePathname = new URL(window['basePath']).pathname;
+        if (window['$$'] && $$.SSAPP_CONTEXT && $$.SSAPP_CONTEXT.BASE_URL && $$.SSAPP_CONTEXT.SEED) {
+            // if we have a BASE_URL then remove this from basePathname
+            basePathname = basePathname.replace(new URL($$.SSAPP_CONTEXT.BASE_URL).pathname, "");
+        }
         let landingPagePaths = [basePathname];
         if (basePathname.length > 1 && basePathname.endsWith("/")) {
             basePathname = basePathname.substring(0, basePathname.length - 1);

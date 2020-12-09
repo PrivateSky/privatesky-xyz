@@ -1,8 +1,9 @@
 import { r as registerInstance, h, i as Host, g as getElement } from './index-bb32d9fe.js';
+import { e as executeFetch } from './fetch-04b04aa3.js';
 import './constants-507b64b1.js';
 import './utilFunctions-74de6735.js';
 import { B as BindModel } from './BindModel-524e1a2c.js';
-import { C as CustomTheme } from './CustomTheme-f57ed858.js';
+import { C as CustomTheme } from './CustomTheme-af95b9a9.js';
 import { T as TableOfContentProperty } from './TableOfContentProperty-de8188be.js';
 
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -31,7 +32,7 @@ const PskImgInput = class {
             let reader = new FileReader();
             reader.onload = (e) => {
                 let imageDataUrl = e.target.result;
-                fetch(imageDataUrl)
+                executeFetch(imageDataUrl)
                     .then(res => res.arrayBuffer())
                     .then((imageContent) => {
                     changeEvent["data"] = imageContent;

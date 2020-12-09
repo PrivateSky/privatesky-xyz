@@ -1,8 +1,9 @@
 import { r as registerInstance, h, g as getElement } from './index-bb32d9fe.js';
+import './fetch-04b04aa3.js';
 import './constants-507b64b1.js';
 import { k as stringToBoolean } from './utilFunctions-74de6735.js';
 import { B as BindModel } from './BindModel-524e1a2c.js';
-import { C as CustomTheme } from './CustomTheme-f57ed858.js';
+import { C as CustomTheme } from './CustomTheme-af95b9a9.js';
 import { T as TableOfContentProperty } from './TableOfContentProperty-de8188be.js';
 
 // This file is part of the bwip-js project available at:
