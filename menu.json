@@ -413,6 +413,10 @@
                                     "pageSrc": "Cardinal/components/psk-pin-popup.html"
                                 },
                                 {
+                                    "name": "Progress",
+                                    "pageSrc": "Cardinal/components/psk-progress.html"
+                                },
+                                {
                                     "name": "Slideshow",
                                     "pageSrc": "Cardinal/components/psk-slideshow.html"
                                 },
@@ -712,6 +716,11 @@
                             "indexed": false,
                             "name": "psk-pin-popup",
                             "tags": "psk-pin-popup"
+                        },
+                        {
+                            "indexed": false,
+                            "name": "psk-progress",
+                            "tags": "psk-progress"
                         },
                         {
                             "indexed": false,
