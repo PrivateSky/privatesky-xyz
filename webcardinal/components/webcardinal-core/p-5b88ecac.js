@@ -1,0 +1,1 @@
+const a="data-model",s="@",e="$",t=["_saveElement"],o=["webc-for","webc-if","webc-template"],r="psk-",d="data-for",f="no-data",n="data-if",c="true",b="false",l={NONE:"none",WARN:"warn",ERROR:"error"};export{n as D,l as L,s as M,r as P,t as S,e as T,o as a,a as b,d as c,c as d,b as e,f}

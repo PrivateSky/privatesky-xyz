@@ -1,4 +1,4 @@
-import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+const { WebcController } = WebCardinal.controllers;
 
 const model = {
     sectionTitle: {
@@ -37,10 +37,10 @@ const model = {
     }
 };
 
-export default class TestFormChildrenController extends ContainerController {
+export default class TestFormChildrenController extends WebcController {
     constructor(element) {
         super(element);
-        this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+        this.setModel(JSON.parse(JSON.stringify(model)));
         
         this.feedbackEmitter = null;
 

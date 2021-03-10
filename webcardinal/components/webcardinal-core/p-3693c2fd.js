@@ -1,0 +1,1 @@
+import{g as t}from"./p-751bf9a8.js";function n(){return(n,o)=>{const{componentWillLoad:i}=n;n.componentWillLoad=function(){return this[o]=t(this),null==i?void 0:i.call(this)}}}export{n as H}

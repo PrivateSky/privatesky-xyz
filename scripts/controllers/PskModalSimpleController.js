@@ -1,4 +1,4 @@
-import ModalController from '../../../cardinal/controllers/base-controllers/ModalController.js';
+import ModalController from '/cardinal/base/controllers/ModalController.js';
 
 export default class PskModalSimpleController extends ModalController {
     getModel() {
@@ -11,7 +11,7 @@ export default class PskModalSimpleController extends ModalController {
 
     constructor(element) {
         super(element);
-        this.model = this.setModel(this.getModel());
+        this.setModel(this.getModel());
 
         this.on('openModal', _ => this.model.modal.opened = true);
         this.on('closeModal', _ => this.model.modal.opened = false);

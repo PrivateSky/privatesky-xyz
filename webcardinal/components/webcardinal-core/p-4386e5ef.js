@@ -1,0 +1,1 @@
+const t={getController:async t=>{const{controllers:r,basePath:o}=window.WebCardinal;if(r[t])return r[t];try{const r=await import(`${o}/scripts/controllers/${t}.js`);return r.default||r}catch(t){return console.error(t),null}}};export{t as C}

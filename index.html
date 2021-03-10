@@ -1,47 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NW4R664');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162717993-1"></script>
-    <script>
-         window.dataLayer = window.dataLayer || [];
-         function gtag(){dataLayer.push(arguments);}
-         gtag('js', new Date());
-         gtag('config', 'UA-162717993-1');
-    </script>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="x-ua-compatible" content="IE=Edge">
-    <meta name="Description" content="PrivateSky:PrivateSky: A bridge between blockchains and cloud or enterprise software">
-    <meta name="google-site-verification" content="LyhlF9GagOo7ZqqlC8Ne1nqqpkRLrxiq9qAeuUO4gwk" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
     <title>PrivateSky Development Hub</title>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- WebCardinal dist -->
+    <script type="module" src="/webcardinal/webcardinal.js"></script>
+    <link rel="stylesheet" href="/webcardinal/webcardinal.css">
+
+    <!-- local assets -->
     <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/privatesky.png">
     <link rel="manifest" href="/manifest.json">
-    <link href="/assets/css/main.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
-
 <body>
-    <psk-app-root></psk-app-root>
-
-    <script src="/scripts/browserSupport.js"></script>
-
-<!--    <script src="/scripts/privatesky/webshims.js"></script>-->
-<!--    <script src="/scripts/privatesky/overwriteRequire.js"></script>-->
-
-    <script type="module" src="/cardinal/cardinal.esm.js"></script>
+    <webc-app-root></webc-app-root>
 </body>
-
 </html>

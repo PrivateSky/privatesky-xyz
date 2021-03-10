@@ -1,25 +1,6 @@
-dist/
-!www/favicon.ico
-
-*.sw[mnpcod]
-*.log
-*.lock
-*.tmp
-*.tmp.*
-log.txt
-*.sublime-project
-*.sublime-workspace
-
 .idea/
 .vscode/
-.sass-cache/
-.versions/
-.vimrc.local
+.webcardinal/
 node_modules/
-/dev/
-$RECYCLE.BIN/
 
-.DS_Store
-Thumbs.db
-UserInterfaceState.xcuserstate
-.env
+latest-change-set.txt

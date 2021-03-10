@@ -1,2 +1,0 @@
-    refactor design for navigator and removed wrong validation
-    psk-mobile

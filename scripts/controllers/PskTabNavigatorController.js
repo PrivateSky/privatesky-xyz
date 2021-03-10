@@ -1,27 +1,29 @@
-import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+const { WebcController } = WebCardinal.controllers;
 
 const TAB_MIN_VALUE = 0;
 const TAB_MAX_VALUE = 4;
 
-export default class PskTabNavigatorController extends ContainerController {
-    constructor(element) {
-        super(element);
+class PskTabNavigatorController extends WebcController {
+    initializeModel = () => ({
+        tabNavigator: {
+            selected: 2,
+            tabNavigationDisabled: true
+        }
+    })
 
-        this.model = this.setModel({
-            tabNavigator: {
-                selected: 2,
-                tabNavigationDisabled: true
-            }
-        });
+    constructor(element, history) {
+        super(element, history);
 
-        this.on('prev', (event) => {
+        this.setModel(this.initializeModel());
+
+        this.on('prev', () => {
             let currentIndexSelected = this.model.tabNavigator.selected;
             if (currentIndexSelected > TAB_MIN_VALUE) {
                 this.model.tabNavigator.selected = currentIndexSelected - 1;
             }
         });
 
-        this.on('next', (event) => {
+        this.on('next', () => {
             let currentIndexSelected = this.model.tabNavigator.selected;
             if (currentIndexSelected < TAB_MAX_VALUE) {
                 this.model.tabNavigator.selected = currentIndexSelected + 1;
@@ -29,3 +31,5 @@ export default class PskTabNavigatorController extends ContainerController {
         });
     }
 }
+
+export default PskTabNavigatorController;

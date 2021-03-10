@@ -1,4 +1,4 @@
-import ContainerController from "../../../cardinal/controllers/base-controllers/ContainerController.js";
+const { WebcController } = WebCardinal.controllers;
 
 const model = {
     wizardSteps : [{
@@ -16,10 +16,10 @@ const model = {
     }]
 }
 
-export default class WizardController extends ContainerController {
+export default class WizardController extends WebcController {
     constructor(element) {
         super(element);
-        this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+        this.setModel(JSON.parse(JSON.stringify(model)));
 
         let wizardConfiguration = null
 

@@ -1,4 +1,4 @@
-import ContainerController from "../../cardinal/controllers/base-controllers/ContainerController.js";
+const { WebcController } = WebCardinal.controllers;
 
 const model = {
     orangeProgressModel: {
@@ -21,10 +21,10 @@ const model = {
     }
 }
 
-export default class ProgressExampleController extends ContainerController {
+export default class ProgressExampleController extends WebcController {
     constructor(element) {
         super(element);
-        this.model = this.setModel(model);
+        this.setModel(model);
         this.on('increase-progress', () => {
             this.model.orangeProgressModel.value++;
             this.model.greenProgressModel.value++;

@@ -1,4 +1,4 @@
-import ContainerController from "../../../cardinal/controllers/base-controllers/ContainerController.js";
+const { WebcController } = WebCardinal.controllers;
 
 const model = {
     form: {
@@ -10,10 +10,10 @@ const model = {
     }
 };
 
-export default class ExampleController extends ContainerController {
+export default class ExampleController extends WebcController {
     constructor(element) {
         super(element);
-        this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+        this.setModel(JSON.parse(JSON.stringify(model)));
         this.feedbackEmitter = null;
         
         // Listen for the 'openFeedback' event to receive a handle to the
