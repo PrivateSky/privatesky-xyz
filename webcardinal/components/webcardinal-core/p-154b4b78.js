@@ -1,0 +1,1 @@
+import{A as o}from"./p-b2df645c.js";function i(i){o.injectProps(i,["history","location"])}export{i}
