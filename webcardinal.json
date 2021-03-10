@@ -850,7 +850,8 @@
         },
         {
           "name": "Smoke Tests Results",
-          "src": "https://raw.githubusercontent.com/PrivateSky/privatesky/test_reports/tests/psk-smoke-testing/testReport.html"
+          "src": "https://raw.githubusercontent.com/PrivateSky/privatesky/test_reports/tests/psk-smoke-testing/testReport.html",
+          "loader": "iframe"
         }
       ]
     }
