@@ -50,7 +50,7 @@
     {
       "name": "APIs",
       "path": "./api",
-      "src": "./API",
+      "src": "./api",
       "children": [
         {
           "name": "PrivateSky APIs"
