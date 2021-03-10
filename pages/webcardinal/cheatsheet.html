@@ -1,0 +1,24 @@
+<style>
+    :root {
+        --webcardinal-core-color: #2d4a64;
+        --cardinal-barcode-color: #473e39;
+        --cardinal-core-color: #d2ab63;
+        --cardinal-essentials-color: #369b4d;
+        --cardinal-wiki-color: #7f4c91;
+        --cardinal-forms-color: #4dd0e1;
+    }
+</style>
+<link rel="stylesheet" href="/assets/css/pages/cheatsheet.css">
+<webc-container controller="webcardinal/CheatsheetController">
+    <header>
+        <h1>WebCardinal Cheatsheet</h1>
+        <label for="sort">Sort components:</label>
+        <select id="sort" data-tag="sort">
+            <option value="library" selected>by library</option>
+            <option value="alphabetically">alphabetically</option>
+        </select>
+    </header>
+    <main data-tag="cheatsheet">
+        <!-- Automatically generated -->
+    </main>
+</webc-container>
