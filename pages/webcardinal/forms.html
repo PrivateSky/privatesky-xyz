@@ -110,7 +110,7 @@
         <psk-chapter title="Template example">
             <!-- prettier-ignore -->
             <psk-code language="markup">
-                <webc-container controller="webcardinal/FormsController">
+                <webc-container controller="webcardinal/examples/FormsController">
                     <div style="display: flex; flex-direction: row;">
                         <div>
                             <div>
@@ -156,12 +156,10 @@
             </psk-code>
         </psk-chapter>
 
-
-
         <psk-chapter title="Visual example">
             <psk-example class="app-example">
-                <webc-container controller="webcardinal/FormsController">
-                    <div style="display: flex; flex-direction: row;">
+                <webc-container controller="webcardinal/examples/FormsController">
+                    <div style="display: flex; flex-direction: row">
                         <div>
                             <div>
                                 <label>{{ @name.placeholder}}</label>
@@ -206,4 +204,14 @@
             </psk-example>
         </psk-chapter>
     </psk-chapter>
+
+    <psk-description title="PrivateSky form components integration">
+        <psk-highlight type-of-highlight="example">
+            Webcardinal is designed to offer full two-way binding support for the native HTML form elements.
+            <br />
+            The two-way binding mechanism of WebCardinal may offer limited support when using PrivateSky form
+            components. In general, since every PrivateSky form component is handling its own binding it shouldn't cause
+            any integration issue.
+        </psk-highlight>
+    </psk-description>
 </psk-page>

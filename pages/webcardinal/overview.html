@@ -1,0 +1,208 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NW4R664");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<psk-page title="Overview">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+        ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+        ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <p>
+        WebCardinal represents the complete rewrite version of
+        <webc-link tag="cardinal-web-components-mvc">Cardinal</webc-link>, with the aim to enable an even more rapid
+        development of WEB applications. WebCardinal offers almost all the functionalities of Cardinal, either is the
+        same form or by providing an easier alternative.
+    </p>
+
+    <psk-description title="Cardinal compatibility">
+        Since WebCardinal is a complete rewrite of Cardinal, there may be some cases in which backward compatibility is
+        not offered.
+
+        <psk-highlight type-of-highlight="issue">
+            One such good example of limited compatibility is with Cardinal's
+            <webc-link tag="psk-modal">psk-modal</webc-link>, which is not at all supported in the new version. Instead,
+            the improved <webc-link tag="webc-modal">webc-modal</webc-link> was created.
+            <br />
+            Read more about it in its dedicated <webc-link tag="webc-modal">documentation</webc-link>.
+        </psk-highlight>
+
+        <psk-highlight type-of-highlight="note">
+            The current webpage is a working example of a WEB application written using WebCardinal and including also
+            Cardinal components.
+        </psk-highlight>
+
+        <p>Any known incompatibilities with Cardinal are explained when applicable.</p>
+    </psk-description>
+
+    <psk-description title="Configuration">
+        WebCardinal offers the same configuration possibilities as Cardinal, while offering some extra ones.
+        <br />
+        Read more about it in the documentation for
+        <webc-link tag="webcardinal-configuration">Configuration</webc-link>.
+    </psk-description>
+
+    <psk-description title="Components">
+        WebCardinal offers some useful components to make the development of WEB applications even more easier.
+        <br />
+        Read more about each webcardinal-core component by checking the webcardinal-core package section from the
+        <webc-link tag="webcardinal-cheatsheet">WebCardinal Cheatsheet</webc-link>.
+    </psk-description>
+
+    <psk-description title="Attributes">
+        WebCardinal comes with some very useful and powerful attributes that can be used on mainly every HTML element.
+
+        <!-- prettier-ignore -->
+        <psk-list>
+            <webc-link tag="data-for">data-for</webc-link> - improved and optimized version of the <webc-link tag="psk-for-each">psk-for-each</webc-link> component
+            <webc-link tag="data-if">data-if</webc-link> - improved and optimized version of the <webc-link tag="psk-condition">psk-condition</webc-link> component
+            <webc-link tag="data-model">data-model</webc-link> - used for binding many tag attributes to the same element
+            <webc-link tag="data-tag">data-tag</webc-link> - used for an easier event subcription experience
+        </psk-list>
+
+        <psk-highlight type-of-highlight="issue">
+            Considering the fact that Cardinal's psk-* components handle their own logic, flow and HTML manipulation,
+            not all of them can integrate perfectly with the new attributes of WebCardinal. So extra care needs to be
+            taken in this case.
+        </psk-highlight>
+    </psk-description>
+
+    <psk-description title="Controllers">
+        <p>WebCardinal's approach to controllers is similiar with the one from Cardinal.</p>
+
+        <psk-highlight type-of-highlight="note">
+            Read more about Cardinal's controllers <webc-link tag="cardinal-controllers">here</webc-link>
+        </psk-highlight>
+
+        <p>
+            Currently, WebCardinal offers the following Controllers which can be extended based on the given
+            requirements:
+        </p>
+
+        <!-- prettier-ignore -->
+        <psk-list>
+            <code>Controller</code>: offers the basic functionalities of the framework
+            <code>WebController</code>: offers some basic interaction with the WebCardinal components
+        </psk-list>
+
+        <p>The controlers can be used from <code>WebCardinal.controllers</code> available on the window object.</p>
+
+        <!-- prettier-ignore -->
+        <psk-code language="JavaScript">
+            const { WebcController } = WebCardinal.controllers;
+
+            class Page1Controller extends WebcController {
+                getModel = (_) => ({
+                    field1: 1,
+                    field2: 2
+                });
+
+                constructor(element, history) {
+                    super(element, history);
+            
+                    this.setModel(this.getModel());
+                }
+            }
+        </psk-code>
+    </psk-description>
+
+    <psk-description title="Models">
+        <p>WebCardinal's approach to models is similiar with the one from Cardinal.</p>
+
+        <psk-highlight type-of-highlight="note">
+            Read more about Cardinal's models <webc-link tag="cardinal-models">here</webc-link>
+        </psk-highlight>
+
+        <p>
+            WebCardinal went further and added a more standardised and consistent approach to models and model binding.
+        </p>
+        <p>
+            All of the HTML element and also custom elements have support for binding. One-way binding is ensured for
+            every element, but there may be some limitations for two-way binding when using non-native HTML form
+            elements. Read more about WebcCardinal's forms <webc-link tag="webcardinal-forms">here</webc-link>.
+        </p>
+
+        <p>
+            In order to offer a consistent approach for binding, WebCardinal has support for a special attribute
+            <code>data-model</code>.
+        </p>
+
+        <psk-highlight type-of-highlight="note">
+            Read more about WebCardinal's data-model attribute <webc-link tag="data-model">here</webc-link>
+        </psk-highlight>
+
+        <psk-description title="{{ }} binding syntax">
+            <p>
+                WebCardinal has added a new syntax that allows model binding (and also translation binding) inside the
+                template nodes.
+            </p>
+
+            <psk-description title="Example">
+                <!-- prettier-ignore -->
+                <psk-code language="markup" title="Markup">
+                    <webc-container controller="webcardinal/examples/BindingExampleController">
+                        <button>{{ @buttonText }}</button>
+                        <p>Message: {{ @hello }}</p>
+                    </webc-container>
+                </psk-code>
+
+                <!-- prettier-ignore -->
+                <psk-code language="JavaScript" title="Controller">
+                    const { WebcController } = WebCardinal.controllers;
+
+                    export default class BindingExampleController extends WebcController {
+                        getModel = (_) => ({
+                            buttonText: "Button",
+                            hello: "Hello world!",
+                        });
+
+                        constructor(element, history) {
+                            super(element, history);
+
+                            this.setModel(this.getModel());
+                        }
+                    }
+                </psk-code>
+
+                <psk-chapter title="Result">
+                    <psk-example class="app-example">
+                        <webc-container controller="webcardinal/examples/BindingExampleController">
+                            <button>{{ @buttonText }}</button>
+                            <p>Message: {{ @hello }}</p>
+                        </webc-container>
+                    </psk-example>
+                </psk-chapter>
+            </psk-description>
+        </psk-description>
+    </psk-description>
+
+    <psk-description title="Translations">
+        <p>WebCardinal has added support for translations.</p>
+
+        <psk-highlight type-of-highlight="note">
+            Read more about WebCardinal's translation mechanism
+            <webc-link tag="webcardinal-translations">here</webc-link>
+        </psk-highlight>
+    </psk-description>
+</psk-page>

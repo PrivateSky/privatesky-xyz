@@ -624,6 +624,9 @@
       "name": "WebCardinal",
       "children": [
         {
+          "name": "Overview"
+        },
+        {
           "name": "Attributes",
           "children": [
             {
@@ -706,16 +709,20 @@
           ]
         },
         {
-          "name": "Configuration"
+          "name": "Configuration",
+          "tag": "webcardinal-configuration"
         },
         {
-          "name": "Forms"
+          "name": "Forms",
+          "tag": "webcardinal-forms"
         },
         {
-          "name": "Translations"
+          "name": "Translations",
+          "tag": "webcardinal-translations"
         },
         {
-          "name": "Cheatsheet"
+          "name": "Cheatsheet",
+          "tag": "webcardinal-cheatsheet"
         }
       ]
     },
