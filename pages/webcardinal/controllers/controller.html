@@ -1,0 +1,359 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NW4R664");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<psk-page title="Controller">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+        ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+        ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Summary">
+        <p>
+            The <code>Controller</code> class offers the most basic support for WebCardinal's functionalities. Any class
+            extending it will have all the benefits of the framework.
+        </p>
+    </psk-description>
+
+    <psk-description title="Usage">
+        <!-- prettier-ignore -->
+        <psk-code language="JavaScript">
+            const { Controller } = WebCardinal.controllers;
+
+            class Page1Controller extends Controller {
+                getModel = (_) => ({
+                    field1: 1,
+                    field2: 2
+                });
+
+                constructor(element, history) {
+                    super(element, history);
+            
+                    this.setModel(this.getModel());
+                }
+            }
+        </psk-code>
+    </psk-description>
+
+    <psk-chapter title="API Definition - ContainerController">
+        <psk-chapter class="api-title" title="controller.createElement()">
+            <p>The function <code>createElement</code> will create the desired element and will also return it.</p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.createElement(elementName: string, props?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>elementName</strong> <i>(mandatory)</i> - The name of the element that will be created (e.g. webc-modal)</span>
+                    <span><strong>props</strong> <i>(optional)</i> - an object that will contain the properties (props) that will be passed to the created element</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>The <code>Element</code> that will be created</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.createAndAddElement()">
+            <p>The function <code>off</code> will remove the provided event listener.</p>
+            <p>
+                The function <code>createAndAddElement</code> will create the desired element, add it to the
+                Controller's root element and then return the created element.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.createAndAddElement(elementName: string, props?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>elementName</strong> <i>(mandatory)</i> - The name of the element that will be created (e.g. webc-modal)</span>
+                    <span><strong>props</strong> <i>(optional)</i> - an object that will contain the properties (props) that will be passed to the created element</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>The <code>Element</code> that will be created</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.on()">
+            <p>
+                The function <code>on</code> will listen for the event and when the event is triggered, the callback
+                function given as parameter will be executed.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.on(eventName: string, callback: Function, options?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>eventName</strong> <i>(mandatory)</i> - The name of the event that needs to be listened</span>
+                    <span><strong>callback</strong> <i>(mandatory)</i> - The function that will be executed when the event is captured.</span>
+                    <span><strong>options</strong> <i>(optional)</i> - an object that indicates the options that should be used by the <code>addEventListener</code> method</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.off()">
+            <p>The function <code>off</code> will remove the provided event listener.</p>
+            <p>
+                In order to remove the correct event listener, the function should receive the same arguments
+                (eventName, callback, options) like on the registering the event.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.off(eventName: string, callback: Function, options?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>eventName</strong> <i>(mandatory)</i> - The name of the event that needs to be listened</span>
+                    <span><strong>callback</strong> <i>(mandatory)</i> - The function that will be executed when the event is captured.</span>
+                    <span><strong>options</strong> <i>(optional)</i> - an object that indicates the options that should be used by the <code>addEventListener</code> method</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.removeAllTagEventListeners()">
+            <p>
+                The function <code>removeAllTagEventListeners</code> is resposable with removing all the registered tag
+                event listeners (which were registered before calling this method)
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.removeAllTagEventListeners()</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters"> None </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.onTagEvent()">
+            <p>
+                The function <code>onTagEvent</code> will listen for the event and when the event is triggered and the
+                tag attribute matches the provided tag, the callback function given as parameter will be executed.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.onTagEvent(tag: string, eventName: string, callback: Function, options?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>tag</strong> <i>(mandatory)</i> - The name of the tag that will be matched</span>
+                    <span><strong>eventName</strong> <i>(mandatory)</i> - The name of the event that needs to be listened</span>
+                    <span><strong>callback</strong> <i>(mandatory)</i> - The function that will be executed when the event is captured.</span>
+                    <span><strong>options</strong> <i>(optional)</i> - an object that indicates the options that should be used by the <code>addEventListener</code> method</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.offTagEvent()">
+            <p>The function <code>offTagEvent</code> will remove the provided event tag listener.</p>
+            <p>
+                In order to remove the correct event listener, the function should receive the same arguments (tag,
+                eventName, callback, options) like on the registering the tag event.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.offTagEvent(tag: string, eventName: string, callback: Function, options?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>tag</strong> <i>(mandatory)</i> - The name of the tag that will be matched</span>
+                    <span><strong>eventName</strong> <i>(mandatory)</i> - The name of the event that needs to be listened</span>
+                    <span><strong>callback</strong> <i>(mandatory)</i> - The function that will be executed when the event is captured.</span>
+                    <span><strong>options</strong> <i>(optional)</i> - an object that indicates the options that should be used by the <code>addEventListener</code> method</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.onTagClick()">
+            <p>
+                The function <code>onTagClick</code> is a short way of calling <code>onTagEvent</code> for the
+                <code>click</code> event.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.onTagClick(tag: string, callback: Function, options?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>tag</strong> <i>(mandatory)</i> - The name of the tag that will be matched</span>
+                    <span><strong>callback</strong> <i>(mandatory)</i> - The function that will be executed when the event is captured.</span>
+                    <span><strong>options</strong> <i>(optional)</i> - an object that indicates the options that should be used by the <code>addEventListener</code> method</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.offTagClick()">
+            <p>
+                The function <code>offTagClick</code> is a short way of calling <code>offTagEvent</code> for the
+                <code>click</code> event.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.offTagClick(tag: string, callback: Function, options?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>tag</strong> <i>(mandatory)</i> - The name of the tag that will be matched</span>
+                    <span><strong>callback</strong> <i>(mandatory)</i> - The function that will be executed when the event is captured.</span>
+                    <span><strong>options</strong> <i>(optional)</i> - an object that indicates the options that should be used by the <code>addEventListener</code> method</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.navigateToUrl()">
+            <p>The function <code>navigateToUrl</code> is resposable with navigating to the specified url</p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.navigateToUrl(url: string, state?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>url</strong> <i>(mandatory)</i> - The URL which will be navigating to</span>
+                    <span><strong>state</strong> <i>(optional)</i> - an object that represents the state that will be forwarded to the history object</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.navigateToPageTag()">
+            <p>The function <code>navigateToPageTag</code> is resposable with navigating to the specified page tag</p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.navigateToPageTag(tag: string, state?: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>tag</strong> <i>(mandatory)</i> - The page tag which will be navigating to</span>
+                    <span><strong>state</strong> <i>(optional)</i> - an object that represents the state that will be forwarded to the history object</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.send()">
+            <p>
+                The function <code>send</code> is resposable with triggering events by using a given name and optionaly,
+                some information to be sent with the event.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.send(eventName: string, data: any, htmlElement?: HTMLElement)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <psk-list>
+                    <span
+                        ><strong>eventName</strong> <i>(mandatory)</i> - The name of the event that needs to be
+                        triggered</span
+                    >
+                    <span
+                        ><strong>data</strong> <i>(optional)</i> - The information that will be sent to the event.
+                    </span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.setModel()">
+            <p>
+                The function <code>setModel</code> is a setter for the model. The model will be attached to the
+                controller, so after that one-way and two-way binding can happen.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.setModel(model: Object)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>model</strong> <i>(mandatory)</i> - The javascript object to be set as model</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.translate()">
+            <p>
+                The function <code>translate</code> is responsible with get the translated text for the given
+                translationKey, for the current language.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.translate(translationKey: string)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>translationKey</strong> <i>(mandatory)</i> - The translation key which will be used for getting the translation</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>
+                    The translated text or the <code>translationKey</code> if no translation was found for the given key
+                </p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.setLanguage()">
+            <p>
+                The function <code>setLanguage</code> is responsible with setting the application's current language and
+                afterwards will refresh the application in order to apply the new language.
+            </p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.translate(language: string)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>language</strong> <i>(mandatory)</i> - The language which will be set (e.g. en)</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>undefined</p>
+            </psk-card>
+        </psk-chapter>
+    </psk-chapter>
+</psk-page>

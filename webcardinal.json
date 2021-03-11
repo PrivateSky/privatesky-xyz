@@ -627,23 +627,19 @@
           "name": "Overview"
         },
         {
-          "name": "Attributes",
+          "name": "Configuration",
+          "tag": "webcardinal-configuration"
+        },
+        {
+          "name": "Controllers",
           "children": [
             {
-              "name": "data-for",
-              "tag": "data-for"
+              "name": "Controller",
+              "tag": "webcardinal-controller"
             },
             {
-              "name": "data-if",
-              "tag": "data-if"
-            },
-            {
-              "name": "data-model",
-              "tag": "data-model"
-            },
-            {
-              "name": "data-tag",
-              "tag": "data-tag"
+              "name": "WebcController",
+              "tag": "webcardinal-webccontroller"
             }
           ]
         },
@@ -709,9 +705,26 @@
           ]
         },
         {
-          "name": "Configuration",
-          "tag": "webcardinal-configuration"
-        },
+          "name": "Attributes",
+          "children": [
+            {
+              "name": "data-for",
+              "tag": "data-for"
+            },
+            {
+              "name": "data-if",
+              "tag": "data-if"
+            },
+            {
+              "name": "data-model",
+              "tag": "data-model"
+            },
+            {
+              "name": "data-tag",
+              "tag": "data-tag"
+            }
+          ]
+        },       
         {
           "name": "Forms",
           "tag": "webcardinal-forms"
