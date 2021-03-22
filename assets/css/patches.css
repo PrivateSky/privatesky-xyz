@@ -36,6 +36,7 @@ psk-code.small-size code {
 
 psk-page {
     width: 100%; height: 100%;
+    background: white;
 }
 
 psk-page::part(page-main) {

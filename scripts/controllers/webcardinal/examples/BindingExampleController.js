@@ -1,7 +1,7 @@
 const { WebcController } = WebCardinal.controllers;
 
 export default class BindingExampleController extends WebcController {
-    getModel = (_) => ({
+    initializeModel = (_) => ({
         buttonText: "Button",
         hello: "Hello world!",
     });
@@ -9,6 +9,6 @@ export default class BindingExampleController extends WebcController {
     constructor(element, history) {
         super(element, history);
 
-        this.setModel(this.getModel());
+        this.setModel(this.initializeModel());
     }
 }

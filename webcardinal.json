@@ -734,6 +734,10 @@
           "tag": "webcardinal-translations"
         },
         {
+          "name": "Migration",
+          "tag": "webcardinal-migration"
+        },
+        {
           "name": "Cheatsheet",
           "tag": "webcardinal-cheatsheet"
         }

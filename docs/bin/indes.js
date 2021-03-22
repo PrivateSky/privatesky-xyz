@@ -3,14 +3,15 @@ const path = require('path');
 
 let docs = {};
 let CHEATSHEET_PATH = 'docs/cheatsheet.json';
+let COMPONENTS_PATH = './.dev/webcardinal/.webcardinal/components';
 
-const components = fs.readdirSync('./.webcardinal/components', {
+const components = fs.readdirSync(COMPONENTS_PATH, {
     withFileTypes: true
 }).filter(item => item.isDirectory())
   .map(item => item.name);
 
 for (const component of components) {
-    const cheatsheetPath = path.join(process.cwd(), '.webcardinal/components', component, 'docs/custom/cheatsheet.json');
+    const cheatsheetPath = path.join(process.cwd(), COMPONENTS_PATH, component, 'docs/custom/cheatsheet.json');
 
     if (!fs.existsSync(cheatsheetPath)) {
         console.warn(

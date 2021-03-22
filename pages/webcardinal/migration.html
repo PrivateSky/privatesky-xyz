@@ -1,0 +1,95 @@
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NW4R664");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<style>
+    psk-list.no-padding ul {
+        padding: 0 0 0 0.75rem;
+    }
+    psk-list.no-padding ul li {
+        padding: 0;
+    }
+    psk-list.no-padding ul li p {
+        padding: 0.15rem 0;
+    }
+</style>
+
+<psk-page title="Migrate from Cardinal to WebCardinal">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+    ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+    ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <psk-toc title="Table of contents"></psk-toc>
+
+    <psk-description title="Overview">
+        <p>Web Cardinal has a number of advantages over Cardinal.</p>
+        <psk-list class="no-padding">
+            <p>It is much more extensible and its generated distribution can be customized.</p>
+            <p>It can be used with other web components not only with its own.</p>
+            <p>WebCardinal models can be applied to any HTML Element not only for a <code>psk-&ltcomponent&gts</code>.</p>
+            <p>It has built-in support for translations.</p>
+            <p>Application root is much more versatile and application router is more powerful.</p>
+        </psk-list>
+    </psk-description>
+
+    <psk-chapter title="Replacement of components">
+        <p>
+            After <a href="/webcardinal/overview?chapter=how-to-install-webcardinal">installing</a> WebCardinal
+            (witch involves a different mechanisms than the Cardinal offers), you should be aware that all <code>psk-&ltcomponent&gts</code>
+            from <strong>@cardinal/core</strong> are deprecated.
+        </p>
+        <p>
+            So it is necessary to update your application with corresponding replacement from WebCardinal. For example
+            <code>&ltpsk-app-root&gt</code> will be replaced by <code>&ltwebc-app-root&gt</code>, <code>&ltpsk-link&gt</code> by <code>&ltwebc-link&gt</code> and so on.
+            The pattern is the following, if a component from <strong>psk</strong> has a <strong>webc</strong> replacement, you should use the newer version which WebCardinal offers.
+        </p>
+    </psk-chapter>
+
+    <psk-chapter title="Newer configuration">
+        <p>In Cardinal, there were 2 configuration files called: <code>menu.json</code> and <code>config.json</code>.</p>
+        <p>
+            WebCardinal uses only 1 file for this type of settings named <code>webcardinal.json</code>.
+            <webc-link tag="webcardinal-configuration">Here</webc-link> you can read in more detail about newer configuration,
+            but the main difference is that each child now can be positioned relative to his parent.
+        </p>
+    </psk-chapter>
+
+<!--    <psk-chapter title="Updated Controllers"></psk-chapter>-->
+<!--    TODO: continue -->
+
+<!--    <psk-chapter title="Extended Models"></psk-chapter>-->
+<!--    TODO: continue -->
+
+<!--    <psk-chapter title="External WebComponents"></psk-chapter>-->
+<!--    TODO: continue -->
+
+<!--    <psk-chapter title="Build-in translation"></psk-chapter>-->
+<!--    TODO: continue -->
+
+<!--    <psk-chapter title="Templates and CustomElements"></psk-chapter>-->
+<!--    TODO: continue -->
+
+<!--    <psk-chapter title="CSS Custom Properties"></psk-chapter>-->
+<!--    TODO: continue -->
+
+</psk-page>

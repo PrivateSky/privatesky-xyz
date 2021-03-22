@@ -15,6 +15,28 @@
     <!-- End Google Tag Manager -->
 </head>
 
+<style>
+    #bundles {
+        padding: 0.9rem 0;
+    }
+    #bundles table {
+        width: 100%;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    }
+    #bundles table th,
+    #bundles table td {
+        border: 1px solid #CDCDCD;
+        padding: 0.25rem 0.15rem 0.25rem 0.3rem;
+    }
+    #bundles table thead th {
+        padding-bottom: 0.35rem;
+        padding-top: 0.4rem;
+    }
+    #bundles-steps {
+        padding-left: 1.4rem;
+    }
+</style>
+
 <psk-page title="Overview">
     <!-- Google Tag Manager (noscript) -->
     <noscript
@@ -55,6 +77,103 @@
 
         <p>Any known incompatibilities with Cardinal are explained when applicable.</p>
     </psk-description>
+
+    <psk-chapter title="How to install WebCardinal">
+        <p>You should use <a href="https://github.com/webcardinal/webcardinal-bundler">webcardinal-bundler</a> which offers a series of predefined bundles that contain our web components.</p>
+        <p>The content of each bundle can be viewed in the table below:</p>
+        <div id="bundles">
+            <table>
+                <thead>
+                <tr>
+                    <th>namespace</th>
+                    <th>package</th>
+                    <th colspan="5" align="center">bundle</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <th><pre>webcardinal</pre></th>
+                    <th><pre>cardinal</pre></th>
+                    <th><pre>minimal </pre></th>
+                    <th><pre>wiki    </pre></th>
+                    <th><pre>all     </pre></th>
+                </tr>
+                <tr>
+                    <td>webcardinal</td>
+                    <td><a href="https://github.com/webcardinal/webcardinal-core">core</a></td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">cardinal</td>
+                    <td><a href="https://github.com/webcardinal/cardinal-barcode">barcode</a></td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/webcardinal/cardinal-core">core</a></td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/webcardinal/cardinal-essentials">essentials</a></td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/webcardinal/cardinal-forms">forms</a></td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/webcardinal/cardinal-wiki">wiki</a></td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Check the <webc-link tag="webcardinal-cheatsheet">Cheatsheet</webc-link> in order to be sure that the used components are present in the current bundle.</p>
+        <p>More precise, after cloning and installing <a href="https://github.com/webcardinal/webcardinal-bundler">webcardinal-bundler</a> you must:</p>
+        <ol id="bundles-steps">
+            <li>Create your desired bundle
+                <psk-code language="bash">
+                    npm run bundle-&ltBUNDLE_NAME&gt
+                    # example: npm run bundle-minimal
+                </psk-code></li>
+            <li>Install components from bundle <psk-code language="bash">npm run build</psk-code></li>
+        </ol>
+        <p>The generated distribution is now in <code>/webcardinal</code> directory.</p>
+    </psk-chapter>
+
+    <psk-chapter title="How to use WebCardinal">
+        <p>In <code>index.html</code> of your application (WebApp, SSApp) insert the following:</p>
+        <psk-code language="markup">
+            <!-- WebCardinal dist -->
+            &ltscript type="module" src="/webcardinal/webcardinal.js">&lt/script>
+            &ltlink rel="stylesheet" href="/webcardinal/webcardinal.css">
+        </psk-code>
+    </psk-chapter>
 
     <psk-description title="Configuration">
         WebCardinal offers the same configuration possibilities as Cardinal, while offering some extra ones.
@@ -113,7 +232,7 @@
             const { WebcController } = WebCardinal.controllers;
 
             class Page1Controller extends WebcController {
-                getModel = (_) => ({
+                initializeModel = () => ({
                     field1: 1,
                     field2: 2
                 });
@@ -121,7 +240,7 @@
                 constructor(element, history) {
                     super(element, history);
             
-                    this.setModel(this.getModel());
+                    this.setModel(this.initializeModel());
                 }
             }
         </psk-code>
@@ -179,7 +298,7 @@
                     const { WebcController } = WebCardinal.controllers;
 
                     export default class BindingExampleController extends WebcController {
-                        getModel = (_) => ({
+                        initializeModel = (_) => ({
                             buttonText: "Button",
                             hello: "Hello world!",
                         });
@@ -187,7 +306,7 @@
                         constructor(element, history) {
                             super(element, history);
 
-                            this.setModel(this.getModel());
+                            this.setModel(this.initializeModel());
                         }
                     }
                 </psk-code>
