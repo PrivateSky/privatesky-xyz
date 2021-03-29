@@ -1,1 +1,0 @@
-import{b as n,M as t}from"./p-5b88ecac.js";function r(r){const a=r.getAttribute(n);if(!a)return"";if(!a.startsWith(t)){const n=r.tagName.toLowerCase();return console.error([`Invalid chain found for ${n} (chain: "${a}")!`,`A valid chain must start with "${t}".`].join("\n")),""}return a}export{r as e}
