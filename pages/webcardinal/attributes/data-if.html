@@ -15,6 +15,18 @@
     <!-- End Google Tag Manager -->
 </head>
 
+<style>
+    [data-tag="toggle-property"],
+    [data-tag="validate-email"] {
+        border-color: transparent;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+    }
+    [data-tag="validate-email"] {
+        margin-top: 1.7rem;
+    }
+</style>
+
 <psk-page title="data-if attribute">
     <!-- Google Tag Manager (noscript) -->
     <noscript
@@ -64,7 +76,7 @@
         <p>Use with without slots</p>
         <!-- prettier-ignore -->
         <psk-code language="markup">
-            <div data-if="condition">
+            <div data-if="@condition">
                 <container>
                     CONTENT_TO_SHOW_WHEN_CONDITION_IS_TRUE
                 </container>
@@ -114,14 +126,12 @@
             // Controller
             const { WebcController } = WebCardinal.controllers;
 
-            const model = {
-                gdpr: 0,
-            };
-
             export default class DataIfController extends WebcController {
-                constructor(element) {
-                    super(element);
-                    this.model = this.setModel(JSON.parse(JSON.stringify(model)));
+                initializeModel = () => ({ gdpr: 0 });
+
+                constructor(element, history) {
+                    super(element, history);
+                    this.setModel(this.initializeModel());
 
                     this.onTagClick("toggle-property", () => {
                         this.model.gdpr = !this.model.gdpr;
@@ -163,22 +173,21 @@
             // Controller
             const { WebcController } = WebCardinal.controllers;
 
-            const model = {
-                gdpr: 0,
-                form: {
-                    wasSubmitted:false,
-                    email: {
-                        label: 'Email',
-                        name: 'email',
-                        isValid: true
-                    }
-                }
-            };
-
             export default class DataIfController extends WebcController {
+                initializeModel = () => ({
+                    form: {
+                        wasSubmitted:false,
+                        email: {
+                            label: 'Email',
+                            name: 'email',
+                            isValid: true
+                        }
+                    }
+                });
+
                 constructor(element, history) {
                     super(element, history);
-                    this.setModel(JSON.parse(JSON.stringify(model)));
+                    this.setModel(this.initializeModel());
 
                     // Create the "formHasErrors" expression
                     this.model.addExpression(
@@ -240,13 +249,10 @@
                     </div>
                 </div>
 
-                <psk-form-row>
+                <psk-layout template-columns="1fr auto" align-items-y="center" gap="1rem">
                     <psk-text-input view-model="form.email"></psk-text-input>
-                </psk-form-row>
-
-                <psk-form-row>
-                    <button data-tag="validate-email" button-class="btn btn-info btn-sm">Validate Email</button>
-                </psk-form-row>
+                    <button data-tag="validate-email">Validate Email</button>
+                </psk-layout>
             </webc-container>
 
             <psk-highlight>

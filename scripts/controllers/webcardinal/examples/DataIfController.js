@@ -1,24 +1,24 @@
 const { WebcController } = WebCardinal.controllers;
 
-const model = {
-    gdpr: 0,
-    amount: 20,
-    currency: "$",
-    form: {
-        wasSubmitted: false,
-        email: {
-            label: "Email",
-            name: "email",
-            isValid: true,
-            value: "",
-        },
-    },
-};
-
 export default class DataIfController extends WebcController {
+    initializeModel = () => ({
+        gdpr: 0,
+        amount: 20,
+        currency: "$",
+        form: {
+            wasSubmitted: false,
+            email: {
+                label: "Email",
+                name: "email",
+                isValid: true,
+                value: "",
+            },
+        },
+    })
+
     constructor(element, history) {
         super(element, history);
-        this.setModel(JSON.parse(JSON.stringify(model)));
+        this.setModel(this.initializeModel());
 
         // Create the "formHasErrors" expression
         this.model.addExpression(

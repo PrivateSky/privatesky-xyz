@@ -41,16 +41,16 @@
         <psk-code language="JavaScript">
             const { Controller } = WebCardinal.controllers;
 
-            class Page1Controller extends Controller {
-                getModel = (_) => ({
+            class PageController extends WebcController {
+                initializeModel = () => ({
                     field1: 1,
-                    field2: 2
+                    field2: '2'
                 });
 
                 constructor(element, history) {
                     super(element, history);
-            
-                    this.setModel(this.getModel());
+
+                    this.setModel(this.initializeModel());
                 }
             }
         </psk-code>
@@ -60,7 +60,7 @@
         <psk-chapter class="api-title" title="controller.createElement()">
             <p>The function <code>createElement</code> will create the desired element and will also return it.</p>
             <psk-card class="api-subtitle" title="Syntax">
-                <p>controller.createElement(elementName: string, props?: Object)</p>
+                <p>controller.createElement(elementName: string, props?: object)</p>
             </psk-card>
             <psk-card class="api-subtitle" title="Parameters">
                 <!-- prettier-ignore -->
@@ -81,7 +81,7 @@
                 Controller's root element and then return the created element.
             </p>
             <psk-card class="api-subtitle" title="Syntax">
-                <p>controller.createAndAddElement(elementName: string, props?: Object)</p>
+                <p>controller.createAndAddElement(elementName: string, props?: object)</p>
             </psk-card>
             <psk-card class="api-subtitle" title="Parameters">
                 <!-- prettier-ignore -->
@@ -101,7 +101,7 @@
                 function given as parameter will be executed.
             </p>
             <psk-card class="api-subtitle" title="Syntax">
-                <p>controller.on(eventName: string, callback: Function, options?: Object)</p>
+                <p>controller.on(eventName: string, callback: Function, options?: object)</p>
             </psk-card>
             <psk-card class="api-subtitle" title="Parameters">
                 <!-- prettier-ignore -->
@@ -123,7 +123,7 @@
                 (eventName, callback, options) like on the registering the event.
             </p>
             <psk-card class="api-subtitle" title="Syntax">
-                <p>controller.off(eventName: string, callback: Function, options?: Object)</p>
+                <p>controller.off(eventName: string, callback: Function, options?: object)</p>
             </psk-card>
             <psk-card class="api-subtitle" title="Parameters">
                 <!-- prettier-ignore -->
@@ -140,7 +140,7 @@
 
         <psk-chapter class="api-title" title="controller.removeAllTagEventListeners()">
             <p>
-                The function <code>removeAllTagEventListeners</code> is resposable with removing all the registered tag
+                The function <code>removeAllTagEventListeners</code> is responsible with removing all the registered tag
                 event listeners (which were registered before calling this method)
             </p>
             <psk-card class="api-subtitle" title="Syntax">
@@ -158,7 +158,7 @@
                 tag attribute matches the provided tag, the callback function given as parameter will be executed.
             </p>
             <psk-card class="api-subtitle" title="Syntax">
-                <p>controller.onTagEvent(tag: string, eventName: string, callback: Function, options?: Object)</p>
+                <p>controller.onTagEvent(tag: string, eventName: string, callback: Function, options?: object)</p>
             </psk-card>
             <psk-card class="api-subtitle" title="Parameters">
                 <!-- prettier-ignore -->
@@ -181,7 +181,7 @@
                 eventName, callback, options) like on the registering the tag event.
             </p>
             <psk-card class="api-subtitle" title="Syntax">
-                <p>controller.offTagEvent(tag: string, eventName: string, callback: Function, options?: Object)</p>
+                <p>controller.offTagEvent(tag: string, eventName: string, callback: Function, options?: object)</p>
             </psk-card>
             <psk-card class="api-subtitle" title="Parameters">
                 <!-- prettier-ignore -->
@@ -203,7 +203,7 @@
                 <code>click</code> event.
             </p>
             <psk-card class="api-subtitle" title="Syntax">
-                <p>controller.onTagClick(tag: string, callback: Function, options?: Object)</p>
+                <p>controller.onTagClick(tag: string, callback: Function, options?: object)</p>
             </psk-card>
             <psk-card class="api-subtitle" title="Parameters">
                 <!-- prettier-ignore -->
@@ -224,7 +224,7 @@
                 <code>click</code> event.
             </p>
             <psk-card class="api-subtitle" title="Syntax">
-                <p>controller.offTagClick(tag: string, callback: Function, options?: Object)</p>
+                <p>controller.offTagClick(tag: string, callback: Function, options?: object)</p>
             </psk-card>
             <psk-card class="api-subtitle" title="Parameters">
                 <!-- prettier-ignore -->
@@ -239,10 +239,28 @@
             </psk-card>
         </psk-chapter>
 
-        <psk-chapter class="api-title" title="controller.navigateToUrl()">
-            <p>The function <code>navigateToUrl</code> is resposable with navigating to the specified url</p>
+        <psk-chapter class="api-title" title="controller.selectByTag()">
+            <p>The function <code>selectByTag</code> is responsible getting a HTML element by a <code>data-tag</code></p>
+            <p>Similar to <code>document.getElementById</code> but for <code>data-tag</code>-s</p>
+            <p>If multiples noeds are marked with the same tag, the method will return an array</p>
             <psk-card class="api-subtitle" title="Syntax">
-                <p>controller.navigateToUrl(url: string, state?: Object)</p>
+                <p>controller.selectByTag(tag: string)</p>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Parameters">
+                <!-- prettier-ignore -->
+                <psk-list>
+                    <span><strong>tag</strong> <i>(mandatory)</i> - <code>data-tag</code> of the marked element from DOM</span>
+                </psk-list>
+            </psk-card>
+            <psk-card class="api-subtitle" title="Return value">
+                <p>null | HTML Element | Array&ltHTML Element></p>
+            </psk-card>
+        </psk-chapter>
+
+        <psk-chapter class="api-title" title="controller.navigateToUrl()">
+            <p>The function <code>navigateToUrl</code> is responsible with navigating to the specified url</p>
+            <psk-card class="api-subtitle" title="Syntax">
+                <p>controller.navigateToUrl(url: string, state?: object)</p>
             </psk-card>
             <psk-card class="api-subtitle" title="Parameters">
                 <!-- prettier-ignore -->
@@ -257,9 +275,9 @@
         </psk-chapter>
 
         <psk-chapter class="api-title" title="controller.navigateToPageTag()">
-            <p>The function <code>navigateToPageTag</code> is resposable with navigating to the specified page tag</p>
+            <p>The function <code>navigateToPageTag</code> is responsible with navigating to the specified page tag</p>
             <psk-card class="api-subtitle" title="Syntax">
-                <p>controller.navigateToPageTag(tag: string, state?: Object)</p>
+                <p>controller.navigateToPageTag(tag: string, state?: object)</p>
             </psk-card>
             <psk-card class="api-subtitle" title="Parameters">
                 <!-- prettier-ignore -->
@@ -275,7 +293,7 @@
 
         <psk-chapter class="api-title" title="controller.send()">
             <p>
-                The function <code>send</code> is resposable with triggering events by using a given name and optionaly,
+                The function <code>send</code> is responsible with triggering events by using a given name and optionaly,
                 some information to be sent with the event.
             </p>
             <psk-card class="api-subtitle" title="Syntax">
@@ -303,7 +321,7 @@
                 controller, so after that one-way and two-way binding can happen.
             </p>
             <psk-card class="api-subtitle" title="Syntax">
-                <p>controller.setModel(model: Object)</p>
+                <p>controller.setModel(model: object)</p>
             </psk-card>
             <psk-card class="api-subtitle" title="Parameters">
                 <!-- prettier-ignore -->
