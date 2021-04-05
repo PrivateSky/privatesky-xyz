@@ -33,7 +33,8 @@ npm install
 While being inside **privatesky-xyz** folder run:
 
 ```
-npm start
+npm run build
+npm run server
 ```
 
 ### See it in your browser
