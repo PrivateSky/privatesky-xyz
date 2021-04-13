@@ -181,6 +181,7 @@
               "name": "Routing",
               "path": "./",
               "src": "./",
+              "indexed": false,
               "children": [
                 {
                   "name": "Application menu",
@@ -730,8 +731,11 @@
           "tag": "webcardinal-forms"
         },
         {
-          "name": "Translations",
-          "tag": "webcardinal-translations"
+          "name": "Skins",
+          "tag": "webcardinal-skin",
+          "skin": {
+            "name": "advanced"
+          }
         },
         {
           "name": "Migration",
@@ -879,5 +883,9 @@
         }
       ]
     }
+  ],
+  "skins": [
+    { "name": "default" },
+    { "name": "advanced", "translations": true }
   ]
 }
