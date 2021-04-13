@@ -15,10 +15,10 @@ In order to follow next steps you need to have the following software installed 
 ### Clone it
 
 ```
-git clone https://github.com/webcardinal/privatesky.xyz
+git clone https://github.com/PrivateSky/privatesky-xyz
 ```
 
-This will create a folder named **privatesky.xyz**.
+This will create a folder named **privatesky-xyz**.
 
 ### Install dependencies
 
@@ -29,7 +29,7 @@ npm install
       
 ### Run local server
 
-While being inside **privatesky.xyz** folder run:
+While being inside **privatesky-xyz** folder run:
 
 ```
 npm start
