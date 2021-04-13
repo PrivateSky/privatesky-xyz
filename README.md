@@ -23,16 +23,18 @@ This will create a folder named **privatesky-xyz**.
 ### Install dependencies
 
 ```
-cd privatesky.xyz
+cd privatesky-xyz
 npm install
 ```
+
+The build process is triggered automatically after install.
       
 ### Run local server
 
 While being inside **privatesky-xyz** folder run:
 
 ```
-npm start
+npm run server
 ```
 
 ### See it in your browser
