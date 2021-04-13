@@ -411,22 +411,16 @@ bindableModelRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(
                     }
                 }
 
-                function proxifyArrayElements(array, parentChain) {
-                    if(!array || !Array.isArray(array)) {
-                        return array;
-                    }
-
-                    return array.map((element, index) => {
-                        return proxify(element, extendChain(parentChain, index.toString()));
-                    });
-                }
-
                 function pushHandler(target, parentChain) {
-                    return function() {
+                    return function(...args) {
                         try {
-                            // when we add new elements we need to make sure to proxify them
-                            const proxifiedArguments = proxifyArrayElements([...arguments], parentChain);
-                            let arrayLength = Array.prototype.push.apply(target, proxifiedArguments);
+                            let arrayLength = Array.prototype.push.apply(target, args);
+
+                            // we need to proxify the newly added elements
+                            for (let index = arrayLength - args.length; index < arrayLength; index++) {
+                                target[index] = proxify(target[index], extendChain(parentChain, index.toString()));
+                            }
+
                             let index = arrayLength - 1;
                             root.notify(extendChain(parentChain, index));
                             return arrayLength;
@@ -438,12 +432,29 @@ bindableModelRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(
                 }
 
                 function arrayFnHandler(fn, target, parentChain) {
-                    return function() {
+                    return function(...args) {
                         try {
-                            // there are cases in which we need to proxify the arguments (e.g. unshift)
-                            const proxifiedArguments = proxifyArrayElements([...arguments], parentChain);
-                            let returnedValue = Array.prototype[fn].apply(target, proxifiedArguments);
-                            if (ARRAY_CHANGE_METHODS.indexOf(fn) !== -1) {
+                            const isArrayChangingMethod = ARRAY_CHANGE_METHODS.indexOf(fn) !== -1;
+
+                            if(isArrayChangingMethod) {
+                                // we need to convert each proxified element of the array, since the elements can have their position changed
+                                target.forEach((element, index) => {
+                                    if(typeof target[index] === "object") {
+                                        target[index] = root.toObject(extendChain(parentChain, index.toString()));
+                                    }
+                                });
+                            }
+
+                            let returnedValue = Array.prototype[fn].apply(target, args);
+
+                            if(isArrayChangingMethod) {
+                                // we need to proxify all the elements again
+                                for (let index = 0; index < target.length; index++) {
+                                    target[index] = proxify(target[index], extendChain(parentChain, index.toString()));
+                                }
+                            }
+
+                            if (isArrayChangingMethod) {
                                 root.notify(parentChain);
                             }
                             return returnedValue;
@@ -454,24 +465,10 @@ bindableModelRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(
                     }
                 }
 
-                function makeArrayGetter(parentChain) {
-                    return function(target, prop) {
-                        const val = target[prop];
-                        if (typeof val === 'function') {
-                            switch (prop) {
-                                case "push":
-                                    return pushHandler(target, parentChain);
-                                default:
-                                    return arrayFnHandler(prop, target, parentChain);
-                            }
-                        }
-                        return val;
-                    }
-                }
-
+               
                 function proxify(obj, parentChain) {
 
-                    if (typeof obj !== "object") {
+                    if (typeof obj !== "object" || obj instanceof File) {
                         return obj;
                     }
 
@@ -553,6 +550,50 @@ bindableModelRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(
                             SoundPubSub.subscribe(createChannelName(chain), callback);
                         }
                     }
+
+                    function makeArrayGetter(parentChain) {
+                        const PROXY_ROOT_METHODS = [
+                            "toObject",
+                            "addExpression",
+                            "evaluateExpression",
+                            "hasExpression",
+                            "onChangeExpressionChain"
+                        ];
+                        return function(target, prop) {
+                            if (isRoot) {                               
+                                switch (prop) {
+                                    case "onChange":
+                                        return onChange;
+                                    case "notify":
+                                        return notify;
+                                    case "getChainValue":
+                                        return getChainValue;
+                                    case "setChainValue":
+                                        return setChainValue;
+                                    default:
+                                        if(PROXY_ROOT_METHODS.includes(prop)) {
+                                            return target[prop];
+                                        }
+                                }
+                            }
+
+                            if (prop === "__isProxy") {
+                                return true;
+                            }
+
+                            const val = target[prop];
+                            if (typeof val === 'function') {
+                                switch (prop) {
+                                    case "push":
+                                        return pushHandler(target, parentChain);
+                                    default:
+                                        return arrayFnHandler(prop, target, parentChain);
+                                }
+                            }
+                            return val;
+                        }
+                    }
+
                     let setter = makeSetter(parentChain);
 
                     let handler = {
@@ -626,7 +667,7 @@ bindableModelRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(
                     };
 
                     if (Array.isArray(obj)) {
-                        handler.get = makeArrayGetter(parentChain);
+                        handler.get = makeArrayGetter(parentChain || "");
                     }
 
                     //proxify inner objects
