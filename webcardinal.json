@@ -717,8 +717,8 @@
               "tag": "data-if"
             },
             {
-              "name": "data-model",
-              "tag": "data-model"
+              "name": "data-view-model",
+              "tag": "data-view-model"
             },
             {
               "name": "data-tag",
@@ -732,7 +732,7 @@
         },
         {
           "name": "Skins",
-          "tag": "webcardinal-skin",
+          "tag": "webcardinal-skins",
           "skin": {
             "name": "advanced"
           }

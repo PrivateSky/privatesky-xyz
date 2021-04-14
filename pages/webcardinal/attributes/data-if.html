@@ -25,6 +25,9 @@
     [data-tag="validate-email"] {
         margin-top: 1.7rem;
     }
+    .list-position ul {
+        list-style-position: inside;
+    }
 </style>
 
 <psk-page title="data-if attribute">
@@ -96,7 +99,7 @@
                 data-if supports the if/else construct by using slots. To enable this behavior the children of the
                 component must name the slot for each outcome of the condition. This attribute supports the following
                 slots:
-                <psk-list>
+                <psk-list class="list-position">
                     <code>true</code>
                     <code>false</code>
                 </psk-list>
@@ -263,7 +266,7 @@
                     <webc-link tag="cardinal-models">here (Expressions chapter)</webc-link> to learn more about model
                     expressions. Regardless of the type of condition used, the attribute value must start with the
                     <code>@</code> character, as explained in the
-                    <webc-link tag="Models">Cardinal Model</webc-link> chapter.
+                    <webc-link tag="cardinal-models">Cardinal Model</webc-link> chapter.
                 </p>
             </psk-highlight>
         </psk-chapter>

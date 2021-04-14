@@ -17,7 +17,7 @@
             </p>
         </psk-chapter>
 
-        <psk-chapter title="Usage with data-model attribute">
+        <psk-chapter title="Usage with data-view-model attribute">
             <p>
                 <code>webc-template</code> can also be used with the
                 <webc-link tag="data-if">data-if</webc-link> attribute in case binding is desired for the template.
@@ -27,8 +27,8 @@
                 <psk-code>
                     <h1>Demo Template</h1>
                     <psk-layout columns="2">
-                        <label data-model="@templateLabel"></label>
-                        <input data-model="@templateInput" />
+                        <label data-view-model="@templateLabel"></label>
+                        <input data-view-model="@templateInput" />
                     </psk-layout>
                 </psk-code>
             </psk-chapter>
@@ -78,10 +78,10 @@
                         <webc-template template="webc-demo-template"></webc-template>
 
                         <h6>Template with simple binding</h6>
-                        <webc-template template="webc-demo-template" data-model="@"></webc-template>
+                        <webc-template template="webc-demo-template" data-view-model="@"></webc-template>
 
                         <h6>Template with complex binding</h6>
-                        <webc-template template="webc-demo-template" data-model="@templateInnerInput"></webc-template>
+                        <webc-template template="webc-demo-template" data-view-model="@templateInnerInput"></webc-template>
                     </webc-container>
                 </psk-code>
             </psk-chapter>
@@ -92,10 +92,10 @@
                     <webc-template template="webc-demo-template"></webc-template>
 
                     <h6>Template with simple binding</h6>
-                    <webc-template template="webc-demo-template" data-model="@"></webc-template>
+                    <webc-template template="webc-demo-template" data-view-model="@"></webc-template>
 
                     <h6>Template with complex binding</h6>
-                    <webc-template template="webc-demo-template" data-model="@templateInnerInput"></webc-template>
+                    <webc-template template="webc-demo-template" data-view-model="@templateInnerInput"></webc-template>
                 </webc-container>
             </psk-chapter>
         </psk-chapter>

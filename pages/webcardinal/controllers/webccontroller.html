@@ -42,16 +42,14 @@
         <psk-code language="JavaScript">
             const { WebcController } = WebCardinal.controllers;
 
-            class PageController extends WebcController {
-                initializeModel = () => ({
-                    field1: 1,
-                    field2: '2'
-                });
-
+            export default class PageController extends WebcController {
                 constructor(element, history) {
                     super(element, history);
-            
-                    this.setModel(this.initializeModel());
+
+                    this.model = {
+                        fieldNumber: 1,
+                        fieldString: 'Lorem...'
+                    };
                 }
             }
         </psk-code>

@@ -1,9 +1,9 @@
 const { WebcController } = WebCardinal.controllers;
 
-class DataModelExample1Controller extends WebcController {
+export default class DataViewModelExample1Controller extends WebcController {
     initializeModel = () => ({
         divModel: {
-            content: `Hello "data-model"!`,
+            content: `Hello "data-view-model"!`,
             class: 'example-class',
             id: 'example-id',
             tag: 'example-tag', // "data-tag" attribute of WebCardinal
@@ -16,5 +16,3 @@ class DataModelExample1Controller extends WebcController {
         this.setModel(this.initializeModel());
     }
 }
-
-export default DataModelExample1Controller;

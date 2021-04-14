@@ -56,7 +56,7 @@
     <psk-chapter title="Examples">
         <psk-chapter title="Model example">
             <!-- prettier-ignore -->
-            <psk-code language="Javascript">
+            <psk-code language="Javascript" class="small-size">
                 {
                     entities: [
                         {
@@ -105,16 +105,16 @@
         <psk-chapter title="Template example">
             <!-- prettier-ignore -->
             <psk-code language="markup">
-                <webc-container controller="webcardinal/WebcTestForController">
+                <webc-container controller="webcardinal/examples/DataForController">
                     <div data-for="@entities">
                         <psk-layout columns="1">
                             <psk-layout columns="2">
-                                <label data-model="@sectionTitle"></label>
+                                <label data-view-model="@sectionTitle"></label>
                             </psk-layout>
                             
                             <psk-layout columns="2">
-                                <input data-model="@name"/>
-                                <input data-model="@email"/>
+                                <input data-view-model="@name"/>
+                                <input data-view-model="@email"/>
                             </psk-layout>
                             
                         </psk-layout>
@@ -129,15 +129,15 @@
 
         <psk-chapter title="Visual example using above model & template">
             <psk-example class="app-example">
-                <webc-container controller="webcardinal/WebcTestForController">
+                <webc-container controller="webcardinal/examples/DataForController">
                     <div data-for="@entities">
                         <psk-layout columns="2">
-                            <label data-model="@sectionTitle"></label>
+                            <label data-view-model="@sectionTitle"></label>
                         </psk-layout>
 
                         <psk-layout columns="2">
-                            <input data-model="@name" />
-                            <input data-model="@email" />
+                            <input data-view-model="@name" />
+                            <input data-view-model="@email" />
                         </psk-layout>
 
                         <psk-card slot="no-data" title="Slot 'no-data' example">
@@ -156,15 +156,15 @@
 
         <psk-chapter title="Visual example using an empty model & template">
             <psk-example class="app-example">
-                <webc-container controller="webcardinal/WebcTestForController">
+                <webc-container controller="webcardinal/examples/DataForController">
                     <div data-for="@noEntities">
                         <psk-layout columns="2">
-                            <label data-model="@sectionTitle"></label>
+                            <label data-view-model="@sectionTitle"></label>
                         </psk-layout>
 
                         <psk-layout columns="2">
-                            <input data-model="@name" />
-                            <input data-model="@email" />
+                            <input data-view-model="@name" />
+                            <input data-view-model="@email" />
                         </psk-layout>
 
                         <psk-card slot="no-data" title="Slot 'no-data' example">

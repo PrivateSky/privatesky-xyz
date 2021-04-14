@@ -90,7 +90,7 @@
             <p class="small-size">
                 <strong>A: </strong> If is related to controllers (<code>psk-container</code> → <code>webc-container</code>),
                 routing (<code>psk-app-menu</code> → <code>webc-app-menu</code>),
-                binding (<code>psk-condition</code> → <code>data-if</code> attribute, <code>psk-for-each</code> → <code>data-for</code> and you should also use <code>data-model</code>).
+                binding (<code>psk-condition</code> → <code>data-if</code> attribute, <code>psk-for-each</code> → <code>data-for</code> and you should also use <code>data-view-model</code>).
                 <br>
                 If is an UI element (like <code>psk-page</code> or <code>psk-button</code>) the element does not need to be changed.
             </p>
@@ -124,9 +124,10 @@
 <!--    TODO: continue -->
 
     <psk-chapter title="Build-in skins & translation">
+        <p>Now each page loaded by WebCardinal can have a custom skin, or a default one. Each skin can come with translations if it is desired.</p>
         <p>Another advantage of WebCardinal over Cardinal is that has built-in translation integrated in a separated model called <strong>translationModel</strong>.</p>
         <p>From any controller you can call <code>translate</code> function and in any page a translation can be applied with a specific syntax (<code>{{ $keyword }}</code>) as long as the translations are enable.</p>
-        <p>Read more about <webc-link tag="webcardinal-skin">skins and translations</webc-link> here.</p>
+        <p>Read more about <webc-link tag="webcardinal-skins">skins and translations</webc-link> here.</p>
     </psk-chapter>
 
     <psk-chapter title="Templates and CustomElements">
@@ -149,7 +150,7 @@
                         this.innerHTML =
                             `&ltwebc-container controller="MyCustomHeaderController">
                                 &ltwebc-template template="my-custom-header"
-                                               data-model="@"
+                                               data-view-model="@"
                                                disable-container>
                                 &lt/webc-template>
                              &lt/webc-container>`
@@ -198,7 +199,7 @@
     <psk-chapter title="External WebComponents">
         <p>
             Because binding of the model is made by a <strong>BindingService</strong> for each component that has
-            <webc-link tag="data-model">data-model</webc-link>,
+            <webc-link tag="data-view-model">data-view-model</webc-link>,
             <webc-link tag="data-for">data-for</webc-link> or
             <webc-link tag="data-if">data-if</webc-link>,
             not by a specific web component (that was the case in Cardinal),

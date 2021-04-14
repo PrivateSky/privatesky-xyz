@@ -1,6 +1,6 @@
 const { WebcController } = WebCardinal.controllers;
 
-class DataModelExample1Controller extends WebcController {
+export default class DataViewModelExample21Controller extends WebcController {
     initializeModel = () => ({
         layout: {
             'template-columns': '1fr auto',
@@ -27,5 +27,3 @@ class DataModelExample1Controller extends WebcController {
         });
     }
 }
-
-export default DataModelExample1Controller;

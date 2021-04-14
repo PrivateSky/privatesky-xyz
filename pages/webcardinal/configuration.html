@@ -69,6 +69,7 @@
                         "indexed": false // default: true
                         "children": [...] // array of multiple pages
                         "tag": "my-page" // used by webc-link or navigateByPageTag from any Controller
+                        "skin": { "name": "advanced", "translations": false } // advanced skin must be present in skins
                     }
                     ...
                 ]
@@ -160,6 +161,7 @@
 
                     /* optional */
                     "src": "./404.html"
+                    "skin": ... /* identical with the skin from pages */
                 }
             </psk-code>
             <psk-highlight type-of-highlight="issue">
@@ -176,9 +178,25 @@
             <p>Read more about in the documentation for <webc-link tag="webc-app-error-toast">webc-app-error-toast</webc-link>.</p>
         </psk-chapter>
 
-        <psk-chapter title="enableTranslations">
-            <p>If translations are desired for your application, in WebCardinal configuration <code>enableTranslations</code> must be properly set.</p>
-            <psk-code language="JavaScript">"enableTranslations": true</psk-code>
+        <psk-chapter title="Skins">
+            <p>Each face loaded by WebCardinal can have a skin.</p>
+            <p>The resources for the default skin are placed at the root of the application, i.e. <code>/pages</code>, <code>/scripts</code> and so on.</p>
+            <p>For other skins the resources should be available in <code>/skins/{SKIN_NAME}</code> directory.</p>
+            <psk-code language="JavaScript">
+            "skins": [
+                { "name": "advanced", "translations": false }
+            ]
+            </psk-code>
+            <p>If default skin is not specified, it will be the last skin from the array above.</p>
+            <p>The preferred skin (resources will be fetched first from that skin) is the first skin from this array.</p>
+            <p>Read mode in the <webc-link tag="webcardinal-skins">skins documentation</webc-link>.</p>
+        </psk-chapter>
+
+        <psk-chapter title="Translations">
+            <p>Translations are closely related to the skins.</p>
+            <p>If translations are desired for your application, in WebCardinal configuration <code>translations</code> must be properly set.</p>
+            <p>For each skin mentioned this will value will be the default one if the skin does not specify any <code>translations</code>.</p>
+            <psk-code language="JavaScript">"translations": true</psk-code>
         </psk-chapter>
     </psk-chapter>
 
