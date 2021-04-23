@@ -47,7 +47,7 @@
             style="display: none; visibility: hidden"
         ></iframe
     ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <!-- End Google Tag Manager (noscript) --
 
     <psk-toc title="Table of contents"></psk-toc>
 
@@ -82,15 +82,23 @@
             &ltlink rel="stylesheet" href="webcardinal/webcardinal.css">
             &ltscript type="module" src="webcardinal/webcardinal.js">&lt/script>
         </psk-code>
+ 
+        The next step is to add a page configuration in the webcardinal.js  (see the configuration section) and create the html of the page
+        <psk-code language="html">            
+            &ltwebc-container controller="myController.js"> Hello World! @YourName &lt/webc-container>
+        </psk-code>
+         In this example, it allso assumes that you have a controler that prepares a model with YourName propety. 
+        WebCardinal use @ syntax to mark bindable properties.
     </psk-chapter>
 
     <psk-description title="Configuration">
         WebCardinal offers the same configuration possibilities as Cardinal, while offering some extra ones.
         <br />
+        WebCardinal is very opinionated on how you should organise pages,modals's HTML, your assets, skins and controllers. 
+        This reduce the variability of the projects and make them easier to undestand for new members of the team. 
         Read more about it in the documentation for
         <webc-link tag="webcardinal-configuration">Configuration</webc-link>.
-        WebCardinal has strong opinion on how you should organise  ages,modals's HTML, your assets, skins and controllers. 
-        This reduce the variability of the projects and make them easier to undesstand. 
+        
     </psk-description>
 
     <psk-description title="Components">
