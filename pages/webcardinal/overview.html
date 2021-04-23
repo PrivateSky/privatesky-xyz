@@ -52,119 +52,22 @@
     <psk-toc title="Table of contents"></psk-toc>
 
     <p>
+        WebCardinal and Cardinal are two OpenSource JavaScript MVC frameworks that helps the creation of the user interfaces for Self Soverign Applications (SSApps) 
+        (a concept from PrivateSky and OpenDSU). Cardinal was the first iteration and the latest one stays under the name of webcardinal (www.github.com/webcardinal)
+        The need for a new framework arose from the negative experience with React or Angular. 
+        These frameworks through the large ecosystem and too diverse pressures of the community have become sources of inefficiency. 
+        WebCardinal and Cardinal evolve around the idea of adding a simple MVC layer over standard web components.
+        Additionaly, controling the MVC framework offered us oportunitites to integrate OpenDSU Specific features in the controllers and therefore 
+        make it the most apopiate way of creating UIs for SSAPs.
+        
         WebCardinal represents the complete rewrite version of
         <webc-link tag="cardinal-web-components-mvc">Cardinal</webc-link>, with the aim to enable an even more rapid
         development of WEB applications. WebCardinal offers almost all the functionalities of Cardinal, either is the
-        same form or by providing an easier alternative.
+        same form or by providing an easier alternative. From 2021, we recomand to  start to migrate Cardinal SSAPPs to WebCardinal and never use the Cardinal.
+        Most of the  Web Components from Cardinal are still usable in Web Cardinal, however we encourage you to use frameworks as Ionic because their components are maintained by a larger community.        
     </p>
 
-    <psk-description title="Cardinal compatibility">
-        Since WebCardinal is a complete rewrite of Cardinal, there may be some cases in which backward compatibility is
-        not offered.
-
-        <psk-highlight type-of-highlight="issue">
-            One such good example of limited compatibility is with Cardinal's
-            <webc-link tag="psk-modal">psk-modal</webc-link>, which is not at all supported in the new version. Instead,
-            the improved <webc-link tag="webc-modal">webc-modal</webc-link> was created.
-            <br />
-            Read more about it in its dedicated <webc-link tag="webc-modal">documentation</webc-link>.
-        </psk-highlight>
-
-        <psk-highlight type-of-highlight="note">
-            The current webpage is a working example of a WEB application written using WebCardinal and including also
-            Cardinal components.
-        </psk-highlight>
-
-        <p>Any known incompatibilities with Cardinal are explained when applicable.</p>
-    </psk-description>
-
-    <psk-chapter title="How to install WebCardinal">
-        <p>You should use <a href="https://github.com/webcardinal/webcardinal-bundler">webcardinal-bundler</a> which offers a series of predefined bundles that contain our web components.</p>
-        <p>The content of each bundle can be viewed in the table below:</p>
-        <div id="bundles">
-            <table>
-                <thead>
-                <tr>
-                    <th>namespace</th>
-                    <th>package</th>
-                    <th colspan="5" align="center">bundle</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <th><pre>webcardinal</pre></th>
-                    <th><pre>cardinal</pre></th>
-                    <th><pre>minimal </pre></th>
-                    <th><pre>wiki    </pre></th>
-                    <th><pre>all     </pre></th>
-                </tr>
-                <tr>
-                    <td>webcardinal</td>
-                    <td><a href="https://github.com/webcardinal/webcardinal-core">core</a></td>
-                    <td>✔️</td>
-                    <td>❌</td>
-                    <td>✔️</td>
-                    <td>✔️</td>
-                    <td>✔️</td>
-                </tr>
-                <tr>
-                    <td rowspan="5">cardinal</td>
-                    <td><a href="https://github.com/webcardinal/cardinal-barcode">barcode</a></td>
-                    <td>✔️</td>
-                    <td>✔️</td>
-                    <td>❌</td>
-                    <td>❌</td>
-                    <td>✔️</td>
-                </tr>
-                <tr>
-                    <td><a href="https://github.com/webcardinal/cardinal-core">core</a></td>
-                    <td>❌</td>
-                    <td>✔️</td>
-                    <td>❌</td>
-                    <td>❌</td>
-                    <td>✔️</td>
-                </tr>
-                <tr>
-                    <td><a href="https://github.com/webcardinal/cardinal-essentials">essentials</a></td>
-                    <td>✔️</td>
-                    <td>✔️</td>
-                    <td>❌</td>
-                    <td>✔️</td>
-                    <td>✔️</td>
-                </tr>
-                <tr>
-                    <td><a href="https://github.com/webcardinal/cardinal-forms">forms</a></td>
-                    <td>✔️</td>
-                    <td>✔️</td>
-                    <td>❌</td>
-                    <td>❌</td>
-                    <td>✔️</td>
-                </tr>
-                <tr>
-                    <td><a href="https://github.com/webcardinal/cardinal-wiki">wiki</a></td>
-                    <td>✔️</td>
-                    <td>✔️</td>
-                    <td>❌</td>
-                    <td>✔️</td>
-                    <td>✔️</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <p>Check the <webc-link tag="webcardinal-cheatsheet">Cheatsheet</webc-link> in order to be sure that the used components are present in the current bundle.</p>
-        <p>More precise, after cloning and installing <a href="https://github.com/webcardinal/webcardinal-bundler">webcardinal-bundler</a> you must:</p>
-        <ol id="bundles-steps">
-            <li>Create your desired bundle
-                <psk-code language="bash">
-                    npm run bundle-&ltBUNDLE_NAME&gt
-                    # example: npm run bundle-minimal
-                </psk-code></li>
-            <li>Install components from bundle <psk-code language="bash">npm run build</psk-code></li>
-        </ol>
-        <p>The generated distribution is now in <code>/webcardinal</code> directory.</p>
-    </psk-chapter>
+  
 
     <psk-chapter title="How to use WebCardinal">
         <p>In <code>index.html</code> of your application (WebApp, SSApp) insert the following:</p>
@@ -331,4 +234,113 @@
             <webc-link tag="webcardinal-skins">here</webc-link>
         </psk-highlight>
     </psk-description>
+    
+    
+      <psk-description title="Cardinal compatibility">
+        Since WebCardinal is a complete rewrite of Cardinal, there may be some cases in which backward compatibility is
+        not offered.
+
+        <psk-highlight type-of-highlight="issue">
+            One such good example of limited compatibility is with Cardinal's
+            <webc-link tag="psk-modal">psk-modal</webc-link>, which is not at all supported in the new version. Instead,
+            the improved <webc-link tag="webc-modal">webc-modal</webc-link> was created.
+            <br />
+            Read more about it in its dedicated <webc-link tag="webc-modal">documentation</webc-link>.
+        </psk-highlight>
+
+        <psk-highlight type-of-highlight="note">
+            The current webpage is a working example of a WEB application written using WebCardinal and including also
+            Cardinal components.
+        </psk-highlight>
+
+        <p>Any known incompatibilities with Cardinal are explained when applicable.</p>
+    </psk-description>
+
+    <psk-chapter title="How to install WebCardinal">
+        <p>You should use <a href="https://github.com/webcardinal/webcardinal-bundler">webcardinal-bundler</a> which offers a series of predefined bundles that contain our web components.</p>
+        <p>The content of each bundle can be viewed in the table below:</p>
+        <div id="bundles">
+            <table>
+                <thead>
+                <tr>
+                    <th>namespace</th>
+                    <th>package</th>
+                    <th colspan="5" align="center">bundle</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <th><pre>webcardinal</pre></th>
+                    <th><pre>cardinal</pre></th>
+                    <th><pre>minimal </pre></th>
+                    <th><pre>wiki    </pre></th>
+                    <th><pre>all     </pre></th>
+                </tr>
+                <tr>
+                    <td>webcardinal</td>
+                    <td><a href="https://github.com/webcardinal/webcardinal-core">core</a></td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">cardinal</td>
+                    <td><a href="https://github.com/webcardinal/cardinal-barcode">barcode</a></td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/webcardinal/cardinal-core">core</a></td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/webcardinal/cardinal-essentials">essentials</a></td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/webcardinal/cardinal-forms">forms</a></td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/webcardinal/cardinal-wiki">wiki</a></td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                    <td>❌</td>
+                    <td>✔️</td>
+                    <td>✔️</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Check the <webc-link tag="webcardinal-cheatsheet">Cheatsheet</webc-link> in order to be sure that the used components are present in the current bundle.</p>
+        <p>More precise, after cloning and installing <a href="https://github.com/webcardinal/webcardinal-bundler">webcardinal-bundler</a> you must:</p>
+        <ol id="bundles-steps">
+            <li>Create your desired bundle
+                <psk-code language="bash">
+                    npm run bundle-&ltBUNDLE_NAME&gt
+                    # example: npm run bundle-minimal
+                </psk-code></li>
+            <li>Install components from bundle <psk-code language="bash">npm run build</psk-code></li>
+        </ol>
+        <p>The generated distribution is now in <code>/webcardinal</code> directory.</p>
+    </psk-chapter>
 </psk-page>
