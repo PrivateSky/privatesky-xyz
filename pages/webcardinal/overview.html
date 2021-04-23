@@ -51,6 +51,7 @@
 
     <psk-toc title="Table of contents"></psk-toc>
 
+    <psk-chapter title="Why WebCardinal">
     <p>
         WebCardinal and Cardinal are two OpenSource JavaScript MVC frameworks that helps the creation of the user interfaces for Self Soverign Applications (SSApps) 
         (a concept from PrivateSky and OpenDSU). Cardinal was the first iteration and the latest one stays under the name of webcardinal (www.github.com/webcardinal)
@@ -59,16 +60,19 @@
         WebCardinal and Cardinal evolve around the idea of adding a simple MVC layer over standard web components.
         Additionaly, controling the MVC framework offered us oportunitites to integrate OpenDSU Specific features in the controllers and therefore 
         make it the most apopiate way of creating UIs for SSAPs.
-        
+    </p>
+    
+    <p>
         WebCardinal represents the complete rewrite version of
         <webc-link tag="cardinal-web-components-mvc">Cardinal</webc-link>, with the aim to enable an even more rapid
         development of WEB applications. WebCardinal offers almost all the functionalities of Cardinal, either is the
         same form or by providing an easier alternative. From 2021, we recomand to  start to migrate Cardinal SSAPPs to WebCardinal and never use the Cardinal.
-        Most of the  Web Components from Cardinal are still usable in Web Cardinal, however we encourage you to use frameworks as Ionic because their components are maintained by a larger community.        
+        Most of the  Web Components from Cardinal are still usable in Web Cardinal, however we encourage you to use external web-components collection 
+        (as for example Ionicm simply because they are better)
     </p>
-
   
-
+    </psk-chapter>
+        
     <psk-chapter title="How to use WebCardinal">
         <p>In <code>index.html</code> of your application (WebApp, SSApp) insert the following:</p>
         <psk-code language="markup">
@@ -83,6 +87,8 @@
         <br />
         Read more about it in the documentation for
         <webc-link tag="webcardinal-configuration">Configuration</webc-link>.
+        WebCardinal has strong opinion on how you should organise  ages,modals's HTML, your assets, skins and controllers. 
+        This reduce the variability of the projects and make them easier to undesstand. 
     </psk-description>
 
     <psk-description title="Components">
@@ -111,7 +117,7 @@
     </psk-description>
 
     <psk-description title="Controllers">
-        <p>WebCardinal's approach to controllers is similiar with the one from Cardinal.</p>
+        <p>WebCardinal's approach to controllers is that they preparing the model and are listening for events from the View to do actions like model's updates.</p>
 
         <psk-highlight type-of-highlight="note">
             Read more about Cardinal's controllers <webc-link tag="cardinal-controllers">here</webc-link>
@@ -157,14 +163,14 @@
     </psk-description>
 
     <psk-description title="Models">
-        <p>WebCardinal's approach to models is similiar with the one from Cardinal.</p>
+        <p>WebCardinal's approach to models is that any JavaScript object can become models capable to support binding with properties from views</p>
 
         <psk-highlight type-of-highlight="note">
             Read more about Cardinal's models <webc-link tag="cardinal-models">here</webc-link>
         </psk-highlight>
 
         <p>
-            WebCardinal went further and added a more standardised and consistent approach to models and model binding.
+            WebCardinal propose a  standardised and consistent approach to models and model binding.
         </p>
         <p>
             All of the HTML element and also custom elements have support for binding. One-way binding is ensured for
@@ -181,7 +187,7 @@
             Read more about WebCardinal's data-view-model attribute <webc-link tag="data-view-model">here</webc-link>
         </psk-highlight>
 
-        <psk-description title="{{ }} binding syntax">
+        <psk-description title="{{ }} binding syntax to enable localisation of your pages">
             <p>
                 WebCardinal has added a new syntax that allows model binding (and also translation binding) inside the
                 template nodes.
@@ -227,18 +233,17 @@
     </psk-description>
 
     <psk-description title="Skins & Translations">
-        <p>WebCardinal has added support for translations via skins.</p>
+        <p>WebCardinal has added support for translations via skins. The Skins have also a mechanism for replacing default pages or default assets (eg CSS)</p>
 
         <psk-highlight type-of-highlight="note">
-            Read more about WebCardinal's translation mechanism
+            Read more about WebCardinal's Skins 
             <webc-link tag="webcardinal-skins">here</webc-link>
         </psk-highlight>
     </psk-description>
     
     
       <psk-description title="Cardinal compatibility">
-        Since WebCardinal is a complete rewrite of Cardinal, there may be some cases in which backward compatibility is
-        not offered.
+        Since WebCardinal is a complete rewrite of Cardinal, there may be some cases in which backward compatibility is not offered.
 
         <psk-highlight type-of-highlight="issue">
             One such good example of limited compatibility is with Cardinal's
