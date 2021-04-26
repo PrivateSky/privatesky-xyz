@@ -49,11 +49,12 @@
     <psk-toc title="Table of contents"></psk-toc>
 
     <psk-description title="Summary">
-        <p>WebCardinal configuration in made via <code>webcardinal.json</code>.</p>
-        <p>The initial settings are read from the <webc-link href="https://raw.githubusercontent.com/webcardinal/webcardinal-core/master/src/controllers/config/default.ts">default.ts</webc-link>.</p>
+        <p>WebCardinal can be configured using <code>webcardinal.json</code> or using a <strong>configuration script</strong>.</p>
     </psk-description>
 
-    <psk-chapter title="Configuration">
+    <psk-chapter title="webcardinal.json">
+        <p>The initial settings can be observed in <webc-link href="https://raw.githubusercontent.com/webcardinal/webcardinal-core/master/src/controllers/config/default.ts">default.ts</webc-link>.</p>
+
         <psk-chapter title="Pages">
             <p>Each page from <code>pages/</code> must be registered.</p>
             <psk-code language="JSON" class="small-size">
@@ -69,7 +70,6 @@
                         "indexed": false // default: true
                         "children": [...] // array of multiple pages
                         "tag": "my-page" // used by webc-link or navigateByPageTag from any Controller
-                        "skin": { "name": "advanced", "translations": false } // advanced skin must be present in skins
                     }
                     ...
                 ]
@@ -161,7 +161,6 @@
 
                     /* optional */
                     "src": "./404.html"
-                    "skin": ... /* identical with the skin from pages */
                 }
             </psk-code>
             <psk-highlight type-of-highlight="issue">
@@ -179,26 +178,60 @@
         </psk-chapter>
 
         <psk-chapter title="Skins">
-            <p>Each face loaded by WebCardinal can have a skin.</p>
-            <p>The resources for the default skin are placed at the root of the application, i.e. <code>/pages</code>, <code>/scripts</code> and so on.</p>
+            <p>Each page loaded by WebCardinal can have a skin.</p>
+            <p>The resources for the <strong>default skin</strong> are placed at the root of the application, i.e. <code>/pages</code>, <code>/scripts</code> and so on.</p>
             <p>For other skins the resources should be available in <code>/skins/{SKIN_NAME}</code> directory.</p>
             <psk-code language="JavaScript">
-            "skins": [
-                { "name": "advanced", "translations": false }
-            ]
+            "skin": "advanced"
             </psk-code>
-            <p>If default skin is not specified, it will be the last skin from the array above.</p>
-            <p>The preferred skin (resources will be fetched first from that skin) is the first skin from this array.</p>
+            <psk-highlight type-of-highlight="note">If a skin is not specified, it will be "default".</psk-highlight>
             <p>Read mode in the <webc-link tag="webcardinal-skins">skins documentation</webc-link>.</p>
         </psk-chapter>
 
         <psk-chapter title="Translations">
             <p>Translations are closely related to the skins.</p>
-            <p>If translations are desired for your application, in WebCardinal configuration <code>translations</code> must be properly set.</p>
-            <p>For each skin mentioned this will value will be the default one if the skin does not specify any <code>translations</code>.</p>
-            <psk-code language="JavaScript">"translations": true</psk-code>
+            <p>Each translation is loaded from a JSON file located near your HTML template.</p>
+            <p>Read mode in the <webc-link tag="webcardinal-skins">skins & translations documentation</webc-link>.</p>
+            <psk-code language="JavaScript">"translations": false // default is "true"</psk-code>
+            <psk-highlight type-of-highlight="note">If translations is not specified, it will be "true".</psk-highlight>
         </psk-chapter>
     </psk-chapter>
 
+    <psk-chapter title="Configuration script">
+        <p>In some cases some configurations have to be done dynamically.</p>
+        <p>For example: <i>change the current skin depending on the language set on the user's device</i>.</p>
+        <psk-chapter title="How to set up?">
+            <p>In <code>index.html</code> add the <strong><code>preload</code></strong> attribute on <webc-link tag="webc-app-root">webc-app-root</webc-link> element.</p>
+            <psk-code title="index.html">
+                &ltwebc-app-root preload="scripts/config.js">&lt/webc-app-root>
+            </psk-code>
+            <p>Path from preload will be relative to <strong>base path</strong>.</p>
+            <p>Base path can be set with <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base" target="_blank">base</a> element.</p>
+            <psk-code langauge="HTML" class="small-size">
+                <base href="/">
+                <!-- or -->
+                <base href="/subdomain/path/">
+            </psk-code>
+            <p>Now the usage of WebCardinal APIs in the preload script is possible.</p>
+        </psk-chapter>
+
+        <psk-chapter title="How to use it?">
+            <p>In <code>window</code> there is an <code>object</code> called <code>WebCardinal</code>. That object contains WebCardinal APIs, controllers, elements and some state settings.</p>
+            <p>Here is a example of runtime valid configuration for WebCardinal.</p>
+            <psk-code title="config.js" language="JavaScript">
+                const { setSkin, getConfig } = WebCardinal.preload;
+                const { define } = WebCardinal.components;
+
+                // set the current skin to "advanced"
+                setSkin('advanced');
+
+                // current WebCardinal config
+                console.log(getConfig());
+
+                // define a CustomElement from a HTML template
+                define('my-custom-input', 'path/to/my-custom-input');
+            </psk-code>
+        </psk-chapter>
+    </psk-chapter>
 
 </psk-page>

@@ -4,7 +4,6 @@
     "name": "PrivateSky",
     "email": "privatesky@axiologic.net"
   },
-  "theme": "clear-sky-theme",
   "pagesFallback": {
     "name": "404"
   },
@@ -884,8 +883,5 @@
       ]
     }
   ],
-  "skins": [
-    { "name": "default" },
-    { "name": "advanced", "translations": true }
-  ]
+  "theme": "clear-sky-theme"
 }

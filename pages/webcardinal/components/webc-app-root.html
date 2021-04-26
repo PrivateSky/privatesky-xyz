@@ -40,7 +40,7 @@
 
             <psk-example>
                 <psk-code title="Normal usage:" language="markup">
-                    <webc-app-root></webc-app-root>
+                    &ltwebc-app-root>&lt/webc-app-root>
                 </psk-code>
             </psk-example>
 
@@ -48,21 +48,29 @@
                 <p>Responsiveness of components is manged by the <code>webc-app-root</code> itself.</p>
             </psk-highlight>
 
-            <!-- complex usage -->
             <psk-example>
-                <psk-code title="If something more custom is desired:" language="markup">
-                    <webc-app-root loader="custom-loader">
-                        <webc-app-container>
-                            <custom-header slot="before"></custom-header>
-                            <custom-main>
-                                <webc-app-router></webc-app-router>
-                            </custom-main>
-                            <custom-footer slot="after"></custom-footer>
-                        </webc-app-container>
-                    </webc-app-root>
+                <psk-code title="Without application menu:" language="markup">
+                    &ltwebc-app-root>
+                        &ltwebc-app-container>
+                            &ltwebc-app-router>&lt/webc-app-router>
+                        &lt/webc-app-container>
+                    &lt/webc-app-root>
                 </psk-code>
             </psk-example>
-            <p>Where <code>custom-header</code>, <code>custom-main</code>, <code>custom-footer</code> and <code>custom-loader</code> are personalized / customized web components.</p>
+
+            <!-- complex usage -->
+            <psk-example>
+                <psk-code title="If something more custom is desired:" language="markup" class="small-size">
+                    &ltwebc-app-root loader="custom-loader">
+                        &ltwebc-app-container>
+                            &ltheader slot="before">&lt/header>
+                            &ltwebc-app-router>&lt/webc-app-router>
+                            &ltfooter slot="after">&lt/footer>
+                        &lt/webc-app-container>
+                    &lt/webc-app-root>
+                </psk-code>
+            </psk-example>
+            <p>Where <code>header</code> and <code>footer</code> can be replace with custom elements / components and <code>custom-loader</code> is a personalized web component.</p>
             <psk-highlight type-of-highlight="issue">
                 <p>You must deal with responsiveness of these components.</p>
             </psk-highlight>

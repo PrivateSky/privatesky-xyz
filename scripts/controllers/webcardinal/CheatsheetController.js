@@ -1,14 +1,10 @@
 const { WebcController } = WebCardinal.controllers;
 
-class CheatsheetController extends WebcController {
-    initializeModel = () => ({
-        sort: 'library'
-    });
+export default class CheatsheetController extends WebcController {
+    constructor(...props) {
+        super(...props);
 
-    constructor(element, history) {
-        super(element, history);
-
-        this.setModel(this.initializeModel());
+        this.model = { sort: 'library' };
 
         this.fetchCheatsheet();
     }
@@ -183,5 +179,3 @@ class CheatsheetController extends WebcController {
         }
     }
 }
-
-export default CheatsheetController;

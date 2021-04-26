@@ -8,17 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
+    <base href="/">
+    
     <!-- WebCardinal dist -->
-    <script type="module" src="/webcardinal/webcardinal.js"></script>
-    <link rel="stylesheet" href="/webcardinal/webcardinal.css">
+    <script type="module" src="webcardinal/webcardinal.js"></script>
+    <link rel="stylesheet" href="webcardinal/webcardinal.css">
 
     <!-- local assets -->
-    <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/privatesky.png">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <script src="/scripts/custom-elements-registry.js"></script>
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/privatesky.png">
+    <link rel="manifest" href="manifest.json">
+    <script src="scripts/custom-elements-registry.js"></script>
 </head>
 <body>
-    <webc-app-root></webc-app-root>
+    <webc-app-root preload="scripts/config.js"></webc-app-root>
 </body>
 </html>
