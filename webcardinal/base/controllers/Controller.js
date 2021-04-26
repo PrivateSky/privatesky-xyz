@@ -1,5 +1,6 @@
 import DSUStorage from '../libs/DSUStorage';
 import PskBindableModel from '../libs/bindableModel.js';
+import { MODEL_CHAIN_PREFIX, VIEW_MODEL_KEY } from '../../src/constants';
 
 export const DATA_TAG_MODEL_FUNCTION_PROPERTY = 'getDataTagModel';
 
@@ -29,20 +30,12 @@ function checkEventListener(eventName, listener, options) {
 
 function isSkinEnabled() {
   const { state } = window.WebCardinal || {};
-  if (state && state.activeSkin) {
-    const { name, translations } = state.activeSkin;
-    return name && typeof translations === 'boolean';
-  }
-  return false;
+  return state && state.skin && typeof state.skin === 'string';
 }
 
 function areTranslationsEnabled() {
   const { state } = window.WebCardinal || {};
-  if (state && state.activePage && state.activePage.skin) {
-    const { name, translations } = state.activePage.skin;
-    return name && translations === true
-  }
-  return false;
+  return state && typeof state.translations === 'boolean';
 }
 
 function getPathname() {
@@ -70,22 +63,33 @@ function getTranslationModel() {
   }
 
   const { state, translations } = window.WebCardinal;
-  const { name: skin } = state.activePage.skin;
+  const { skin } = state;
   const pathname = getPathname();
-  const currentTranslations = translations[skin];
 
-  if (!currentTranslations) {
-    console.warn(`No translations found for current skin "${skin}"`);
+  const skinTranslations = translations[skin];
+  const defaultTranslations = translations['default'];
+
+  if (!skinTranslations && !defaultTranslations) {
+    console.warn(`No translations found for skins: "${skin}"${skin !== 'default' ? ' and "default"' : ''}`);
     return;
   }
 
-  const currentPageTranslations = currentTranslations[pathname];
-  if (!currentPageTranslations) {
-    console.warn(`No translations found current skin "${skin} and page "${pathname}"`);
+  let pageTranslations = skinTranslations && skinTranslations[pathname];
+
+  if (pageTranslations) {
+    return pageTranslations;
+  }
+
+  pageTranslations = defaultTranslations && defaultTranslations[pathname];
+
+  if (!pageTranslations) {
+    console.warn(
+      `No translations found for page: "${pathname}" (skins: "${skin}"${skin !== 'default' ? ' and "default"' : ''}`,
+    );
     return;
   }
 
-  return currentPageTranslations;
+  return pageTranslations;
 }
 
 export function proxifyModelProperty(model) {
@@ -106,7 +110,16 @@ export function proxifyModelProperty(model) {
 }
 
 export default class Controller {
-  constructor(element, history) {
+  /**
+   * Controller exposes the main functions used in the WebCardinal
+   * (WebCardinal Controllers API)
+   *
+   * @param {HTMLElement} element - Controller is applied to this element
+   * @param {RouterHistory} history - Custom History object received from Stencil Router
+   * @param {Proxy | undefined} [_model]  - The model received from another WebcComponent if data-view-model is present
+   * @param {Proxy | {}} [_translationModel] - The translationModel received from an above WebcComponent
+   */
+  constructor(element, history, _model, _translationModel) {
     this.DSUStorage = new DSUStorage();
 
     this.element = element;
@@ -114,6 +127,18 @@ export default class Controller {
     this.tagEventListeners = [];
 
     let model;
+    if (_model && this.element.hasAttribute(VIEW_MODEL_KEY)) {
+      let chain = this.element.getAttribute(VIEW_MODEL_KEY);
+      if (chain.startsWith(MODEL_CHAIN_PREFIX)) {
+        chain = chain.slice(1);
+      }
+      if (chain) {
+        model = PskBindableModel.setModel(getValueFromModelByChain(_model, chain));
+      } else {
+        model = _model;
+      }
+    }
+
     Object.defineProperty(this, 'model', {
       get() {
         return model;
@@ -132,7 +157,7 @@ export default class Controller {
 
     this.setLegacyGetModelEventListener();
 
-    this.translationModel = PskBindableModel.setModel(getTranslationModel() || {});
+    this.translationModel = _translationModel || PskBindableModel.setModel(getTranslationModel() || {});
 
     // will need to be called when the controller will be removed
     this.disconnectedCallback = () => {
@@ -147,16 +172,35 @@ export default class Controller {
     }
   }
 
-  createElement(elementName, props) {
-    if (props && props.model) {
-      props.model = proxifyModelProperty(props.model)
+  /**
+   * It creates an element by its tag name and applies all the given properties
+   *
+   * @param {string} tagName - The name of the HTMLElement that will be created
+   * @param {object} properties - Properties of the new created element
+   *
+   * @returns {HTMLElement}
+   *
+   * If "is" functionality from ElementCreationOptions is desired, use "document.createElement instead
+   */
+  createElement(tagName, properties) {
+    if (properties && properties.model) {
+      properties.model = proxifyModelProperty(properties.model);
     }
-    return Object.assign(document.createElement(elementName), props);
+    return Object.assign(document.createElement(tagName), properties);
   }
 
-  createAndAddElement(elementName, props) {
-    const element = this.createElement(elementName, props);
-    this.element.appendChild(element);
+  /**
+   * It creates an element by its tag name, applies all the given properties
+   * then the element is appended in current context of this Controller (this.element)
+   *
+   * @param {string} tagName - The name of the HTMLElement that will be created
+   * @param {object} properties - Properties of the new created element
+   *
+   * @returns {HTMLElement}
+   */
+  createAndAddElement(tagName, properties) {
+    const element = this.createElement(tagName, properties);
+    this.element.append(element);
     return element;
   }
 
@@ -301,10 +345,6 @@ export default class Controller {
     this.element.dispatchEvent(new CustomEvent(eventName, eventOptions));
   }
 
-  setModel(model) {
-    this.model = model;
-  }
-
   setLegacyGetModelEventListener() {
     let dispatchModel = function (bindValue, model, callback) {
       if (bindValue && model[bindValue]) {
@@ -338,82 +378,64 @@ export default class Controller {
     return this.history.location.state;
   }
 
-  setLanguage() {
-    console.warn([
-      `'Functions "setLanguage" is deprecated!'`,
-      'Use "setSkin" with a new skin if changing of the translations is desired',
-    ]);
+  setSkin(skin, { save } = { save: true }) {
+    if (!isSkinEnabled()) {
+      console.warn('WebCardinal skin is not set by your Application!');
+      return;
+    }
+
+    if (typeof skin !== 'string') {
+      console.log('"skin" must be a valid non-empty string!');
+      return;
+    }
+
+    if (save && 'localStorage' in window) {
+      window.localStorage.setItem('webcardinal.skin', skin);
+    }
+
+    window.WebCardinal.state.skin = skin;
   }
 
-  setPreferredSkin(skin, { saveOption } = { saveOption: true }) {
+  getSkin() {
     if (!isSkinEnabled()) {
-      console.warn("WebCardinal skin is not set by your Application!");
+      console.warn('WebCardinal skin is not set by your Application!');
       return;
     }
 
-    if (typeof skin === 'string') {
-      skin = {
-        ...window.WebCardinal.state.activeSkin,
-        name: skin
-      }
-    }
-
-    if (typeof skin !== 'object') {
-      console.warn("Skin must be an object or a string!");
-      return;
-    }
-
-    if (saveOption && 'localStorage' in window) {
-      window.localStorage.setItem('webcardinal.skin', JSON.stringify(skin));
-    }
-
-    window.WebCardinal.state.activeSkin = skin;
+    return window.WebCardinal.state.skin;
   }
 
-  getPreferredSkin() {
+  applySkinForCurrentPage(skin) {
     if (!isSkinEnabled()) {
-      console.warn("WebCardinal skin is not set by your Application!");
+      console.warn('WebCardinal skin is not set by your Application!');
       return;
     }
 
-    return window.WebCardinal.state.activeSkin;
-  }
-
-  changeSkinForCurrentPage(skin) {
-    if (!isSkinEnabled()) {
-      console.warn("WebCardinal skin is not set by your Application!");
+    if (typeof skin !== 'string') {
+      console.log('"skin" must be a valid non-empty string!');
       return;
     }
 
-    if (typeof skin === 'string') {
-      skin = {
-        ...window.WebCardinal.state.activePage.skin,
-        name: skin
-      }
-    }
-
-    if (typeof skin !== 'object') {
-      console.warn("Skin must be an object or a string!");
-      return;
-    }
-
-    window.WebCardinal.state.activePage.loader.skin = skin.name;
+    window.WebCardinal.state.page.loader.skin = skin;
   }
 
   translate(translationChain) {
     if (!areTranslationsEnabled()) {
-      console.warn([
-        `Function "translate" must be called only when translations are enabled!`,
-        `Check WebCardinal.state`
-      ].join('\n'));
+      console.warn(
+        [`Function "translate" must be called only when translations are enabled!`, `Check WebCardinal.state`].join(
+          '\n',
+        ),
+      );
       return;
     }
 
-    const { skin } = window.WebCardinal.state.activePage;
+    const { skin } = window.WebCardinal.state;
     const pathname = getPathname();
 
     if (!this.translationModel) {
-      console.warn(`No translations found for skin "${skin}" and page "${pathname}"`);
+      console.warn(
+        `No translations found for page: "${pathname}" (skins: "${skin}"${skin !== 'default' ? ' and "default"' : ''})`,
+      );
       return translationChain;
     }
 
@@ -422,7 +444,11 @@ export default class Controller {
     }
     const translation = getValueFromModelByChain(this.translationModel, translationChain);
     if (!translation) {
-      console.warn(`No translations found for skin "${skin}", page "${pathname}" and chain "${translationChain}"`);
+      console.warn(
+        `No translations found for chain: "${translationChain}" (page: "${pathname}", skins: "${skin}"${
+          skin !== 'default' ? ' and "default"' : ''
+        })`,
+      );
       return translationChain;
     }
 
@@ -443,5 +469,64 @@ export default class Controller {
 
   querySelectorAll(selector) {
     return this.element.querySelectorAll(selector);
+  }
+
+  /**
+   * @deprecated
+   *
+   * Use "this.model = <YOUR_MODEL>" instead
+   */
+  setModel(model) {
+    console.warn(
+      [
+        `Function "setModel" is applied in a redundant manner and it is also deprecated.`,
+        `This function will be removed in a future release`,
+        `Use "this.model = <YOUR_MODEL>" instead`,
+      ].join('\n'),
+    );
+    this.model = model;
+  }
+
+  /**
+   * @deprecated
+   */
+  setLanguage() {
+    console.warn(
+      [
+        `Function "setLanguage" is deprecated!`,
+        'Use "setSkin" with a new skin if changing of the translations is desired',
+      ].join('\n'),
+    );
+  }
+
+  /**
+   * @deprecated
+   */
+  setPreferredSkin(skin, { saveOption } = { saveOption: true }) {
+    console.warn(
+      [
+        `Function "setPreferredSkin" is deprecated!`,
+        `Use "setSkin" instead, "saveOptions" flag is now "save" (store your skin in localStorage).`,
+      ].join('\n'),
+    );
+    this.setSkin(skin, { save: saveOption });
+  }
+
+  /**
+   * @deprecated
+   */
+  getPreferredSkin() {
+    console.warn([`Function "getPreferredSkin" is deprecated!`, `Use "getSkin" instead!`].join('\n'));
+    return this.getSkin();
+  }
+
+  /**
+   * @deprecated
+   */
+  changeSkinForCurrentPage(skin) {
+    console.warn(
+      [`Function "changeSkinForCurrentPage" is deprecated!`, `Use "applySkinForCurrentPage" instead!`].join('\n'),
+    );
+    this.applySkinForCurrentPage(skin);
   }
 }
