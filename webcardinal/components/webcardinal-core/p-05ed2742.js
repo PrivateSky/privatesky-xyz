@@ -1,0 +1,1 @@
+import{x as a,u as o,y as t,a as r,U as s}from"./p-aa48056e.js";import"./p-0c3518a5.js";const{join:e}=s,n={getController:async s=>{const{controllers:n,basePath:l}=window.WebCardinal,i=a();if(n[s])return n[s];let c=await o(e(l,t(),r,"controllers",s).pathname);return c?(n[s]=c,c):"default"!==i?(c=await o(e(l,r,"controllers",s).pathname),c?(n[s]=c,c):void 0):void 0}};export{n as C}
