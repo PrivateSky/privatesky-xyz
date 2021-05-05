@@ -1,11 +1,8 @@
 {
   "identity": {
-    "avatar": "/assets/images/privatesky.png",
+    "avatar": "./assets/images/privatesky.png",
     "name": "PrivateSky",
     "email": "privatesky@axiologic.net"
-  },
-  "pagesFallback": {
-    "name": "404"
   },
   "pages": [
     {
@@ -639,6 +636,7 @@
             },
             {
               "name": "WebcController",
+              "path": "./webc-controller",
               "tag": "webcardinal-webccontroller"
             }
           ]
@@ -673,6 +671,10 @@
             {
               "name": "webc-app-error-toast",
               "tag": "webc-app-error-toast"
+            },
+            {
+              "name": "webc-component",
+              "tag": "webc-component"
             },
             {
               "name": "webc-container",

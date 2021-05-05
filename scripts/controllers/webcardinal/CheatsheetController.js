@@ -1,6 +1,6 @@
-const { WebcController } = WebCardinal.controllers;
+const { Controller } = WebCardinal.controllers;
 
-export default class CheatsheetController extends WebcController {
+export default class CheatsheetController extends Controller {
     constructor(...props) {
         super(...props);
 
@@ -13,10 +13,12 @@ export default class CheatsheetController extends WebcController {
         try {
             const response = await fetch(new URL('/docs/cheatsheet.json', window.location).href)
             this.cheatsheet = await response.json();
-            this.container = this.element.querySelector('[data-tag=cheatsheet]');
+
+            this.container = this.element.shadowRoot.querySelector('[data-tag=cheatsheet]');
 
             this.removeCheatsheet();
             this.presentCheatsheetByLibrary();
+            this.element.hidden = false;
 
             this.onTagEvent('sort', 'change', (model, target) => {
                 if (target.value !== this.model.sort) {

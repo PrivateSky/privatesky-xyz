@@ -16,14 +16,33 @@
     <!-- End Google Tag Manager -->
 </head>
 
-<psk-page title="Open DSU Communication" style="overflow: hidden;">
+<style>
+    psk-page.open-dsu-page::part(page-header) {
+        position: sticky;
+        margin-bottom: 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+        z-index: 99;
+    }
+    psk-page.open-dsu-page::part(page-grid) {
+        padding: 0;
+    }
+    psk-page.open-dsu-page::part(page-container) {
+        padding: 0;
+        max-width: 100%;
+    }
+    psk-page.open-dsu-page iframe.open-dsu-iframe {
+        width: 100%; height: calc(100vh - 85px);
+        margin: 0 auto; padding: 0; border: 0; overflow: hidden;
+    }
+</style>
 
+<psk-page title="Open DSU Communication" class="open-dsu-page">
     <!-- Google Tag Manager (noscript) -->
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NW4R664"
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <iframe style="top:0; left:0; bottom:0; right:0; width:100%; height:calc(100vh - 100px); border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"
-            src="/pages/api/OpenDSUCommunication/client.html"></iframe>
+
+    <iframe class="open-dsu-iframe" src="/pages/api/OpenDSUCommunication/client.html"></iframe>
 </psk-page>

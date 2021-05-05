@@ -1,4 +1,8 @@
-:root {
-    /*--webc-app-menu-mode: horizontal;*/
-    /*--webc-app-menu-mobile-breakpoint: 1200px;*/
+webc-app-root {
+    --mode: vertical;
+}
+
+webc-xyz-preferences {
+    --background: var(--webc-basic-background);
+    --color: var(--webc-basic-color);
 }
