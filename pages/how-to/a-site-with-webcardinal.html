@@ -1,0 +1,151 @@
+<psk-page title="How to create a site with WebCardinal">
+    <psk-toc title="Table of contents"></psk-toc>
+    <psk-dscription title="Summary">
+		<p>This guide is meant to provide information on how to create a website using the WebCardinal framework.</p>
+	</psk-dscription>
+
+	<psk-chapter title="Prerequisites">
+		<psk-list list-type="ordered">
+			Install or update <a href="https://nodejs.org/en/" target="_blank">Node</a> (including NPM) to version <b>12.14.0</b>.
+			Install or update <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">Git</a>.
+		</psk-list>
+	</psk-chapter>
+    <psk-chapter title="Getting a WebCardinal distribution">
+        <ol class="bundles-steps">
+            <li>
+                Start by cloning the <a href="https://github.com/webcardinal/webcardinal-bundler" target="_blank">webcardinal-bundler</a>.
+                <psk-code language="bash" class="small-size">
+                    git clone https://github.com/webcardinal/webcardinal-bundler
+                </psk-code>
+            </li>
+            <li>
+                Install WebCardinal bundler
+                <psk-code language="bash" class="small-size">
+                    cd webcardinal-bundler && npm install
+                </psk-code>
+            </li>
+            <li>
+                Install <code>minimal</code> bundle (or another bundle for more components)
+                <br>
+                Check each WebCardinal bundle in the dedicated section from below.
+                <psk-code language="bash" class="small-size">
+                    npm run bundle-minimal
+                </psk-code>
+            </li>
+            <li>
+                Build components from bundle
+                <psk-code language="bash" class="small-size">
+                    npm run build
+                </psk-code>
+            </li>
+        </ol>
+        <p>The generated distribution is now in <code>webcardinal-bundler/webcardinal</code> directory.</p>
+    </psk-chapter>
+    <psk-chapter title="Quick blank template">
+        <p>Start by cloning a <a href="https://github.com/vassia38/webcardinal-blank-app" target="_blank">blank template</a> 
+            to your machine.</p>
+        <psk-code language="bash">
+            git clone https://github.com/vassia38/webcardinal-blank-app my-webcardinal-app
+            cd my-webcardinal-app
+            rm -rf .git
+            git init
+        </psk-code>
+        <p>Feel free to commit it to your own repository.</p>
+        <psk-code language="bash">
+            # replace 'https://github.com/username/webcardinal-site.git' with the your own repository url
+            git remote add origin https://github.com/username/web-site.git
+            git fetch
+            git add .
+            git commit -m "first commit"
+            # push the files to your git repository.
+            git push --set-upstream origin master
+        </psk-code>
+    </psk-chapter>
+    <psk-chapter title="Setting up a homepage">
+        <p>Inside your project directory you'll find "webcardinal.json". Open it with your favorite editor; it should look like this:</p>
+        <psk-code language="json">
+            {
+                "pagesPathname": "pages",
+                "pagesFallback": {
+                  "name": "Home"
+                },
+                "translations": false,
+                "pages": [
+
+                ]
+            }
+        </psk-code>
+        <p>Next thing we'll do is write in it the pages we'll want added. In this tutorial we'll just set a homepage for your project, by adding
+        a page object in the array "pages".</p>
+        <psk-code language="json">
+            {
+                "pagesPathname": "pages",
+                "pagesFallback": {
+                  "name": "Home"
+                },
+                "translations": false,
+                "pages": [
+                    {
+                        "path": "/",
+                        "name": "Home",
+                        "src": "home.html"
+                    }
+                ]
+            }
+        </psk-code>
+        <p>Now create the "pages" directory and inside it, the "home.html" file, to which you'll copy and paste the next code.</p>
+        <psk-code language="html">
+            <webc-container>
+                <h1>My Homepage</h1>
+            </webc-container>
+        </psk-code>
+        <p>Open up PowerShell and run the command <code>npm run server</code>; this will start up a local host of your site, at 
+        <a href="http://127.0.0.1:8000" target="_blank">http://127.0.0.1:8000</a>.</p>
+        <p>Good job! Your site should now look like this:</p>
+        <psk-img src="/assets/images/webcardinal-tutorial-first.png"></psk-image>
+    </psk-chapter>
+    <psk-chapter title="How does the site work?">
+        <p>
+            By taking a look inside "index.html" we can see the most essential things for WebCardinal to do its magic: 
+            the <b>script</b> imports the WebCardinal components, and the <b>stylesheet</b> brings a basic necessary stylization for them.
+        </p>
+        <p>
+            Next element, <code> &lt;webc-app-root> </code> is the entry point of your application. Its attached controller 
+            <code>ApplicationController</code> converts the configurations from "webcardinal.json" into the application we see.
+        </p>
+        <psk-example>
+            <psk-code title="Normal usage:" language="markup">
+                &ltwebc-app-root>&lt/webc-app-root>
+            </psk-code>
+        </psk-example>
+
+        <psk-highlight type-of-highlight="note">
+            <p>Responsiveness of components is manged by the <code>webc-app-root</code> itself.</p>
+        </psk-highlight>
+
+        <psk-example>
+            <psk-code title="Without application menu:" language="markup">
+                &ltwebc-app-root>
+                    &ltwebc-app-container>
+                        &ltwebc-app-router>&lt/webc-app-router>
+                    &lt/webc-app-container>
+                &lt/webc-app-root>
+            </psk-code>
+        </psk-example>
+
+        <psk-example>
+            <psk-code title="In our index.html, for a more custom look:" language="markup" class="small-size">
+                &ltwebc-app-root>
+                    &ltwebc-app-container>
+                        &ltheader slot="before">&lt/header>
+                        &ltwebc-app-router>&lt/webc-app-router>
+                        &ltfooter slot="after">&lt/footer>
+                    &lt/webc-app-container>
+                &lt/webc-app-root>
+            </psk-code>
+        </psk-example>
+        <p>
+            Where header and footer can be replaced with custom elements / components.
+        </p>
+    </psk-chapter>
+</psk-page>
