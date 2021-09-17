@@ -18,7 +18,7 @@ const model = {
 export default class TestConditionController extends WebcController {
     constructor(element) {
         super(element);
-        this.setModel(JSON.parse(JSON.stringify(model)));
+        this.model = JSON.parse(JSON.stringify(model));
 
         // Create the "formHasErrors" expression
         this.model.addExpression('formHasErrors', function () {
@@ -27,13 +27,14 @@ export default class TestConditionController extends WebcController {
                                   // for changes in order to trigger re-evaluation
 
         this.model.addExpression('userFriendlyAmount', function () {
+            console.log(this.currency);
             if (this.currency === '$') {
                 return `${this.currency}${this.amount}`;
             }
-
+            
             return `${this.amount}${this.currency}`;
         }, 'amount', 'currency');
-
+        
         this.on('toggle-property', (e) => {
             e.preventDefault();
             e.stopImmediatePropagation();

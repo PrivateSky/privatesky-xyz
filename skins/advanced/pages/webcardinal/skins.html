@@ -195,8 +195,9 @@
                 }
             </psk-code>
             <psk-highlight type-of-highlight="note" class="no-padding">
-                The <code>submitText</code> will be populated with the translation for the key <code>submit</code>. The
-                <code>submitText</code> can be used inside the HTML as an ordinary model usage
+                The <code>submitText</code> will be populated with the translation for the key <code>submit</code>, found in
+                "skins.translate.json".
+                The <code>submitText</code> can be used inside the HTML as an ordinary model.
             </psk-highlight>
         </psk-description>
         </psk-chapter>
@@ -212,12 +213,23 @@
                 <psk-code language="HTML">
                     <webc-container controller="SkinController">
                         <div>
-                            <input type="button" value="$submitInputButton" />
-                            <button>{{ $submitButton }}</button>
-                            <button>{{ @submitText }}</button>
+                            <input id="attributeUseCase" type="button" value="$submitInputButton" />
+                            <button id="bindTranslationUseCase">{{ $submitButton }}</button>
+                            <button id="bindUseCase">{{ @submitText }}</button>
+                            <button id="missingTranslationCase">{{ $noTranslationValue }}</button>
                         </div>
                     </webc-container>
                 </psk-code>
+                <psk-highlight type-of-highlight="note">
+                    The usage of "<b>$</b>" in <b>attributeUseCase</b> and <b>bindTranslationUseCase</b> 
+                    automatically calls for the translation API; it binds data from the translation model 
+                    (found in [PageName].translate.json).<br>
+                    The "<b>@</b>" in the <b>bindUseCase</b> binds data from a Controller's set model. 
+                    This way, in the Controller we can explicitly call "this.translate()" to use the bound
+                    data in the translation model; 
+                    if no data is bound to it ("e.g, <b>missingTranslationCase</b>"), the same 
+                    value will be returned to the View.
+                </psk-highlight>
             </psk-chapter>
 
             <psk-chapter title="Translation file example">
@@ -238,6 +250,7 @@
                             <input type="button" value="$submitInputButton" />
                             <button>{{ $submitButton }}</button>
                             <button>{{ @submitText }}</button>
+                            <button>{{ $noTranslationValue }}</button>
                         </div>
                     </webc-container>
                 </psk-example>
