@@ -1,3 +1,8 @@
+<style>
+    .tutorial-list li{
+        margin-left:7%;
+    }
+</style>
 <psk-page title="How to create a site with WebCardinal">
     <psk-toc title="Table of contents"></psk-toc>
     <psk-dscription title="Summary">
@@ -5,13 +10,15 @@
 	</psk-dscription>
 
 	<psk-chapter title="Prerequisites">
-		<psk-list list-type="ordered">
-			Install or update <a href="https://nodejs.org/en/" target="_blank">Node</a> (including NPM) to version <b>12.14.0</b>.
-			Install or update <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">Git</a>.
-		</psk-list>
+        <div class="tutorial-list-wrapper">
+		<ul class="tutorial-list">
+			<li>Install or update <a href="https://nodejs.org/en/" target="_blank">Node</a> (including NPM) to version <b>12.14.0</b>.</li>
+            <li>Install or update <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">Git</a>.</li>
+        </ul>
+        </div>
 	</psk-chapter>
     <psk-chapter title="Getting a WebCardinal distribution">
-        <ol class="bundles-steps">
+        <ol class="tutorial-list">
             <li>
                 Start by cloning the <a href="https://github.com/webcardinal/webcardinal-bundler" target="_blank">webcardinal-bundler</a>.
                 <psk-code language="bash" class="small-size">
@@ -61,8 +68,8 @@
             git push --set-upstream origin master
         </psk-code>
     </psk-chapter>
-    <psk-chapter title="Setting up a homepage">
-        <p>Inside your project directory you'll find "webcardinal.json". Open it with your favorite editor; it should look like this:</p>
+    <psk-chapter title="Adding a page">
+        <p>Inside your project directory you'll find "webcardinal.json", where your WebCardinal app is configured. Open it with your favorite editor; it should look like this:</p>
         <psk-code language="json">
             {
                 "pagesPathname": "pages",
@@ -76,7 +83,7 @@
             }
         </psk-code>
         <p>Next thing we'll do is write in it the pages we'll want added. In this tutorial we'll just set a homepage for your project, by adding
-        a page object in the array "pages".</p>
+        a page object in the array "pages". To read more about configuration, go <a href="webcardinal/configuration?chapter=webcardinal-json" target="_blank">here</a>.</p>
         <psk-code language="json">
             {
                 "pagesPathname": "pages",
@@ -102,50 +109,77 @@
         <p>Open up PowerShell and run the command <code>npm run server</code>; this will start up a local host of your site, at 
         <a href="http://127.0.0.1:8000" target="_blank">http://127.0.0.1:8000</a>.</p>
         <p>Good job! Your site should now look like this:</p>
-        <psk-img src="/assets/images/webcardinal-tutorial-first.png"></psk-image>
+        <psk-img src="/assets/images/webcardinal-tutorial-site.png"></psk-image>
     </psk-chapter>
     <psk-chapter title="How does the site work?">
         <p>
             By taking a look inside "index.html" we can see the most essential things for WebCardinal to do its magic: 
             the <b>script</b> imports the WebCardinal components, and the <b>stylesheet</b> brings a basic necessary stylization for them.
         </p>
+        <psk-code lang="html">
+            &lt;head>
+                <!-- WebCardinal dist -->
+                &lt;script type="module" src="webcardinal/webcardinal.js">&lt;/script>
+                &lt;link rel="stylesheet" href="webcardinal/webcardinal.css">
+            &lt;/head>
+        </psk-code>
         <p>
             Next element, <code> &lt;webc-app-root> </code> is the entry point of your application. Its attached controller 
-            <code>ApplicationController</code> converts the configurations from "webcardinal.json" into the application we see.
+            <code>ApplicationController</code> converts the configuration from "webcardinal.json" into the application we see.
         </p>
-        <psk-example>
-            <psk-code title="Normal usage:" language="markup">
-                &ltwebc-app-root>&lt/webc-app-root>
-            </psk-code>
-        </psk-example>
-
-        <psk-highlight type-of-highlight="note">
-            <p>Responsiveness of components is manged by the <code>webc-app-root</code> itself.</p>
-        </psk-highlight>
-
-        <psk-example>
-            <psk-code title="Without application menu:" language="markup">
-                &ltwebc-app-root>
-                    &ltwebc-app-container>
-                        &ltwebc-app-router>&lt/webc-app-router>
-                    &lt/webc-app-container>
-                &lt/webc-app-root>
-            </psk-code>
-        </psk-example>
-
-        <psk-example>
-            <psk-code title="In our index.html, for a more custom look:" language="markup" class="small-size">
-                &ltwebc-app-root>
-                    &ltwebc-app-container>
-                        &ltheader slot="before">&lt/header>
-                        &ltwebc-app-router>&lt/webc-app-router>
-                        &ltfooter slot="after">&lt/footer>
-                    &lt/webc-app-container>
-                &lt/webc-app-root>
-            </psk-code>
-        </psk-example>
+        <psk-code lang="html">
+            &lt;body>
+                &lt;webc-app-root>
+                    &lt;webc-app-container>
+                        &lt;header slot="before">Header&lt;/header>
+                        &lt;webc-app-router>&lt;/webc-app-router>
+                        &lt;footer slot="after">Footer&lt;/footer>
+                        &lt;/webc-app-container>
+                &lt;/webc-app-root>
+            &lt;/body>
+        </psk-code>
         <p>
-            Where header and footer can be replaced with custom elements / components.
+            Here we have a more custom look for the base of our website: before and after 
+            <code>&lt;webc-app-router></code> (responsible with rendering the pages)  we have two 
+            slots for adding our own header and footer. <br>Try to remove everything inside 
+            <code>&lt;webc-app-root></code> and see the result; you'll get a more standard WebCardinal 
+            app. Feel free to read more about it <a href="webcardinal/components/webc-app-root" target="_blank">here</a>.
+        </p>
+    </psk-chapter>
+    <psk-chapter title="Know more">
+        <p>
+            What is a <a href="cardinal/models" target="_blank">model</a>,
+            a <a href="cardinal/view" target="_blank">view</a>, 
+            a <a href="cardinal/controllers" target="_blank">controller</a>?
+        </p>
+        <p>
+            WebCardinal offers some useful components to make the development of applications more easier.
+            You can check out each component in the <webc-link tag="webcardinal-cheatsheet">WebCardinal Cheatsheet</webc-link>.
+        </p>
+        
+        <p>
+            The <a href="webcardinal/controllers/controller" target="_blank">Controller</a> class offers the most basic support 
+            for WebCardinal's functionalities, and the <a href="webcardinal/controllers/webc-controller" target="_blank">WebcController</a> extends it.
+        </p>
+        <p>
+            WebCardinal comes with some very useful and powerful attributes that can be used on mainly every HTML element.
+            <ul class="tutorial-list">
+                <li>
+                    <webc-link tag="data-for">data-for</webc-link> - used for iteration in markup over array
+                </li>
+                <li>
+                    <webc-link tag="data-if">data-if</webc-link> - used for add conditional capabilities to your application
+                </li>
+                <li>
+                    <webc-link tag="data-view-model">data-view-model</webc-link> - used for binding many tag attributes to the same element
+                </li>
+                <li>
+                    <webc-link tag="data-tag">data-tag</webc-link> - used for an easier event subscription experience
+                </li>
+            </ul>
+        </p>
+        <p>
+            WebCardinal has a support mechanism for translations via <a href="webcardinal/skins" target="_blank">skins</a>.
         </p>
     </psk-chapter>
 </psk-page>
