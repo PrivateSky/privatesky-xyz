@@ -17,9 +17,11 @@
   </psk-toc>
   <psk-chapter title="Prerequisites">
     <psk-list list-type="ordered">
-      Install or update <a href="https://nodejs.org/en/">Node</a> and Npm to version <b>12.14.0</b> or newer.
+      Install or update <a href="https://nodejs.org/en/">Node</a> and Npm to version <b>14.15</b> or newer.
       Install <a href="https://www.python.org/">Python 2.7</a> if it is not currently installed. <a
-        href="https://www.python.org/downloads/release/python-2716/">(download)</a>
+        href="https://www.python.org/downloads/release/python-2716/">(download)</a>. Have it as default Python on your system.
+        (If you have multiple version of Python installed and have Linux or Mac the instruction section bellow named 
+        "Multiple Python under Linux and Mac") This version is needed because NodeJS up to version 13 uses gyp writen in Python 2.7.
       Ensure that you have <a href="https://git-scm.com/">Git</a> properly configured in your PATH environment.
       Install a C/C++ toolchain, like GCC, with support for C++14 minimum. (Instructions bellow)
       <psk-card title="To install C/C++ toolchain on Windows">
@@ -48,31 +50,44 @@
     </psk-list>
   </psk-chapter>
 
-  <psk-chapter title="Setup SSApps (eg ssapp-demo-workspace or your solution based on ssapp-demo-workspace)">
+  <psk-chapter title="Multiple Python under Linux and Mac">
+    <psk-list list-type="ordered">
+      <div>
+        Open ~/.bash_profile file.<br>
+        <psk-code language="bash">nano ~/.bash_profile</psk-code>
+      </div>
+      <div>
+        Then put the alias as follows:<br>
+        <psk-code language="bash">alias python='python2'</psk-code>
+      </div>
+      <div>
+         Now save the file and then run the ~/.bash_profile file.<br>
+         <psk-code language="bash">source ~/.bash_profile</psk-code>
+      </div>
+      <div>
+        Now, you can use python2 by typing python.<br>
+        <psk-code language="bash">
+          python --version
+          Python 2.7.xx
+        </psk-code>
+      </div>
+    </psk-list>
+  </psk-chapter>
+
+  <psk-chapter title="Setup SSApps (e.g. tutorial-workspace or your solution based on tutorial-workspace)">
     <psk-description>
       The setup process of an development environment for building and running SSApps. For example, we use
-      ssapp-demo-workspace.
+      tutorial-workspace.
     </psk-description>
-    <psk-chapter title="Clone ssapp-demo-workspace">
-      First of all, create a local clone of the ssapp-demo-workspace Github project:
+    <psk-chapter title="Clone tutorial-workspace">
+      First of all, create a local clone of the tutorial-workspace Github project:
       <psk-code language="bash">
-        git clone https://github.com/PrivateSky/ssapp-demo-workspace.git
+        git clone https://github.com/PrivateSky/tutorial-workspace.git
       </psk-code>
       Enter into checkout folder and run the following command:
       <psk-code language="bash">
-        npm install
+        npm run dev-install
       </psk-code>
-
-      Optionally (if something crashed or you add changes) do a privatesky build
-      <psk-code language="bash">
-        cd privatesky
-        npm install
-        #if you want to run the tests, have to install zeromq manually
-        #npm install zeromq@4.6.0
-        npm run build
-        cd ..
-      </psk-code>
-
       Run the brick storage and static file http server
       <psk-code language="bash">
         npm run server
@@ -84,8 +99,8 @@
         npm run build-all
       </psk-code>
 
-      Finally, open the browser (in incognito tab is the best) and go to <a
-        href="http://localhost:8080/secure-channels/loader">http://localhost:8080/secure-channels/loader</a>
+      Finally, open the browser ( Chrome in incognito is the best) and go to <a
+        href="http://localhost:8080/secure-channels/loader">http://localhost:8080/tutorial/loader</a>
 
     </psk-chapter>
   </psk-chapter>
@@ -102,8 +117,7 @@
       </psk-code>
       Enter into checkout folder and run the following command:
       <psk-code language="bash">
-        cd privatesky
-        npm install
+        cd privatesky && npm install
       </psk-code>
       <br />
       <code>npm install</code> will install <webc-link tag="octopus">octopus</webc-link> that will handle and clone
@@ -131,17 +145,6 @@
       npm run start
     </psk-code>
     At this point, the PrivateSky installation is <b>done</b> and the PrivateSky Node is up and <b>ready to go!</b>
-  </psk-chapter>
-
-  <psk-chapter title="Run PSK Node during development">
-    <psk-description>
-      The difference is that during development PSK Node code is necessary to be rebuilt every time that source code and
-      folders are modified according to the project's needs.
-    </psk-description>
-    During development, instead of the <b>npm run start</b> command run
-    <psk-code language="bash">
-      npm run watch
-    </psk-code>
   </psk-chapter>
 
   <psk-chapter title="Update">
