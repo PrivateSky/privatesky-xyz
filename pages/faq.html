@@ -15,14 +15,13 @@
     <!-- End Google Tag Manager (noscript) -->
     <psk-toc title="Table of contents"></psk-toc>
     <psk-chapter title="How to create a SSApp workspace">
-        The development of a SSApp needs a special workspace that makes the building and testing flows as efficiently as possible.
-        An example of such a workspace is the GitHub repo <a href="https://github.com/PrivateSky/ssapp-demo-workspace.git">ssapp-demo-workspace</a>
-        (formerly called web-wallet).
-        The ssapp-demo-workspace repo contains only the basic files, configurations and dependencies that are needed to help populate
-        the entire workspace with the necessary sub projects and code.
+        The development of a SSApp needs a special workspace that makes the building and testing flows as efficient as possible.
+        An example of such a workspace is the GitHub repo <a href="https://github.com/PrivateSky/tutorial-workspace.git">tutorial-workspace</a>.
+        The tutorial-workspace repo contains the basic files, configurations and dependencies that are needed to help populate
+        the entire workspace with the necessary sub projects and code, plus a few useful use-case examples.
         <psk-img src="/assets/images/faq/ssapp-workspace-structure.png" title="SSApp workspace structure"></psk-img>
 
-        After the local cloning of ssapp-demo-workspace repo, an installation process can be performed by running the npm install command
+        After the local cloning of tutorial-workspace repo, an installation process can be performed by running the <code>npm install</code> command
         in the project’s directory. The installation process is done by the <webc-link tag="octopus">Octopus</webc-link>  task runner which reads
         the <code>octopus.json</code> file and, based on the information found in the file, runs the tasks that need to be completed to obtain a fully working
         workspace project.
@@ -33,20 +32,26 @@
     <psk-chapter title="How to add new projects to a SSApp workspace">
         To manage the workspace and to reliably replicate the workspace’s structure, new projects should be added with the help of Octopus.
         The command:
-            <psk-code>npm run add projectName http://git_repo_url_of_project</psk-code>
+            <psk-code language="bash">npm run add projectName http://git_repo_url_of_project</psk-code>
         tells Octopus to clone the project into the current workspace and save all the details in the octopus.json file for later command replay.
         The <code>projectName</code> argument indicates the directory name under which the code found at <code>http://git_repo_url_of_project</code>  needs to be cloned.
-        It doesn’t matter what type of the project we want to add to the workspace (SSApp source code, wallet type source code or other kind of business logic source code) the command is the same.
+        It doesn’t matter what type of project we want to add to the workspace (SSApp source code, wallet type source code or other kind of business logic source code) - the command is the same.
     </psk-chapter>
 
     <psk-chapter title="How to install a SSApp">
-        For each newly created SSApp prototype we recommend the usage of a separate Git repository in order to keep the code safe and track the SSApp’s history.
-        To create a new SSApp prototype project structure please follow the  <webc-link href="/how-to/a-ssapp">How to create a SSApp</webc-link> tutorial ,
-        which explains the steps that the creation of a <code>SSApp</code> requires.
-        Once the new SSApp prototype project structure is constructed based on the above mentioned tutorial, developers can write their code.
+        <p>For each newly created SSApp prototype we recommend the usage of a separate Git repository in order to keep the code safe and track the SSApp’s history.
+        To create a new SSApp prototype and add it to your workspace, follow this
+        <webc-link href="https://github.com/PrivateSky/tutorial-workspace#hello-world-ssapp-tutorial" target="_blank">tutorial</webc-link>.
+        Also check some examples of SSApps: 
+        <webc-link href="https://github.com/PrivateSky/ssapp-template">ssapp-template</webc-link>,
+        <webc-link href="https://github.com/PrivateSky/ssapp-minimal-app#readme">ssapp-minimal-app</webc-link>.</p>
+        <!--To create a new SSApp prototype project structure please follow the 
+        <webc-link href="/how-to/a-ssapp">How to create a SSApp</webc-link> tutorial ,
+        which explains the steps that the creation of a <code>SSApp</code> requires. -->
+        <p>Once the new SSApp prototype project structure is constructed based on the above mentioned tutorial, developers can write their code.
         The installation process of a SSApp prototype project is performed by the Octopus task runner which follows the steps described in the octopus.json file.
-        When the <code><b>npm install</b></code> command is executed, Octopus runs the necessary commands that add the Cardinal distribution code and PrivateSky distribution bundles
-        to the SSApp source code. The image below shows the folder structure of a SSApp prototype.
+        When the <code>npm install</code> command is executed, Octopus runs the necessary commands that add the Cardinal distribution code and PrivateSky distribution bundles
+        to the SSApp source code. The image below shows the folder structure of a SSApp prototype.</p>
         <psk-img src="/assets/images/faq/ssapp-prototype-structure.png" title="SSApp prototype structure"></psk-img>
 
         The main directories in which the code should be placed are <code>/domain</code> and <code>/code</code>.
@@ -57,34 +62,36 @@
         The build process of the SSApp prototype is carried out with the help of a custom tailored script. The result of the script execution is a file called
         <code>SEED</code> which contains the Seed of the DSU created for the SSApp prototype.
         To start the build process run the following command:
-        <psk-code>npm run build</psk-code>
+        <psk-code language="bash">npm run build</psk-code>
 
     </psk-chapter>
 
     <psk-chapter title="How to build a new wallet-type">
+        <psk-highlight type-of-highlight="issue">deprecated</psk-highlight>
         When building a new type of wallet, a short sequence of commands needs to be run.
-        <psk-list list-type="unordered">
+        
             <psk-card title="Create a wallet type name and install the loader for it">
-                <psk-code language="JavaScript">
+                <psk-code language="bash">
                     npm run add web-server/{name_of_wallet_type}/loader http://github.com/privatesky/web-dossier-loader.git
                 </psk-code>
 
-                <code><b>Note:</b></code> Choose and replace <code>name_of_wallet_type</code> with the name of the new wallet type.
+                <b>Note:</b> Choose and replace <code>name_of_wallet_type</code> with the name of the new wallet type.
             </psk-card>
-            <psk-card title="Setup the Wallet Type Prototype that will be used as base for the wallet">
 
-                <psk-code>
+            <psk-card title="Setup the Wallet Type Prototype that will be used as base for the wallet">
+                <psk-code language="bash">
                     npm run bind-wallet {name_of_wallet_type} wallet_prototype
                 </psk-code>
-                <code><b>Note:</b></code> <code>wallet_prototype</code> can be one from the list: menu-wallet-prototype, dossier-explorer-wallet-type or custom others.
+                <b>Note:</b> <code>wallet_prototype</code> can be one from the list: menu-wallet-prototype, dossier-explorer-wallet-type or custom others.
             </psk-card>
+
             <psk-card title="Install SSApps from workspace in the wallet">
-                <psk-code>
+                <psk-code language="bash">
                     npm run bind-app {name_of_wallet_type} name_of_ssapp_prototype
                 </psk-code>
-                <code><b>Note:</b></code> Run the <code>bind-app</code> command for each SSApp prototype that we need in our new wallet type.
+                <b>Note:</b> Run the <code>bind-app</code> command for each SSApp prototype that we need in our new wallet type.
             </psk-card>
-        </psk-list>
+        
 
         To test the result open a browser and go to <code>http://localhost:8080/{name_of_wallet_type}/loader/</code>.
     </psk-chapter>
@@ -94,8 +101,8 @@
         Most of the time we don’t need to write code for a new wallet prototype as we can reuse  existing code and just customize the configuration or make
         code updates to meet our business logic’s requirements.
         <psk-highlight type-of-highlight="example">
-            Note: In the following chapter we use <code>ssapp-demo-workspace</code> and navigate to the <code>web-wallet</code> directory. The <code>Web-Wallet</code> from
-            <code>ssapp-demo-workspace/web-server/web-wallet</code> represents a general purpose web type wallet. Web-wallet allows us to navigate inside a DSU and display
+            Note: In the following chapter we use <code>tutorial-workspace</code> and navigate to the <code>web-wallet</code> directory. The <code>Web-Wallet</code> from
+            <code>tutorial-workspace/web-server/web-wallet</code> represents a general purpose web type wallet. Web-wallet allows us to navigate inside a DSU and display
             its contents. It is customizable through SSApp installations.
             The following image highlights the basic structure of the web-wallet and the data that will be used when the web loader will create new instances of
             wallets.

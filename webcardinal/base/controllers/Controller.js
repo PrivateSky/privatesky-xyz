@@ -1,5 +1,3 @@
-import DSUStorage from '../libs/DSUStorage';
-import PskBindableModel from '../libs/bindableModel.js';
 import {
   getSkinFromState,
   getTranslationsFromState,
@@ -8,6 +6,7 @@ import {
   TAG_ATTRIBUTE,
   TAG_MODEL_FUNCTION_PROPERTY,
 } from '../../src';
+import PskBindableModel from '../libs/bindableModel.js';
 
 function checkEventListener(eventName, listener, options) {
   if (typeof eventName !== 'string' || eventName.trim().length === 0) {
@@ -31,6 +30,11 @@ function checkEventListener(eventName, listener, options) {
       Provided value: ${options}
     `);
   }
+}
+
+function isRequireAvailable() {
+  // eslint-disable-next-line no-undef
+  return window['$$'] && $$.require;
 }
 
 function isSkinEnabled() {
@@ -120,11 +124,10 @@ export default class Controller {
    * @param {Proxy | {}} [_translationModel] - The translationModel received from an above WebcComponent
    */
   constructor(element, history, _model, _translationModel) {
-    this.DSUStorage = new DSUStorage();
-
     this.element = element;
     this.history = history;
     this.tagEventListeners = [];
+    this._dsuStorage = undefined;
 
     let model;
     if (_model && this.element.hasAttribute(VIEW_MODEL_KEY)) {
@@ -141,6 +144,10 @@ export default class Controller {
 
     Object.defineProperty(this, 'model', {
       get() {
+        //return a friendly non-undefined model that will be well digested by the binding services
+        if (!model) {
+          model = PskBindableModel.setModel({});
+        }
         return model;
       },
       set(modelToSet) {
@@ -476,6 +483,17 @@ export default class Controller {
     return this.element.querySelectorAll(selector);
   }
 
+  getWalletStorage(domainName, databaseName) {
+    if (!isRequireAvailable()) {
+      console.error('"this.getWalletStorage" is available only inside an SSApp!');
+      return undefined;
+    }
+
+    // eslint-disable-next-line no-undef, @typescript-eslint/no-var-requires
+    const persistence = require('opendsu').loadAPI('persistence');
+    return persistence.getWalletStorage(domainName, databaseName);
+  }
+
   /**
    * @deprecated
    *
@@ -533,5 +551,34 @@ export default class Controller {
       [`Function "changeSkinForCurrentPage" is deprecated!`, `Use "applySkinForCurrentPage" instead!`].join('\n'),
     );
     this.applySkinForCurrentPage(skin);
+  }
+
+  /**
+   * @deprecated
+   */
+  get DSUStorage() {
+    if (!isRequireAvailable()) {
+      console.error('"this.DSUStorage" is available only inside an SSApp!');
+      return this._dsuStorage;
+    }
+
+    console.warn([`"this.DSUStorage" is deprecated!`, 'Use "this.getStorage" instead!'].join('\n'));
+
+    if (!this._dsuStorage) {
+      // eslint-disable-next-line no-undef, @typescript-eslint/no-var-requires
+      const { getDSUStorage } = require('opendsu').loadAPI('persistence');
+      this._dsuStorage = getDSUStorage();
+    }
+
+    return this._dsuStorage;
+  }
+
+  /**
+   * @deprecated
+   */
+  set DSUStorage(dsuStorage) {
+    console.warn('Overriding "this.DSUStorage" is not recommended!');
+
+    this._dsuStorage = dsuStorage;
   }
 }
