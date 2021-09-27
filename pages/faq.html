@@ -67,12 +67,11 @@
     </psk-chapter>
 
     <psk-chapter title="How to build a new wallet-type">
-        <psk-highlight type-of-highlight="issue">deprecated</psk-highlight>
         When building a new type of wallet, a short sequence of commands needs to be run.
         
             <psk-card title="Create a wallet type name and install the loader for it">
                 <psk-code language="bash">
-                    npm run add web-server/{name_of_wallet_type}/loader http://github.com/privatesky/web-dossier-loader.git
+                    npm run add apihub-root/{name_of_wallet_type}/loader http://github.com/privatesky/web-dossier-loader.git
                 </psk-code>
 
                 <b>Note:</b> Choose and replace <code>name_of_wallet_type</code> with the name of the new wallet type.
@@ -82,7 +81,7 @@
                 <psk-code language="bash">
                     npm run bind-wallet {name_of_wallet_type} wallet_prototype
                 </psk-code>
-                <b>Note:</b> <code>wallet_prototype</code> can be one from the list: menu-wallet-prototype, dossier-explorer-wallet-type or custom others.
+                <b>Note:</b> <code>wallet_prototype</code> can be one from the list: menu-wallet-prototype, dossier-explorer-wallet-prototype or custom others.
             </psk-card>
 
             <psk-card title="Install SSApps from workspace in the wallet">
@@ -101,20 +100,20 @@
         Most of the time we don’t need to write code for a new wallet prototype as we can reuse  existing code and just customize the configuration or make
         code updates to meet our business logic’s requirements.
         <psk-highlight type-of-highlight="example">
-            Note: In the following chapter we use <code>tutorial-workspace</code> and navigate to the <code>web-wallet</code> directory. The <code>Web-Wallet</code> from
-            <code>tutorial-workspace/web-server/web-wallet</code> represents a general purpose web type wallet. Web-wallet allows us to navigate inside a DSU and display
+            Note: In the following chapter we use <code>tutorial-workspace</code> and navigate to the <code>{name_of_web_wallet}</code> directory. The <code>Web-Wallet</code> from
+            <code>tutorial-workspace/apihub-root/{name_of_web_wallet}</code> represents a general purpose web type wallet. Web-wallet allows us to navigate inside a DSU and display
             its contents. It is customizable through SSApp installations.
             The following image highlights the basic structure of the web-wallet and the data that will be used when the web loader will create new instances of
             wallets.
         </psk-highlight>
 
-        <psk-img src="/assets/images/faq/web-server-structure.png" title="Web server folder structure"></psk-img>
+        <psk-img src="/assets/images/faq/apihub-root-structure.png" title="Web server folder structure"></psk-img>
 
-        You can can see that the <code>web-server/web-wallet</code> directory has three main sub folders:
+        You can can see that the <code>apihub-root/web-wallet</code> directory has three main sub folders:
         <psk-list list-type="unordered">
             <psk-card title="Loader">
               A directory that contains the source code found at <a href="http://github.com/privatesky/web-dossier-loader.git">http://github.com/privatesky/web-dossier-loader.git</a> and represents the code of a simple
-                web app capable of creating new wallet instances based on the information found in the <code>web-server/web-wallet directory</code>.
+                web app capable of creating new wallet instances based on the information found in the <code>apihub-root/web-wallet directory</code>.
             </psk-card>
             <psk-card title="Wallet-Template">
                  A directory that contains a seed file with the SEED of the Dossier that stores the code of <code>dossier-explorer-wallet-prototype</code>;
@@ -132,12 +131,12 @@
                 npm run bind-app web-wallet ssapp_prototype_name
             </psk-code>
             The <code>bind-app</code> command ensures that the <code>ssapp_prototype</code> is built by running <code><b>npm run build</b></code> command in
-            the <code>ssapp_prototype</code> source code directory and copies the seed file into the <code>web-wallet/apps/ssapp_name</code> directory.
+            the <code>ssapp_prototype</code> source code directory and copies the seed file into the <code>web-wallet/apps-patch/ssapp_name</code> directory.
         </psk-chapter>
 
         <psk-chapter title="Customizing a wallet by changing the menu structure">
             Our web-wallet solution uses the <code>dossier-explorer-wallet-prototype</code> as a wallet base and if we need to change the menu structure of the
-            <code>web-wallet</code> we have to create a file called <code><b>menu.json</b></code> in <code>/web-server/wallet-template</code> directory.
+            <code>web-wallet</code> we have to create a file called <code><b>menu.json</b></code> in <code>/apihub-root/wallet-patch</code> directory.
             At this moment we can make changes in our new <code>menu.json</code> file as we wish. Example of menu.json content:
             <psk-code language="json">
                 {
@@ -183,7 +182,7 @@
         <psk-img src="/assets/images/faq/build-workflow.png" title="Build workflow"></psk-img>
         Basically, the Loader creates a Dossier instance and then mounts at specific paths the Wallet type prototype code, and newly created SSApp instances
         using the seeds of the SSApp prototypes.
-        The instantiation process of new SSApp, presented in the following diagram, is executed for each SSApp found in the folder <code>/web-server/web-wallet/apps</code>.
+        The instantiation process of new SSApp, presented in the following diagram, is executed for each SSApp found in the folder <code>/apihub-root/web-wallet/apps-patch</code>.
 
         <psk-img src="/assets/images/faq/ssapp-creation-workflow.png" title="SSApp creation workflow"></psk-img>
     </psk-chapter>
